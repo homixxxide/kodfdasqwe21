@@ -1668,6 +1668,58 @@ class SplashScreen(QWidget):
         self.deleteLater()
 
 
+
+# ================= UI: RoleButton =================
+class RoleButton(QPushButton):
+    def __init__(self, role_key, display_name, parent=None):
+        super().__init__(parent)
+        self.role_key = role_key
+        self.setText(display_name)
+        self.setObjectName("RoleButton")
+        self.setFixedHeight(52)
+        self.setMinimumWidth(140)
+        self.setCursor(Qt.PointingHandCursor)
+        self.setCheckable(True)
+        self.update_style(False)
+
+    def update_style(self, selected: bool):
+        self.setChecked(selected)
+        if selected:
+            self.setStyleSheet(f"""
+                QPushButton {{
+                    background-color: rgba(220, 38, 38, 0.95);
+                    border: 1px solid rgba(252, 165, 165, 0.95);
+                    border-radius: 14px;
+                    color: {COLOR_TEXT_WHITE};
+                    font-size: 14px;
+                    font-weight: 800;
+                    padding: 14px 22px;
+                }}
+            """)
+        else:
+            self.setStyleSheet(f"""
+                QPushButton {{
+                    background-color: rgba(18, 18, 22, 0.88);
+                    border: 1px solid rgba(255, 255, 255, 0.12);
+                    border-radius: 14px;
+                    color: {COLOR_TEXT_GRAY};
+                    font-size: 14px;
+                    font-weight: 700;
+                    padding: 14px 22px;
+                }}
+                QPushButton:hover {{
+                    background-color: rgba(220, 38, 38, 0.18);
+                    border-color: rgba(248, 113, 113, 0.82);
+                    color: {COLOR_TEXT_WHITE};
+                }}
+                QPushButton:pressed {{
+                    background-color: rgba(220, 38, 38, 0.42);
+                    border-color: rgba(252, 165, 165, 0.92);
+                    color: {COLOR_TEXT_WHITE};
+                }}
+            """)
+
+
 # ================= UI: HeroSearchFrame =================
 class HeroSearchFrame(QWidget):
     def __init__(self, all_heroes, on_select_callback, parent_app):
