@@ -252,7 +252,7 @@ def start_gsi_server():
 
 # ================= КОНФИГУРАЦИЯ ПРИЛОЖЕНИЯ =================
 
-APP_VERSION = "6.3"
+APP_VERSION = "6.4"
 CACHE_UPDATE_HOURS = 24
 APP_DATA_FOLDER = "MetaMind"
 
@@ -1138,9 +1138,11 @@ class WhatsNewDialog(QDialog):
         changes_layout.setSpacing(14)
 
         changes = [
-            ("", "Улучшено масштабирование UI под разные разрешения", COLOR_TEXT_WHITE),
-            ("", "Окно теперь корректно меняет размер по границам", COLOR_TEXT_WHITE),
-            ("", "Список подсказок героев показывает больше строк", COLOR_TEXT_WHITE),
+            ("", "Восстановлен режим поверх всех окон для основного окна", COLOR_TEXT_WHITE),
+            ("", "Стабилизировано автосворачивание и возврат окна во время сканирования", COLOR_TEXT_WHITE),
+            ("", "Улучшена проверка и автосоздание GSI-конфига с понятными подсказками", COLOR_TEXT_WHITE),
+            ("", "Повышена производительность CV-сканирования и адаптация под разные экраны", COLOR_TEXT_WHITE),
+            ("", "Снижены подлагивания интерфейса при активном автосканировании", COLOR_TEXT_WHITE),
         ]
 
         for icon, text, color in changes:
@@ -2404,6 +2406,8 @@ class MainWindow(QMainWindow):
         self._auto_restore_timer = QTimer(self)
         self._auto_restore_timer.setSingleShot(True)
         self._auto_restore_timer.timeout.connect(self._restore_window_after_scan_idle)
+        self._window_interaction_until = 0.0
+        self._pending_drag_scan_request = False
         self.selected_role = None
 
         self.opendota_cache = None
@@ -2947,6 +2951,7 @@ class MainWindow(QMainWindow):
 
     def mousePressEvent(self, event: QMouseEvent):
         if event.button() == Qt.LeftButton:
+            self._window_interaction_until = time.time() + 0.9
             edges = self._get_resize_edges(event.position().toPoint())
             if any(edges):
                 self._resizing = True
@@ -2961,11 +2966,13 @@ class MainWindow(QMainWindow):
 
     def mouseMoveEvent(self, event: QMouseEvent):
         if self._resizing and self._resize_start_geom and self._resize_start_pos:
+            self._window_interaction_until = time.time() + 0.9
             self._resize_window(event.globalPosition().toPoint())
             event.accept()
             return
         self._update_cursor(event.position().toPoint())
         if event.buttons() == Qt.LeftButton and self.old_pos is not None:
+            self._window_interaction_until = time.time() + 0.9
             delta = event.globalPosition().toPoint() - self.old_pos
             self.move(self.pos() + delta)
             self.old_pos = event.globalPosition().toPoint()
@@ -2974,6 +2981,7 @@ class MainWindow(QMainWindow):
 
     def mouseReleaseEvent(self, event: QMouseEvent):
         if event.button() == Qt.LeftButton:
+            self._window_interaction_until = time.time() + 0.5
             if self._resizing:
                 self._resizing = False
                 self._resize_edges = None
@@ -3475,6 +3483,34 @@ class MainWindow(QMainWindow):
         if self._auto_minimized_for_scan:
             self._auto_restore_timer.start(self._auto_restore_delay_ms)
 
+    def _is_window_interaction_active(self):
+        """Окно в активном перемещении/ресайзе: временно снижаем нагрузку CV."""
+        return time.time() < self._window_interaction_until
+
+    def _schedule_scan_after_interaction(self, delay_ms=350):
+        """Отложенный одиночный скан после окончания перемещения окна."""
+        if self._pending_drag_scan_request:
+            return
+
+        self._pending_drag_scan_request = True
+
+        def _run_deferred_scan():
+            self._pending_drag_scan_request = False
+            if not self.cv_scanner.auto_scan_enabled:
+                return
+            if self._is_window_interaction_active() or self.cv_scanner.is_scanning:
+                self._schedule_scan_after_interaction(delay_ms=300)
+                return
+
+            total = len(self.selected_enemies)
+            if total >= 5:
+                return
+
+            self._mark_scan_activity()
+            self.cv_scanner.scan_once(delay=0)
+
+        QTimer.singleShot(delay_ms, _run_deferred_scan)
+
     def _maybe_minimize_for_scan(self):
         """Сворачивает окно только когда оно реально мешает и без повторного флика."""
         now = time.time()
@@ -3602,6 +3638,10 @@ class MainWindow(QMainWindow):
         # Запускаем сканирование БЕЗ задержки (пик уже произошел)
         # База детектора будет обновлена в on_heroes_found после сканирования
         if not self.cv_scanner.is_scanning:
+            if self._is_window_interaction_active():
+                print("[PICK] ⏳ Окно перемещается, откладываем скан на короткое время")
+                self._schedule_scan_after_interaction(delay_ms=300)
+                return
             self._mark_scan_activity()
             self.cv_scanner.scan_once(delay=0)
         else:
@@ -3789,6 +3829,13 @@ class MainWindow(QMainWindow):
             total = len(self.selected_enemies)
             print(f"[AUTO] ⏳ Сканирование в процессе... ({total}/5)")
             return  # Пропускаем этот тик, но таймер продолжит работу
+
+        # Если пользователь сейчас двигает/ресайзит окно - кратко снижаем нагрузку и откладываем скан
+        if self._is_window_interaction_active():
+            self._set_dynamic_scan_interval(has_team=True, has_heroes=False)
+            self.on_scan_progress("Окно перемещается, сканирование временно облегчено...")
+            self._schedule_scan_after_interaction(delay_ms=350)
+            return
 
         # Проверка 4: Все 5 найдены?
         total = len(self.selected_enemies)
