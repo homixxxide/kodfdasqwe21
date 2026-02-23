@@ -36,7 +36,7 @@ from PySide6.QtWidgets import (
     QHBoxLayout, QLabel, QLineEdit, QPushButton,
     QScrollArea, QListWidget, QListWidgetItem, QFrame,
     QSpacerItem, QSizePolicy, QStackedWidget, QComboBox,
-    QDialog, QSplitter, QSizeGrip, QAbstractItemView
+    QDialog, QSplitter, QSizeGrip, QAbstractItemView, QMessageBox
 )
 from PySide6.QtCore import (
     Qt, QSize, QPoint, QPropertyAnimation,
@@ -1863,6 +1863,15 @@ class CVScanner:
         # Кеш проверки наличия героев на экране
         self._heroes_check_cache = None
         self._heroes_check_time = 0
+        self._heroes_presence_signature = None
+        self._heroes_presence_signature_time = 0
+
+        # Переиспользуем SIFT/FLANN (меньше CPU и аллокаций памяти)
+        self.sift = cv2.SIFT_create()
+        flann_index_kdtree = 1
+        index_params = dict(algorithm=flann_index_kdtree, trees=3)
+        search_params = dict(checks=50)
+        self.flann = cv2.FlannBasedMatcher(index_params, search_params)
 
         # Загружаем список героев из папки portraits
         self.available_heroes = self._load_heroes_from_portraits()
@@ -1971,7 +1980,6 @@ class CVScanner:
         print(f"[CV] 🚀 Предзагрузка SIFT дескрипторов...")
         start_time = time.time()
 
-        sift = cv2.SIFT_create()
         png_files = [f for f in os.listdir(portraits_dir) if f.endswith('.png')]
 
         loaded_count = 0
@@ -1989,7 +1997,7 @@ class CVScanner:
                 template_small = cv2.resize(template, SIFT_TEMPLATE_SIZE, interpolation=cv2.INTER_AREA)
 
                 # Вычисляем SIFT дескрипторы
-                kp, des = sift.detectAndCompute(template_small, None)
+                kp, des = self.sift.detectAndCompute(template_small, None)
 
                 if des is not None and len(kp) >= 2:
                     self.hero_descriptors[hero_slug] = (kp, des)
@@ -2001,6 +2009,38 @@ class CVScanner:
         elapsed = time.time() - start_time
         print(f"[CV] ✅ Предзагружено {loaded_count} героев за {elapsed:.2f} сек")
 
+    def _calculate_scan_roi(self, screenshot_gray):
+        """Адаптивная зона сканирования под разные aspect ratio."""
+        h, w = screenshot_gray.shape
+        aspect = w / max(h, 1)
+
+        # Чем шире экран, тем меньше относительная высота драфт-бара
+        if aspect >= 2.2:
+            top_ratio = 0.18
+        elif aspect >= 1.9:
+            top_ratio = 0.20
+        elif aspect >= 1.6:
+            top_ratio = 0.23
+        else:
+            top_ratio = 0.26
+
+        top_portion = max(80, int(h * top_ratio))
+        top_portion = min(top_portion, max(120, int(h * 0.32)))
+        top_strip = screenshot_gray[:top_portion, :]
+
+        if self.player_team == "radiant":
+            x_start = int(w * 0.48)
+            x_end = w
+        elif self.player_team == "dire":
+            x_start = 0
+            x_end = int(w * 0.52)
+        else:
+            x_start = int(w * 0.08)
+            x_end = int(w * 0.92)
+
+        search_zone = top_strip[:, x_start:x_end]
+        return search_zone, x_start, top_portion, w
+
     def detect_heroes_with_sift(self, screenshot):
         """SIFT - СКАНИРОВАНИЕ ТОЛЬКО ВЕРХА ЭКРАНА"""
 
@@ -2010,52 +2050,23 @@ class CVScanner:
         screenshot_np = np.array(screenshot)
         screenshot_gray = cv2.cvtColor(screenshot_np, cv2.COLOR_RGB2GRAY)
 
-        h, w = screenshot_gray.shape
+        search_zone, offset_x, top_portion, screen_w = self._calculate_scan_roi(screenshot_gray)
+        print(f"[SIFT] Сканируем адаптивную зону: {search_zone.shape[1]}x{top_portion}px (screen_w={screen_w})")
 
-        # === ТОЛЬКО ВЕРХНЯЯ ЧАСТЬ (портреты в драфте) ===
-        top_portion = int(h * 0.25)  # Верхние 25% экрана
-        screenshot_gray = screenshot_gray[:top_portion, :]
+        # Дополнительная оптимизация: ограничиваем ширину рабочей зоны на очень широких экранах
+        if search_zone.shape[1] > 1400:
+            scale = 1400 / search_zone.shape[1]
+            new_h = max(80, int(search_zone.shape[0] * scale))
+            search_zone = cv2.resize(search_zone, (1400, new_h), interpolation=cv2.INTER_AREA)
 
-        print(f"[SIFT] Сканируем верх: {w}x{top_portion}px")
-
-        # Зона поиска (левая или правая половина)
-        if self.player_team == "radiant":
-            search_zone = screenshot_gray[:, w // 2:]
-            offset_x = w // 2
-            print(f"[SIFT] Radiant → сканируем ПРАВУЮ половину (враги Dire)")
-        elif self.player_team == "dire":
-            search_zone = screenshot_gray[:, :w // 2]
-            offset_x = 0
-            print(f"[SIFT] Dire → сканируем ЛЕВУЮ половину (враги Radiant)")
-        else:
-            search_zone = screenshot_gray
-            offset_x = 0
-            print(f"[SIFT] ⚠️ Команда не установлена, сканируем весь верх")
-
-        # SIFT
-        sift = cv2.SIFT_create()
-        kp_screen, des_screen = sift.detectAndCompute(search_zone, None)
+        kp_screen, des_screen = self.sift.detectAndCompute(search_zone, None)
 
         if des_screen is None:
             return {"success": False, "error": "Нет features"}
 
-        # FLANN matcher
-        # ОПТИМИЗАЦИЯ: FLANN параметры (trees: 5→3 = быстрее)
-        FLANN_INDEX_KDTREE = 1
-        index_params = dict(algorithm=FLANN_INDEX_KDTREE, trees=3)
-        search_params = dict(checks=50)
-        flann = cv2.FlannBasedMatcher(index_params, search_params)
-
         # ОПТИМИЗАЦИЯ: Используем предзагруженные дескрипторы!
         if not self.hero_descriptors:
-            print(f"[SIFT] ⚠️ Дескрипторы не загружены, используем медленный режим")
-            # Fallback на старый метод (если кеш пустой)
-            portraits_dir = resource_path("portraits")
-            if not os.path.exists(portraits_dir):
-                return {"success": False, "error": "Папка portraits не найдена"}
-            png_files = [f for f in os.listdir(portraits_dir) if f.endswith('.png')]
-            if len(png_files) == 0:
-                return {"success": False, "error": "Нет PNG файлов"}
+            return {"success": False, "error": "Дескрипторы портретов не загружены"}
 
         matches_data = []
         checked_count = 0
@@ -2068,7 +2079,7 @@ class CVScanner:
                 if des_template is None or len(kp_template) < 2:
                     continue
 
-                matches = flann.knnMatch(des_template, des_screen, k=2)
+                matches = self.flann.knnMatch(des_template, des_screen, k=2)
 
                 good_matches = []
                 for m_n in matches:
@@ -2101,7 +2112,7 @@ class CVScanner:
                 continue
 
         if len(matches_data) == 0:
-            print(f"[SIFT] Не найдено совпадений после проверки {len(png_files)} героев")
+            print(f"[SIFT] Не найдено совпадений после проверки {checked_count} героев")
             return {"success": False, "error": "Нет совпадений"}
 
         print(f"[SIFT]  Найдено {len(matches_data)} кандидатов, фильтруем...")
@@ -2153,6 +2164,22 @@ class CVScanner:
 
         try:
             screenshot = self.capture_screen()
+
+            # Быстрый сигнатурный кеш: если верхняя зона не менялась, не гоняем SIFT лишний раз
+            signature_img = screenshot.resize((96, 28), Image.Resampling.BILINEAR).convert('L')
+            signature = int(np.array(signature_img, dtype=np.uint8).mean())
+            signature_age = current_time - self._heroes_presence_signature_time
+            if (
+                not force_check
+                and self._heroes_presence_signature == signature
+                and signature_age < 1.2
+                and self._heroes_check_cache is not None
+            ):
+                return self._heroes_check_cache
+
+            self._heroes_presence_signature = signature
+            self._heroes_presence_signature_time = current_time
+
             result = self.detect_heroes_with_sift(screenshot)
 
             if result.get("success"):
@@ -2792,6 +2819,8 @@ class MainWindow(QMainWindow):
         self._gsi_team_cache = None
         self._gsi_last_check = 0
         self._gsi_cache_duration = 3.0  # Кеш на 3 секунды        # === SMART PICK DETECTOR ===
+        self._gsi_unreachable_since = None
+        self._gsi_blocked_warning_shown = False
         self.pick_detector = PickDetector()
         self.pick_detector.signals.pick_detected.connect(self.on_pick_detected)
         self.pick_detector.signals.status.connect(self.on_pick_status)
@@ -3234,10 +3263,10 @@ class MainWindow(QMainWindow):
         # Настройка таймера
         self.auto_scan_timer = QTimer()
         self.auto_scan_timer.timeout.connect(self._auto_scan_tick)
-        self.scan_interval_ms = 4000
+        self.scan_interval_ms = 2000
         self.waiting_for_game = False
 
-        print("[SETUP] ✅ CV Scanner готов, интервал 4 сек")
+        print("[SETUP] ✅ CV Scanner готов, базовый интервал 2 сек")
 
     def on_scan_progress(self, message):
         """Обработчик прогресса сканирования (с кешированием!)"""
@@ -3330,246 +3359,164 @@ class MainWindow(QMainWindow):
         self.cv_scanner.player_team = player_team
         self.cv_scanner.scan_once(delay=2)
 
+    def _find_gsi_config_path(self):
+        paths = [
+            r"Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\dota\cfg\gamestate_integration\gamestate_integration_metamind.cfg",
+            r"SteamLibrary\steamapps\common\dota 2 beta\game\dota\cfg\gamestate_integration\gamestate_integration_metamind.cfg",
+            r"Steam\steamapps\common\dota 2 beta\game\dota\cfg\gamestate_integration\gamestate_integration_metamind.cfg",
+        ]
+        drives = [f"{d}:\\" for d in string.ascii_uppercase if os.path.exists(f"{d}:\\")]
+        for drive in drives:
+            for rel_path in paths:
+                full_path = os.path.join(drive, rel_path)
+                if os.path.exists(full_path):
+                    return full_path
+        return None
+
+    def _show_gsi_created_dialog(self):
+        msg = QMessageBox(self)
+        msg.setIcon(QMessageBox.Information)
+        msg.setWindowTitle("GSI настроен")
+        msg.setText("GSI-конфиг создан автоматически")
+        msg.setInformativeText(
+            "Чтобы Dota 2 начала отправлять данные в MetaMind:\n\n"
+            "1) Полностью закрой Dota 2\n"
+            "2) Запусти Dota 2 заново\n"
+            "3) Вернись в экран драфта\n\n"
+            "После перезапуска GSI активируется."
+        )
+        msg.setStyleSheet("""
+            QMessageBox { background-color: #0f172a; }
+            QMessageBox QLabel { color: #e5e7eb; font-size: 13px; }
+            QMessageBox QLabel#qt_msgbox_label {
+                color: #ffffff;
+                font-size: 15px;
+                font-weight: 600;
+            }
+            QPushButton {
+                background-color: #22c55e;
+                color: #0f172a;
+                border: none;
+                border-radius: 6px;
+                padding: 8px 20px;
+                font-weight: 600;
+            }
+            QPushButton:hover { background-color: #4ade80; }
+        """)
+        msg.exec()
+
+    def _ensure_gsi_config(self):
+        gsi_path = self._find_gsi_config_path()
+        if gsi_path:
+            print(f"[GSI] ✅ Конфиг найден: {gsi_path}")
+            return True
+
+        print("[GSI] ⚠️ Конфиг не найден, пытаемся создать автоматически")
+        try:
+            temp_gsi = GSIServer()
+            temp_gsi.auto_setup_gsi()
+            gsi_path = self._find_gsi_config_path()
+            if gsi_path:
+                print(f"[GSI] 📝 Конфиг создан: {gsi_path}")
+                self._show_gsi_created_dialog()
+                self.on_scan_progress("⚠️ GSI создан — перезапусти Dota 2")
+                return True
+        except Exception as e:
+            print(f"[GSI] ❌ Ошибка автосоздания конфига: {e}")
+
+        self.on_scan_progress("⚠️ GSI конфиг не найден — автоскан ограничен")
+        return False
+
+    def _show_gsi_blocked_warning(self):
+        msg = QMessageBox(self)
+        msg.setIcon(QMessageBox.Warning)
+        msg.setWindowTitle("Проблема с локальным GSI")
+        msg.setText("MetaMind не может получить доступ к localhost GSI")
+        msg.setInformativeText(
+            "Проверь:\n"
+            "• брандмауэр и антивирус (разреши localhost:3000);\n"
+            "• полностью перезапусти Dota 2;\n"
+            "• запусти MetaMind от имени администратора.\n\n"
+            "Если не помогло — обратись в поддержку MetaMind."
+        )
+        msg.exec()
+
+    def _set_dynamic_scan_interval(self, has_team=False, has_heroes=False):
+        if not self.cv_scanner.auto_scan_enabled:
+            return
+
+        if not has_team:
+            new_interval = 2600
+        elif not has_heroes:
+            new_interval = 1800
+        else:
+            total = len(self.selected_enemies)
+            new_interval = 1200 if total < 3 else 1700
+
+        if new_interval != self.scan_interval_ms:
+            self.scan_interval_ms = new_interval
+            self.auto_scan_timer.start(self.scan_interval_ms)
+            print(f"[AUTO] ⏱️ Новый интервал автоскана: {self.scan_interval_ms}ms")
+
     def toggle_auto_scan(self, enabled):
         """Переключатель автосканирования (С ПОЛНЫМ СБРОСОМ)"""
         if enabled:
-            # === ПРОВЕРКА GSI КОНФИГА ===
-            import string
-            from PySide6.QtWidgets import QMessageBox
-            drives = [f"{d}:\\" for d in string.ascii_uppercase if os.path.exists(f"{d}:\\")]
-            gsi_found = False
-            gsi_path = None
+            self._ensure_gsi_config()
 
-            for drive in drives:
-                paths = [
-                    "Program Files (x86)\\Steam\\steamapps\\common\\dota 2 beta\\game\\dota\\cfg\\gamestate_integration\\gamestate_integration_metamind.cfg",
-                    "SteamLibrary\\steamapps\\common\\dota 2 beta\\game\\dota\\cfg\\gamestate_integration\\gamestate_integration_metamind.cfg",
-                    "Steam\\steamapps\\common\\dota 2 beta\\game\\dota\\cfg\\gamestate_integration\\gamestate_integration_metamind.cfg",
-                ]
-                for path in paths:
-                    full_path = os.path.join(drive, path)
-                    if os.path.exists(full_path):
-                        gsi_found = True
-                        gsi_path = full_path
-                        print(f"[GSI] ✅ Конфиг найден: {full_path}")
-                        break
-                if gsi_found:
-                    break
-
-            if not gsi_found:
-                print("[GSI] ⚠️ КОНФИГ НЕ НАЙДЕН - СОЗДАЮ АВТОМАТИЧЕСКИ")
-                # Пытаемся создать через GSI сервер
-                try:
-                    # GSI сервер уже имеет метод auto_setup_gsi
-                    # Вызываем его повторно для гарантии
-                    from __main__ import start_gsi_server
-                    # Инициализируем GSI сервер заново
-                    temp_gsi = GSIServer()
-                    print("[GSI] 📝 Конфиг создан автоматически")
-                    print("[GSI] 🔄 ПЕРЕЗАПУСТИ DOTA 2 для активации GSI!")
-
-                    # ПОКАЗЫВАЕМ ПРЕДУПРЕЖДЕНИЕ
-                    msg = QMessageBox(self)
-                    msg.setIcon(QMessageBox.Information)
-                    msg.setWindowTitle("Готово!")
-                    msg.setText("Всё готово к работе")
-                    msg.setInformativeText(
-                        "Чтобы изменения вступили в силу:\n\n"
-                        "1 Полностью закрой Dota 2\n"
-                        "2 Запусти игру заново\n\n"
-                        "После перезапуска MetaMind начнёт работать автоматически."
-                    )
-
-                    msg.setStyleSheet("""
-                        QMessageBox {
-                            background-color: #0f172a;
-                        }
-                        QMessageBox QLabel {
-                            color: #e5e7eb;
-                            font-size: 14px;
-                        }
-                        QMessageBox QLabel#qt_msgbox_label {
-                            font-size: 16px;
-                            font-weight: bold;
-                            color: #ffffff;
-                        }
-                        QPushButton {
-                            background-color: #22c55e;
-                            color: #0f172a;
-                            border: none;
-                            border-radius: 6px;
-                            padding: 8px 24px;
-                            font-weight: bold;
-                        }
-                        QPushButton:hover {
-                            background-color: #4ade80;
-                        }
-                    """)
-
-                    msg.exec()
-
-                    self.on_scan_progress("⚠️ GSI создан - перезапусти Dota 2!")
-                except Exception as e:
-                    print(f"[GSI] ❌ Ошибка создания конфига: {e}")
-                    self.on_scan_progress("❌ GSI конфиг не найден - создай вручную")
-
-            # === ПРОВЕРКА GSI КОНФИГА ===
-            import string
-            drives = [f"{d}:\\" for d in string.ascii_uppercase if os.path.exists(f"{d}:\\")]
-            gsi_found = False
-            gsi_path = None
-
-            for drive in drives:
-                paths = [
-                    "Program Files (x86)\\Steam\\steamapps\\common\\dota 2 beta\\game\\dota\\cfg\\gamestate_integration\\gamestate_integration_metamind.cfg",
-                    "SteamLibrary\\steamapps\\common\\dota 2 beta\\game\\dota\\cfg\\gamestate_integration\\gamestate_integration_metamind.cfg",
-                    "Steam\\steamapps\\common\\dota 2 beta\\game\\dota\\cfg\\gamestate_integration\\gamestate_integration_metamind.cfg",
-                ]
-                for path in paths:
-                    full_path = os.path.join(drive, path)
-                    if os.path.exists(full_path):
-                        gsi_found = True
-                        gsi_path = full_path
-                        print(f"[GSI] ✅ Конфиг найден: {full_path}")
-                        break
-                if gsi_found:
-                    break
-
-            if not gsi_found:
-                print("[GSI] ⚠️ КОНФИГ НЕ НАЙДЕН - СОЗДАЮ АВТОМАТИЧЕСКИ")
-                # Пытаемся создать через GSI сервер
-                try:
-                    # GSI сервер уже имеет метод auto_setup_gsi
-                    # Вызываем его повторно для гарантии
-                    from __main__ import start_gsi_server
-                    # Инициализируем GSI сервер заново
-                    temp_gsi = GSIServer()
-                    print("[GSI] 📝 Конфиг создан автоматически")
-                    print("[GSI] 🔄 ПЕРЕЗАПУСТИ DOTA 2 для активации GSI!")
-                    self.on_scan_progress("⚠️ GSI создан - перезапусти Dota 2!")
-                except Exception as e:
-                    print(f"[GSI] ❌ Ошибка создания конфига: {e}")
-                    self.on_scan_progress("❌ GSI конфиг не найден - создай вручную")
-
-            # Проверяем что GSI конфиг существует
-            import string
-            drives = [f"{d}:\\" for d in string.ascii_uppercase if os.path.exists(f"{d}:\\")]
-            gsi_found = False
-            for drive in drives:
-                paths = [
-                    "Program Files (x86)\\Steam\\steamapps\\common\\dota 2 beta\\game\\dota\\cfg\\gamestate_integration\\gamestate_integration_metamind.cfg",
-                    "SteamLibrary\\steamapps\\common\\dota 2 beta\\game\\dota\\cfg\\gamestate_integration\\gamestate_integration_metamind.cfg",
-                    "Steam\\steamapps\\common\\dota 2 beta\\game\\dota\\cfg\\gamestate_integration\\gamestate_integration_metamind.cfg",
-                ]
-                for path in paths:
-                    full_path = os.path.join(drive, path)
-                    if os.path.exists(full_path):
-                        gsi_found = True
-                        print(f"[GSI] ✅ Конфиг найден: {full_path}")
-                        break
-                if gsi_found:
-                    break
-
-            if not gsi_found:
-                print("[GSI] ⚠️ КОНФИГ НЕ НАЙДЕН!")
-                print("[GSI] 📝 Перезапусти приложение для автосоздания конфига")
-                print("[GSI] 💡 Или создай файл вручную в папке Dota 2/cfg/gamestate_integration/")
-                self.on_scan_progress("⚠️ GSI конфиг не найден - автосканирование ограничено")
-
-            # Проверяем что GSI конфиг существует
-            import string
-            drives = [f"{d}:\\" for d in string.ascii_uppercase if os.path.exists(f"{d}:\\")]
-            gsi_found = False
-            for drive in drives:
-                paths = [
-                    "Program Files (x86)\\Steam\\steamapps\\common\\dota 2 beta\\game\\dota\\cfg\\gamestate_integration\\gamestate_integration_metamind.cfg",
-                    "SteamLibrary\\steamapps\\common\\dota 2 beta\\game\\dota\\cfg\\gamestate_integration\\gamestate_integration_metamind.cfg",
-                    "Steam\\steamapps\\common\\dota 2 beta\\game\\dota\\cfg\\gamestate_integration\\gamestate_integration_metamind.cfg",
-                ]
-                for path in paths:
-                    full_path = os.path.join(drive, path)
-                    if os.path.exists(full_path):
-                        gsi_found = True
-                        print(f"[GSI] ✅ Конфиг найден: {full_path}")
-                        break
-                if gsi_found:
-                    break
-
-            if not gsi_found:
-                print("[GSI] ⚠️ КОНФИГ НЕ НАЙДЕН!")
-                print("[GSI] 📝 Перезапусти приложение для автосоздания конфига")
-                print("[GSI] 💡 Или создай файл вручную в папке Dota 2/cfg/gamestate_integration/")
-                self.on_scan_progress("⚠️ GSI конфиг не найден - автосканирование ограничено")
-
-            # ВКЛЮЧАЕМ
             self.cv_scanner.auto_scan_enabled = True
             self.cv_scanner.player_team = None
 
-            # ПОЛНЫЙ СБРОС: Сбрасываем команду в pick_detector (чтобы не запоминалась прошлая игра)
             self.pick_detector.player_team = None
             self.pick_detector.stop_monitoring()
 
-            # Сбрасываем GSI кеш
             self._gsi_team_cache = None
             self._gsi_last_check = 0
+            self._gsi_unreachable_since = None
+            self._gsi_blocked_warning_shown = False
 
-            # Проверяем наличие героев на экране перед запуском детектора пиков
             self.on_scan_progress("Проверка наличия героев на экране...")
 
-            # Сбрасываем кеш проверки героев для свежего результата
             if hasattr(self.cv_scanner, '_heroes_check_cache'):
                 self.cv_scanner._heroes_check_cache = None
                 self.cv_scanner._heroes_check_time = 0
 
-            # Быстрая проверка: есть ли герои на экране? (без кеша для немедленного результата)
             has_heroes = self.cv_scanner.check_heroes_on_screen(force_check=True)
 
             if has_heroes:
-                # Герои найдены - можно запускать детектор пиков
                 team = self.get_team_from_gsi_cached()
                 if team:
                     self.cv_scanner.player_team = team
                     self.pick_detector.set_team(team)
                     self.pick_detector.start_monitoring()
-                    self.pick_monitor_timer.start(300)  # Проверка каждые 300ms
-                    print(f"[PICK] ✅ Детектор пиков запущен (команда: {team})")
+                    self.pick_monitor_timer.start(300)
                     self.on_scan_progress(f"Автосканирование включено (GSI: {team.upper()})")
                 else:
-                    # Команда еще не определена - запустим детектор позже когда команда определится
-                    # Но сразу запускаем периодическое сканирование, чтобы не пропустить героев
-                    print(f"[PICK] ⏳ Команда не определена, ждем GSI (сканируем весь экран)...")
                     self.on_scan_progress("Ожидание определения команды...")
             else:
-                # Героев нет - игра еще не началась, детектор не запускаем
-                print(f"[PICK] ⏳ Героев на экране нет, игра еще не началась")
                 self.on_scan_progress("Ожидание начала игры...")
 
-            # Запускаем быстрый SIFT loop (2 секунды - быстрая реакция на начало игры)
-            self.auto_scan_timer.start(2000)
-            print(f"[TOGGLE] ✅ Быстрый SIFT loop ВКЛЮЧЕН (2 сек)")
+            self.auto_scan_timer.start(self.scan_interval_ms)
+            print(f"[TOGGLE] ✅ Быстрый SIFT loop ВКЛЮЧЕН ({self.scan_interval_ms} ms)")
 
         else:
-            # ВЫКЛЮЧАЕМ + ПОЛНЫЙ СБРОС
             self.cv_scanner.auto_scan_enabled = False
             self.cv_scanner.player_team = None
 
-            # ПОЛНЫЙ СБРОС: Останавливаем и сбрасываем детектор пиков
             self.pick_detector.stop_monitoring()
-            self.pick_detector.player_team = None  # Сбрасываем команду
+            self.pick_detector.player_team = None
             self.pick_monitor_timer.stop()
 
-            # Сбрасываем GSI кеш
             self._gsi_team_cache = None
             self._gsi_last_check = 0
+            self._gsi_unreachable_since = None
+            self._gsi_blocked_warning_shown = False
 
-            # Сбрасываем кеш проверки героев
             if hasattr(self.cv_scanner, '_heroes_check_cache'):
                 self.cv_scanner._heroes_check_cache = None
                 self.cv_scanner._heroes_check_time = 0
 
             self.auto_scan_timer.stop()
             print(f"[TOGGLE] ⛔ Автосканирование ВЫКЛЮЧЕНО (полный сброс состояния)")
-
             self.on_scan_progress("Автосканирование остановлено")
 
     def on_pick_detected(self):
@@ -3660,8 +3607,7 @@ class MainWindow(QMainWindow):
 
             if is_overlapping:
                 print(f"[OVERLAP] ⚠️ Окно СЛИШКОМ ВЫСОКО! top={window_top} (порог: {CRITICAL_ZONE})")
-            else:
-                            return is_overlapping
+            return is_overlapping
 
         except Exception as e:
             print(f"[OVERLAP] Ошибка: {e}")
@@ -3689,6 +3635,8 @@ class MainWindow(QMainWindow):
             if response.status_code == 200:
                 data = response.json()
                 team = data.get('team')
+                self._gsi_unreachable_since = None
+                self._gsi_blocked_warning_shown = False
 
                 # Обновляем кеш только если команда валидна
                 if team in ['radiant', 'dire']:
@@ -3703,13 +3651,19 @@ class MainWindow(QMainWindow):
                     self._gsi_last_check = 0
 
                 return self._gsi_team_cache
-        except Exception as e:
+        except Exception:
+            if self._gsi_unreachable_since is None:
+                self._gsi_unreachable_since = current_time
+
+            if (current_time - self._gsi_unreachable_since) > 20.0 and not self._gsi_blocked_warning_shown:
+                self._gsi_blocked_warning_shown = True
+                self._show_gsi_blocked_warning()
+
             # Если GSI недоступен долго - сбрасываем кеш
             if self._gsi_last_check > 0 and (current_time - self._gsi_last_check) > 60.0:
                 print(f"[GSI] ⚠️ GSI недоступен >60 сек, сбрасываем кеш")
                 self._gsi_team_cache = None
                 self._gsi_last_check = 0
-            pass
 
         # Ошибка - возвращаем старый кеш (если он не слишком старый)
         return self._gsi_team_cache
@@ -3728,6 +3682,7 @@ class MainWindow(QMainWindow):
             if not team:
                 # Команда не определена - просто ждём
                 self.on_scan_progress("Ожидание игры...")
+                self._set_dynamic_scan_interval(has_team=False, has_heroes=False)
                 return  # НЕ СПАМИМ проверками героев
 
             # Команда получена! Сохраняем
@@ -3743,6 +3698,7 @@ class MainWindow(QMainWindow):
             # Героев нет - ждём начала игры
             team_name = "СВЕТ" if self.cv_scanner.player_team == "radiant" else "ТЬМА"
             self.on_scan_progress(f"Команда: {team_name}, ожидание начала игры...")
+            self._set_dynamic_scan_interval(has_team=True, has_heroes=False)
 
             # Настраиваем детектор пиков заранее
             if not self.pick_detector.player_team:
@@ -3765,17 +3721,6 @@ class MainWindow(QMainWindow):
         team_name = "СВЕТ" if self.cv_scanner.player_team == "radiant" else "ТЬМА"
         self.on_scan_progress(f"GSI: {team_name}, сканирование...")
 
-        # ВАЖНО: Проверяем команду ПЕРЕД проверкой героев
-        # Без команды от GSI - не проверяем вообще (экономим ресурсы)
-        if not self.cv_scanner.player_team:
-            team = self.get_team_from_gsi_cached()
-            if not team:
-                # Команда не определена - просто ждём, не спамим проверками
-                self.on_scan_progress("Ожидание игры...")
-                return
-            # Команда получена!
-            self.cv_scanner.player_team = team
-
         # Проверка 2: Уже сканирует? Продолжаем ждать (не останавливаем таймер)
         if self.cv_scanner.is_scanning:
             total = len(self.selected_enemies)
@@ -3793,6 +3738,7 @@ class MainWindow(QMainWindow):
         # Герои на экране - запускаем сканирование
         print(f"[AUTO] 🔄 Периодический скан... ({total}/5)")
         self.on_scan_progress(f"🔍 Сканирование... ({total}/5)")
+        self._set_dynamic_scan_interval(has_team=True, has_heroes=True)
 
         # НЕ минимизируем окно автоматически - только если оно мешает сканированию
         # Проверяем перекрытие и только тогда минимизируем
