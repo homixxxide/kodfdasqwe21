@@ -1270,6 +1270,7 @@ class WelcomeDialog(QDialog):
         self.setFixedSize(720, 480)
         self.setWindowFlags(Qt.Dialog | Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
+        self.setWindowOpacity(0.0)
 
         wrapper = QWidget(self)
         wrapper.setObjectName("WelcomeWrapper")
@@ -1352,6 +1353,16 @@ class WelcomeDialog(QDialog):
         """)
         start_btn.clicked.connect(self.accept)
         layout.addWidget(start_btn)
+
+        self.fade_in_anim = QPropertyAnimation(self, b"windowOpacity")
+        self.fade_in_anim.setDuration(480)
+        self.fade_in_anim.setStartValue(0.0)
+        self.fade_in_anim.setEndValue(1.0)
+        self.fade_in_anim.setEasingCurve(QEasingCurve.OutCubic)
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        self.fade_in_anim.start()
 
 
 # ================= UI: Splash =================
@@ -4184,17 +4195,18 @@ class MainWindow(QMainWindow):
     def _generate_stylesheet(self):
         return f"""
             QMainWindow {{
-                background: qradialgradient(cx:0.15, cy:0.1, radius:1.2,
-                    fx:0.15, fy:0.1,
-                    stop:0 rgba(220, 38, 38, 70),
-                    stop:0.45 rgba(18, 18, 18, 235),
-                    stop:1 rgba(5, 5, 5, 255));
+                background: qradialgradient(cx:0.18, cy:0.12, radius:1.30,
+                    fx:0.18, fy:0.12,
+                    stop:0 rgba(220, 38, 38, 92),
+                    stop:0.33 rgba(34, 12, 16, 230),
+                    stop:0.68 rgba(9, 9, 11, 248),
+                    stop:1 rgba(3, 3, 4, 255));
                 border: none;
             }}
             QWidget {{
                 background-color: transparent;
                 color: {COLOR_TEXT_WHITE};
-                font-family: {FONT_FAMILY_MAIN}; 
+                font-family: {FONT_FAMILY_MAIN};
                 font-size: 14px;
             }}
 
@@ -4204,17 +4216,35 @@ class MainWindow(QMainWindow):
             }}
 
             QFrame#HeaderFrame {{
-                background-color: rgba(8, 8, 8, 0.80);
-                padding: 20px 0px; 
-                border-bottom: 1px solid rgba(220, 38, 38, 0.28);
+                background-color: rgba(8, 8, 10, 0.84);
+                padding: 18px 0px;
+                border-bottom: 1px solid rgba(248, 113, 113, 0.30);
                 border-radius: 0;
+            }}
+
+            QFrame#SidebarFrame {{
+                background-color: rgba(8, 8, 10, 0.78);
+                border-right: 1px solid rgba(255, 255, 255, 0.08);
+            }}
+
+            QFrame#SearchCard, QFrame#CvControlsCard, QFrame#TeamSelectorCard,
+            QFrame#EnemiesCard, QFrame#ResultsCard, QFrame#PickerFrame {{
+                background-color: rgba(16, 16, 18, 0.86);
+                border: 1px solid rgba(255, 255, 255, 0.09);
+                border-radius: 18px;
+            }}
+
+            QFrame#SuggestionsFrame {{
+                background-color: rgba(11, 11, 13, 0.94);
+                border: 1px solid rgba(255, 255, 255, 0.07);
+                border-radius: 12px;
             }}
 
             QPushButton#HamburgerButton {{
                 background-color: transparent;
                 border: none;
-                color: {COLOR_TEXT_GRAY};
-                font-size: 28px;
+                color: #c8cdd7;
+                font-size: 30px;
                 font-weight: normal;
                 padding: 0;
                 margin: 0;
@@ -4223,103 +4253,156 @@ class MainWindow(QMainWindow):
                 color: {COLOR_TEXT_WHITE};
             }}
 
-            QPushButton#SidebarButton {{
-                background-color: rgba(18, 18, 18, 0.85);
-                color: #c7cdd6;
-                font-size: 14px; 
-                font-weight: bold;
-                text-align: center;
-                padding: 16px 18px;
-                margin: 5px 5px;
-                border-radius: 14px;
-                border: 1px solid rgba(220, 38, 38, 0.25);
-                min-height: 20px;
-            }}
-            QPushButton#SidebarButton:hover {{
-                background-color: rgba(220, 38, 38, 0.18);
-                border-color: rgba(248, 113, 113, 0.55);
-                color: {COLOR_TEXT_WHITE};
-            }}
-            QPushButton#SidebarButton:pressed {{
-                background-color: rgba(220, 38, 38, 0.4);
-                border-color: {COLOR_ACCENT};
-                color: {COLOR_TEXT_WHITE};
-            }}
-
             QLabel#LogoText {{
-                font-size: 24px; 
-                font-weight: bold; 
-                color: {COLOR_TEXT_WHITE}; 
-                font-family: {FONT_FAMILY_LOGO}; 
+                font-size: 26px;
+                font-weight: 900;
+                color: {COLOR_TEXT_WHITE};
+                font-family: {FONT_FAMILY_LOGO};
                 letter-spacing: 1px;
                 margin-left: 10px;
             }}
 
             QLabel#TitleLabel {{
-                font-size: 18px; 
-                font-weight: bold;
-                color: {COLOR_TEXT_WHITE}; 
+                font-size: 18px;
+                font-weight: 800;
+                color: {COLOR_TEXT_WHITE};
                 padding-bottom: 8px;
-                letter-spacing: 1px;
+                letter-spacing: 0.4px;
             }}
 
-            QFrame.Card {{
-                background-color: rgba(18, 18, 18, 0.82);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 16px;
+            QPushButton#SidebarButton {{
+                background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 rgba(30, 30, 33, 0.92),
+                    stop:1 rgba(23, 23, 26, 0.92));
+                color: #d6d9e0;
+                font-size: 14px;
+                font-weight: 700;
+                text-align: center;
+                padding: 15px 18px;
+                margin: 4px 6px;
+                border-radius: 14px;
+                border: 1px solid rgba(255, 255, 255, 0.10);
+                min-height: 20px;
+            }}
+            QPushButton#SidebarButton:hover {{
+                background-color: rgba(220, 38, 38, 0.20);
+                border-color: rgba(248, 113, 113, 0.72);
+                color: {COLOR_TEXT_WHITE};
+            }}
+            QPushButton#SidebarButton:pressed {{
+                background-color: rgba(220, 38, 38, 0.36);
+                border-color: rgba(252, 165, 165, 0.90);
+                color: {COLOR_TEXT_WHITE};
             }}
 
             QLineEdit {{
-                background-color: rgba(10, 10, 10, 0.88);
-                border: 1px solid rgba(255, 255, 255, 0.12);
-                border-radius: 12px;
+                background-color: rgba(10, 10, 12, 0.90);
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                border-radius: 13px;
                 padding: 12px;
                 font-size: 15px;
                 color: {COLOR_TEXT_WHITE};
                 outline: none;
+                selection-background-color: rgba(220, 38, 38, 0.6);
             }}
             QLineEdit:focus {{
-                border: 1px solid rgba(248, 113, 113, 0.8);
-                background-color: rgba(24, 24, 24, 0.96);
+                border: 1px solid rgba(248, 113, 113, 0.95);
+                background-color: rgba(24, 24, 27, 0.98);
             }}
 
             QListWidget {{
-                background-color: rgba(12, 12, 12, 0.92);
-                border: none;
-                border-radius: 10px;
+                background-color: rgba(11, 11, 14, 0.94);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: 11px;
                 color: {COLOR_TEXT_WHITE};
                 font-size: 13px;
-                padding-bottom: 2px;
-                outline: 0; 
+                padding: 4px;
+                outline: 0;
+            }}
+            QListWidget::item {{
+                border-radius: 8px;
+                padding: 8px;
+                margin: 1px 0;
             }}
             QListWidget::item:hover {{
-                background-color: {COLOR_HOVER};
+                background-color: rgba(70, 70, 80, 0.5);
             }}
             QListWidget::item:selected {{
-                background-color: rgba(60, 60, 60, 0.8);
-                color: {COLOR_ACCENT};
+                background-color: rgba(220, 38, 38, 0.30);
+                color: {COLOR_TEXT_WHITE};
             }}
 
             QPushButton {{
-                background-color: {COLOR_ACCENT}; 
-                border: none;
-                border-radius: 4px;
-                padding: 8px 15px;
+                background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                    stop:0 #ef4444,
+                    stop:1 #b91c1c);
+                border: 1px solid rgba(248, 113, 113, 0.35);
+                border-radius: 12px;
+                padding: 10px 18px;
                 color: {COLOR_TEXT_WHITE};
-                font-weight: bold;
+                font-weight: 700;
                 outline: none;
             }}
             QPushButton:hover {{
-                background-color: #FF5252;
+                background-color: #f05252;
+                border-color: rgba(252, 165, 165, 0.65);
             }}
             QPushButton:pressed {{
-                background-color: {COLOR_ACCENT_DARK};
+                background-color: #991b1b;
+            }}
+
+            QPushButton#WindowControlButton {{
+                background-color: transparent;
+                border: none;
+                color: {COLOR_TEXT_WHITE};
+                font-weight: bold;
+                font-size: 18px;
+                padding: 4px 10px;
+                min-width: 40px;
+                border-radius: 8px;
+                outline: none;
+            }}
+            QPushButton#WindowControlButton:hover {{
+                background-color: rgba(110, 110, 115, 0.36);
+            }}
+
+            QPushButton#CloseWindowButton {{
+                background-color: transparent;
+                border: none;
+                color: {COLOR_TEXT_WHITE};
+                font-weight: bold;
+                font-size: 24px;
+                padding: 0 10px;
+                min-width: 40px;
+                border-radius: 8px;
+                outline: none;
+            }}
+            QPushButton#CloseWindowButton:hover {{
+                background-color: {COLOR_ACCENT};
+                color: {COLOR_TEXT_WHITE};
+            }}
+
+            QPushButton#RefreshCacheButton {{
+                background-color: rgba(220, 38, 38, 0.20);
+                border: 1px solid rgba(248, 113, 113, 0.55);
+                border-radius: 10px;
+                color: {COLOR_TEXT_WHITE};
+                font-size: 12px;
+                padding: 8px 16px;
+            }}
+            QPushButton#RefreshCacheButton:hover {{
+                background-color: rgba(220, 38, 38, 0.42);
+            }}
+            QPushButton#RefreshCacheButton:disabled {{
+                background-color: rgba(100, 100, 100, 0.2);
+                border-color: {COLOR_TEXT_GRAY};
+                color: {COLOR_TEXT_GRAY};
             }}
 
             QFrame#EnemyCard {{
-                background-color: {COLOR_GLASS_LIGHT}; 
+                background-color: rgba(30, 30, 34, 0.90);
                 border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 6px;
+                border-radius: 10px;
                 padding: 0;
             }}
 
@@ -4328,108 +4411,54 @@ class MainWindow(QMainWindow):
                 border: none;
                 color: {COLOR_TEXT_GRAY};
                 font-weight: bold;
-                padding: 0 5px;
-                font-size: 20px; 
-                line-height: 1; 
+                padding: 0 6px;
+                font-size: 20px;
+                line-height: 1;
                 text-align: center;
                 outline: none;
             }}
             QPushButton#RemoveButton:hover {{
-                color: {COLOR_ACCENT};
-            }}
-
-            QPushButton#WindowControlButton {{
-                background-color: transparent;
-                border: none;
-                color: {COLOR_TEXT_WHITE};
-                font-weight: bold;
-                font-size: 18px; 
-                padding: 5px 10px;
-                min-width: 40px;
-                border-radius: 0;
-                outline: none;
-            }}
-            QPushButton#WindowControlButton:hover {{
-                background-color: rgba(85, 85, 85, 0.7);
-            }}
-
-
-            QPushButton#CloseWindowButton {{
-                background-color: transparent;
-                border: none;
-                color: {COLOR_TEXT_WHITE};
-                font-weight: bold;
-                font-size: 24px; 
-                padding: 0 10px; 
-                min-width: 40px;
-                border-radius: 0;
-                outline: none;
-            }}
-            QPushButton#CloseWindowButton:hover {{
-                background-color: {COLOR_ACCENT}; 
-                color: {COLOR_TEXT_WHITE};
-            }}
-
-            QPushButton#RefreshCacheButton {{
-                background-color: rgba(220, 38, 38, 0.25);
-                border: 1px solid {COLOR_ACCENT};
-                border-radius: 8px;
-                color: {COLOR_TEXT_WHITE};
-                font-size: 12px;
-                padding: 8px 16px;
-            }}
-            QPushButton#RefreshCacheButton:hover {{
-                background-color: rgba(220, 38, 38, 0.45);
-                color: {COLOR_TEXT_WHITE};
-            }}
-            QPushButton#RefreshCacheButton:disabled {{
-                background-color: rgba(100, 100, 100, 0.2);
-                border-color: {COLOR_TEXT_GRAY};
-                color: {COLOR_TEXT_GRAY};
+                color: #f87171;
             }}
 
             QScrollArea {{
                 border: none;
-                border-radius: 8px;
-                background-color: transparent; 
+                border-radius: 10px;
+                background-color: transparent;
             }}
 
             QFrame.ResultRowOdd {{
-                background-color: {COLOR_GLASS_LIGHT}; 
-                border-radius: 8px;
+                background-color: rgba(31, 31, 35, 0.88);
+                border-radius: 12px;
                 margin: 4px 0;
                 padding: 10px 0px;
-                border: 1px solid rgba(255, 255, 255, 0.03);
-            }}
-            QFrame.ResultRowOdd:hover {{
-                background-color: {COLOR_HOVER};
-                border: 1px solid rgba(220, 38, 38, 0.3);
+                border: 1px solid rgba(255, 255, 255, 0.06);
             }}
             QFrame.ResultRowEven {{
-                background-color: {COLOR_TRANSPARENT_CARD};
-                border-radius: 8px;
+                background-color: rgba(22, 22, 26, 0.88);
+                border-radius: 12px;
                 margin: 4px 0;
                 padding: 10px 0px;
-                border: 1px solid rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.05);
             }}
-            QFrame.ResultRowEven:hover {{
-                background-color: {COLOR_HOVER};
-                border: 1px solid rgba(220, 38, 38, 0.3);
+            QFrame.ResultRowOdd:hover, QFrame.ResultRowEven:hover {{
+                background-color: rgba(50, 50, 58, 0.75);
+                border: 1px solid rgba(248, 113, 113, 0.34);
             }}
 
             QScrollBar:vertical {{
                 border: none;
-                background: transparent; 
+                background: transparent;
                 width: 8px;
-                margin: 0px 0 0px 0;
+                margin: 0px;
             }}
             QScrollBar::handle:vertical {{
-                background-color: rgba(68, 68, 68, 0.8); 
-                min-height: 20px;
+                background-color: rgba(95, 95, 102, 0.86);
+                min-height: 24px;
                 border-radius: 4px;
             }}
             QScrollBar::handle:vertical:hover {{
-                background-color: {COLOR_ACCENT};
+                background-color: rgba(239, 68, 68, 0.95);
             }}
             QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {{
                 border: none;
@@ -4444,11 +4473,11 @@ class MainWindow(QMainWindow):
             }}
 
             QSplitter::handle {{
-                background-color: rgba(255, 255, 255, 0.08);
+                background-color: rgba(255, 255, 255, 0.09);
                 border-radius: 3px;
             }}
             QSplitter::handle:hover {{
-                background-color: rgba(220, 38, 38, 0.35);
+                background-color: rgba(220, 38, 38, 0.42);
             }}
             QSplitter::handle:vertical {{
                 margin: 6px 0;
