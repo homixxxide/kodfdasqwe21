@@ -2378,7 +2378,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("MetaMind")
         self.setGeometry(100, 100, 1200, 850)
         self.setMinimumSize(800, 600)
-        self.setWindowFlags(Qt.FramelessWindowHint)
+        # Главное окно снова поверх всех приложений (как раньше)
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
 
         self.setWindowOpacity(0.0)
         self.fade_anim = QPropertyAnimation(self, b"windowOpacity")
@@ -2394,6 +2395,15 @@ class MainWindow(QMainWindow):
         self.hero_data, self.am_counters_data = self.load_data()
         self.all_heroes = sorted(list(self.hero_data.keys()))
         self.selected_enemies = []
+
+        # Управление авто-сворачиванием/восстановлением без дерганий
+        self._auto_minimized_for_scan = False
+        self._suppress_auto_minimize_until = 0.0
+        self._last_scan_activity_ts = 0.0
+        self._auto_restore_delay_ms = 6000
+        self._auto_restore_timer = QTimer(self)
+        self._auto_restore_timer.setSingleShot(True)
+        self._auto_restore_timer.timeout.connect(self._restore_window_after_scan_idle)
         self.selected_role = None
 
         self.opendota_cache = None
@@ -3299,6 +3309,7 @@ class MainWindow(QMainWindow):
     def on_heroes_found(self, heroes, confidence):
         """Умная обработка - ДОБАВЛЯЕМ новых, ПРОДОЛЖАЕМ сканирование, ОБНОВЛЯЕМ базу детектора"""
         print(f"[CV] Найдено: {heroes} [{confidence}]")
+        self._mark_scan_activity()
 
         added_count = 0
         for hero in heroes:
@@ -3458,6 +3469,48 @@ class MainWindow(QMainWindow):
             self.auto_scan_timer.start(self.scan_interval_ms)
             print(f"[AUTO] ⏱️ Новый интервал автоскана: {self.scan_interval_ms}ms")
 
+    def _mark_scan_activity(self):
+        """Фиксирует активность сканирования и откладывает авто-восстановление окна."""
+        self._last_scan_activity_ts = time.time()
+        if self._auto_minimized_for_scan:
+            self._auto_restore_timer.start(self._auto_restore_delay_ms)
+
+    def _maybe_minimize_for_scan(self):
+        """Сворачивает окно только когда оно реально мешает и без повторного флика."""
+        now = time.time()
+        if now < self._suppress_auto_minimize_until:
+            return
+        if self._auto_minimized_for_scan:
+            return
+        if self.isVisible() and self.check_scan_area_overlap():
+            print("[AUTO] ⚠️ Окно мешает сканированию, сворачиваем")
+            self.showMinimized()
+            self._auto_minimized_for_scan = True
+            self._mark_scan_activity()
+
+    def _restore_window_after_scan_idle(self):
+        """Возвращает окно после паузы в пиках, чтобы не было цикла открыть/закрыть."""
+        if not self._auto_minimized_for_scan:
+            return
+
+        # Если скан всё еще активен или недавно был активен — ждём дальше
+        if getattr(self.cv_scanner, 'is_scanning', False):
+            self._auto_restore_timer.start(1500)
+            return
+
+        idle_for = time.time() - self._last_scan_activity_ts
+        if idle_for < (self._auto_restore_delay_ms / 1000.0):
+            self._auto_restore_timer.start(1500)
+            return
+
+        # Если уже нашли всех героев или есть пауза — аккуратно возвращаем окно
+        print("[AUTO] 🪟 Возвращаем окно MetaMind после паузы")
+        self.showNormal()
+        self.raise_()
+        self.activateWindow()
+        self._auto_minimized_for_scan = False
+        self._suppress_auto_minimize_until = time.time() + 4.0
+
     def toggle_auto_scan(self, enabled):
         """Переключатель автосканирования (С ПОЛНЫМ СБРОСОМ)"""
         if enabled:
@@ -3473,6 +3526,10 @@ class MainWindow(QMainWindow):
             self._gsi_last_check = 0
             self._gsi_unreachable_since = None
             self._gsi_blocked_warning_shown = False
+            self._auto_minimized_for_scan = False
+            self._suppress_auto_minimize_until = 0.0
+            self._last_scan_activity_ts = 0.0
+            self._auto_restore_timer.stop()
 
             self.on_scan_progress("Проверка наличия героев на экране...")
 
@@ -3510,6 +3567,13 @@ class MainWindow(QMainWindow):
             self._gsi_last_check = 0
             self._gsi_unreachable_since = None
             self._gsi_blocked_warning_shown = False
+            self._auto_restore_timer.stop()
+
+            if self._auto_minimized_for_scan:
+                self.showNormal()
+                self.raise_()
+                self.activateWindow()
+                self._auto_minimized_for_scan = False
 
             if hasattr(self.cv_scanner, '_heroes_check_cache'):
                 self.cv_scanner._heroes_check_cache = None
@@ -3533,13 +3597,12 @@ class MainWindow(QMainWindow):
 
         # НЕ минимизируем окно автоматически - пользователь сам управляет окном
         # Проверяем только перекрытие, и только тогда минимизируем
-        if self.isVisible() and self.check_scan_area_overlap():
-            print("[PICK] ⚠️ Окно мешает сканированию, сворачиваем")
-            self.showMinimized()
+        self._maybe_minimize_for_scan()
 
         # Запускаем сканирование БЕЗ задержки (пик уже произошел)
         # База детектора будет обновлена в on_heroes_found после сканирования
         if not self.cv_scanner.is_scanning:
+            self._mark_scan_activity()
             self.cv_scanner.scan_once(delay=0)
         else:
             print("[PICK] ⏳ Сканирование уже идет, пропускаем (дождемся завершения)")
@@ -3742,13 +3805,12 @@ class MainWindow(QMainWindow):
 
         # НЕ минимизируем окно автоматически - только если оно мешает сканированию
         # Проверяем перекрытие и только тогда минимизируем
-        if self.isVisible() and self.check_scan_area_overlap():
-            print("[AUTO] ⚠️ Окно мешает сканированию, сворачиваем")
-            self.showMinimized()
+        self._maybe_minimize_for_scan()
 
         # БЫСТРЫЙ СКАН БЕЗ ЗАДЕРЖКИ
         # Важно: сканирование продолжается даже если детектор пиков уже сработал
         # Это обеспечивает обнаружение всех героев в формате 2-2-1
+        self._mark_scan_activity()
         self.cv_scanner.scan_once(delay=0)
 
     def load_data(self):
