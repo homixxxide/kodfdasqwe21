@@ -252,7 +252,7 @@ def start_gsi_server():
 
 # ================= КОНФИГУРАЦИЯ ПРИЛОЖЕНИЯ =================
 
-APP_VERSION = "6.4"
+APP_VERSION = "6.5"
 CACHE_UPDATE_HOURS = 24
 APP_DATA_FOLDER = "MetaMind"
 
@@ -264,6 +264,7 @@ AM_COUNTERS_FILE = "antimage_counters.json"
 OPENDOTA_CACHE_FILE = "opendota_cache.json"
 OPENDOTA_CACHE_META_FILE = "opendota_cache_meta.json"
 VERSION_FILE = "last_version.txt"
+FIRST_RUN_FILE = "first_run_flag.json"
 
 MAX_ENEMIES = 5
 AM_SLUG = "anti-mage"
@@ -296,8 +297,8 @@ COLOR_GLASS_DARK = "rgba(0, 0, 0, 0.5)"
 COLOR_GLASS_MEDIUM = "rgba(15, 15, 15, 0.7)"
 COLOR_GLASS_LIGHT = "rgba(30, 30, 30, 0.6)"
 
-FONT_FAMILY_MAIN = "Arial, Helvetica, sans-serif"
-FONT_FAMILY_LOGO = "Arial Black, Impact, sans-serif"
+FONT_FAMILY_MAIN = "Inter, Segoe UI, Arial, sans-serif"
+FONT_FAMILY_LOGO = "Inter, Segoe UI Black, Arial Black, sans-serif"
 
 OPENDOTA_HEROSTATS = "https://api.opendota.com/api/heroStats"
 OPENDOTA_HEROSTATS_ALT = "https://opendota.com/api/heroStats"
@@ -816,6 +817,29 @@ def get_version_file_path() -> str:
     return os.path.join(get_app_data_path(), VERSION_FILE)
 
 
+def get_first_run_file_path() -> str:
+    return os.path.join(get_app_data_path(), FIRST_RUN_FILE)
+
+
+def is_first_launch() -> bool:
+    return not os.path.exists(get_first_run_file_path())
+
+
+def mark_first_launch_completed() -> bool:
+    payload = {
+        "first_launch_completed": True,
+        "completed_at": time.time(),
+        "app_version": APP_VERSION,
+    }
+    try:
+        with open(get_first_run_file_path(), 'w', encoding='utf-8') as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+        return True
+    except Exception as e:
+        print(f"Ошибка сохранения first-run флага: {e}")
+        return False
+
+
 def get_last_shown_version() -> str | None:
     try:
         p = get_version_file_path()
@@ -1138,11 +1162,11 @@ class WhatsNewDialog(QDialog):
         changes_layout.setSpacing(14)
 
         changes = [
-            ("", "Восстановлен режим поверх всех окон для основного окна", COLOR_TEXT_WHITE),
-            ("", "Стабилизировано автосворачивание и возврат окна во время сканирования", COLOR_TEXT_WHITE),
-            ("", "Улучшена проверка и автосоздание GSI-конфига с понятными подсказками", COLOR_TEXT_WHITE),
-            ("", "Повышена производительность CV-сканирования и адаптация под разные экраны", COLOR_TEXT_WHITE),
-            ("", "Снижены подлагивания интерфейса при активном автосканировании", COLOR_TEXT_WHITE),
+            ("", "Обновлен дизайн интерфейса: более плавный и современный стиль", COLOR_TEXT_WHITE),
+            ("", "Добавлено отдельное приветственное окно при первом запуске", COLOR_TEXT_WHITE),
+            ("", "Улучшена визуальная читаемость карточек, полей и кнопок", COLOR_TEXT_WHITE),
+            ("", "Сохранена высокая производительность автосканирования", COLOR_TEXT_WHITE),
+            ("", "Подготовительный релиз 6.5 перед MetaMind PRO", COLOR_TEXT_WHITE),
         ]
 
         for icon, text, color in changes:
@@ -1234,6 +1258,100 @@ class WhatsNewDialog(QDialog):
         if event.buttons() == Qt.LeftButton and hasattr(self, '_drag_pos'):
             self.move(event.globalPosition().toPoint() - self._drag_pos)
             event.accept()
+
+
+class WelcomeDialog(QDialog):
+    """Приветственное окно при самом первом запуске."""
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Добро пожаловать в MetaMind")
+        self.setModal(True)
+        self.setFixedSize(720, 480)
+        self.setWindowFlags(Qt.Dialog | Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+
+        wrapper = QWidget(self)
+        wrapper.setObjectName("WelcomeWrapper")
+        wrapper.setGeometry(0, 0, 720, 480)
+        wrapper.setStyleSheet(f"""
+            QWidget#WelcomeWrapper {{
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                    stop:0 rgba(10, 10, 10, 245),
+                    stop:0.5 rgba(25, 8, 8, 240),
+                    stop:1 rgba(12, 12, 12, 245));
+                border: 1px solid rgba(220, 38, 38, 0.45);
+                border-radius: 20px;
+            }}
+        """)
+
+        layout = QVBoxLayout(wrapper)
+        layout.setContentsMargins(36, 34, 36, 28)
+        layout.setSpacing(18)
+
+        badge = QLabel("ПРИВЕТ")
+        badge.setAlignment(Qt.AlignCenter)
+        badge.setStyleSheet("""
+            QLabel {
+                color: #f87171;
+                background-color: rgba(220, 38, 38, 0.12);
+                border: 1px solid rgba(220, 38, 38, 0.45);
+                border-radius: 12px;
+                padding: 8px 16px;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 2px;
+            }
+        """)
+        layout.addWidget(badge, alignment=Qt.AlignHCenter)
+
+        title = QLabel("MetaMind")
+        title.setAlignment(Qt.AlignCenter)
+        title.setStyleSheet("""
+            QLabel {
+                color: #ffffff;
+                font-size: 56px;
+                font-weight: 900;
+                letter-spacing: 1px;
+            }
+        """)
+        layout.addWidget(title)
+
+        subtitle = QLabel("Твой помощник в драфте Dota 2")
+        subtitle.setAlignment(Qt.AlignCenter)
+        subtitle.setStyleSheet("color: #d1d5db; font-size: 20px; font-weight: 600;")
+        layout.addWidget(subtitle)
+
+        points = QLabel(
+            "• Автоскан пиков с GSI и CV fallback\n"
+            "• Быстрые контрпики с понятной логикой\n"
+            "• Стабильная работа поверх игры\n"
+            "• Поддержка меты и удобный интерфейс"
+        )
+        points.setStyleSheet("color: #e5e7eb; font-size: 16px; line-height: 1.5;")
+        points.setAlignment(Qt.AlignCenter)
+        layout.addWidget(points)
+
+        layout.addStretch()
+
+        start_btn = QPushButton("Начать")
+        start_btn.setCursor(Qt.PointingHandCursor)
+        start_btn.setFixedHeight(50)
+        start_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #dc2626;
+                color: #ffffff;
+                border: 1px solid rgba(248, 113, 113, 0.45);
+                border-radius: 12px;
+                font-size: 17px;
+                font-weight: 700;
+                padding: 10px 24px;
+            }
+            QPushButton:hover { background-color: #ef4444; }
+            QPushButton:pressed { background-color: #991b1b; }
+        """)
+        start_btn.clicked.connect(self.accept)
+        layout.addWidget(start_btn)
 
 
 # ================= UI: Splash =================
@@ -2918,6 +3036,14 @@ class MainWindow(QMainWindow):
             self.refresh_cache_btn.setText("Обновить данные")
 
     def _check_whats_new(self):
+        # Первый запуск определяется отдельным флагом, независимо от версий
+        if is_first_launch():
+            welcome = WelcomeDialog(self)
+            welcome.exec()
+            mark_first_launch_completed()
+            save_current_version()
+            return
+
         if should_show_whats_new():
             dialog = WhatsNewDialog(self)
             dialog.exec()
@@ -4056,15 +4182,13 @@ class MainWindow(QMainWindow):
         return row
 
     def _generate_stylesheet(self):
-        bg_image_path = resource_path(BACKGROUND_IMAGE_FILE)
         return f"""
             QMainWindow {{
-                background-color: #000000;
-                background-image: url({bg_image_path});
-                background-repeat: no-repeat;
-                background-position: center;
-                background-attachment: fixed;
-                background-size: cover;
+                background: qradialgradient(cx:0.15, cy:0.1, radius:1.2,
+                    fx:0.15, fy:0.1,
+                    stop:0 rgba(220, 38, 38, 70),
+                    stop:0.45 rgba(18, 18, 18, 235),
+                    stop:1 rgba(5, 5, 5, 255));
                 border: none;
             }}
             QWidget {{
@@ -4080,9 +4204,9 @@ class MainWindow(QMainWindow):
             }}
 
             QFrame#HeaderFrame {{
-                background-color: {COLOR_GLASS_DARK};
+                background-color: rgba(8, 8, 8, 0.80);
                 padding: 20px 0px; 
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                border-bottom: 1px solid rgba(220, 38, 38, 0.28);
                 border-radius: 0;
             }}
 
@@ -4100,20 +4224,20 @@ class MainWindow(QMainWindow):
             }}
 
             QPushButton#SidebarButton {{
-                background-color: {COLOR_GLASS_DARK};
-                color: {COLOR_TEXT_GRAY}; 
+                background-color: rgba(18, 18, 18, 0.85);
+                color: #c7cdd6;
                 font-size: 14px; 
                 font-weight: bold;
                 text-align: center;
                 padding: 16px 18px;
                 margin: 5px 5px;
-                border-radius: 10px;
-                border: 2px solid #4a1515;
+                border-radius: 14px;
+                border: 1px solid rgba(220, 38, 38, 0.25);
                 min-height: 20px;
             }}
             QPushButton#SidebarButton:hover {{
-                background-color: rgba(220, 38, 38, 0.25);
-                border-color: {COLOR_ACCENT};
+                background-color: rgba(220, 38, 38, 0.18);
+                border-color: rgba(248, 113, 113, 0.55);
                 color: {COLOR_TEXT_WHITE};
             }}
             QPushButton#SidebarButton:pressed {{
@@ -4140,29 +4264,29 @@ class MainWindow(QMainWindow):
             }}
 
             QFrame.Card {{
-                background-color: {COLOR_TRANSPARENT_CARD};
-                border: 1px solid rgba(255, 255, 255, 0.05);
-                border-radius: {BORDER_RADIUS};
+                background-color: rgba(18, 18, 18, 0.82);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 16px;
             }}
 
             QLineEdit {{
-                background-color: {COLOR_GLASS_DARK}; 
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 8px;
+                background-color: rgba(10, 10, 10, 0.88);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 12px;
                 padding: 12px;
                 font-size: 15px;
                 color: {COLOR_TEXT_WHITE};
                 outline: none;
             }}
             QLineEdit:focus {{
-                border: 1px solid {COLOR_ACCENT};
-                background-color: {COLOR_GLASS_MEDIUM};
+                border: 1px solid rgba(248, 113, 113, 0.8);
+                background-color: rgba(24, 24, 24, 0.96);
             }}
 
             QListWidget {{
-                background-color: {COLOR_GLASS_MEDIUM};
+                background-color: rgba(12, 12, 12, 0.92);
                 border: none;
-                border-radius: 4px;
+                border-radius: 10px;
                 color: {COLOR_TEXT_WHITE};
                 font-size: 13px;
                 padding-bottom: 2px;
