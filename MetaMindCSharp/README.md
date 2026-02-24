@@ -36,3 +36,24 @@ dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=
 - В `StartAutoScan` и `RefreshMeta` подключить реальную CV/GSI/OpenDota-логику через:
   1. gRPC/HTTP к Python-сервису, или
   2. прямой порт логики на C#.
+
+
+## Если `dotnet run` "висит" в CMD
+1. Сначала проверь SDK:
+```bash
+dotnet --info
+```
+2. Выполни restore/build отдельно (так видно, где именно стоп):
+```bash
+dotnet restore -v minimal
+dotnet build -v minimal
+```
+3. Запусти с логом:
+```bash
+dotnet run -v minimal
+```
+4. Если процесс запустился, но окна нет — после этого обновления окно стартует через `StartupUri="MainWindow.xaml"` в `App.xaml`.
+5. Если всё ещё тишина:
+   - отключи первый запуск без NuGet-кеша: `dotnet nuget locals all --clear`
+   - проверь, что папка проекта не в OneDrive/с ограничениями
+   - попробуй `dotnet run --no-restore` после успешного `dotnet build`.
