@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaMind - Умный помощник для побед</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .global-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -50;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 12% 14%, rgba(220, 38, 38, 0.16), transparent 36%),
+                radial-gradient(circle at 86% 26%, rgba(147, 51, 234, 0.14), transparent 34%),
+                radial-gradient(circle at 55% 78%, rgba(37, 99, 235, 0.12), transparent 40%),
+                linear-gradient(180deg, #020202 0%, #050505 48%, #030303 100%);
+        }
+
+        .glass-card {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #dc2626;
+        }
+
+        .static-glow-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+
+        @keyframes glow-pulse {
+            0%, 100% {
+                text-shadow: 0 0 25px rgba(220, 38, 38, 0.7),
+                             0 0 50px rgba(220, 38, 38, 0.4);
+            }
+            50% {
+                text-shadow: 0 0 35px rgba(220, 38, 38, 0.9),
+                             0 0 70px rgba(220, 38, 38, 0.6);
+            }
+        }
+
+        .text-glow-red {
+            animation: glow-pulse 3s infinite;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(90deg, #ffffff 0%, #dc2626 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 220% auto;
+            animation: gradient-shift 8s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animate-gradient {
+            background: linear-gradient(270deg, #dc2626, #9333ea, #dc2626);
+            background-size: 400% 400%;
+            animation: gradient-shift 8s ease infinite;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #dc2626;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        @keyframes subtle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+        .animate-subtle-bounce {
+            animation: subtle-bounce 1s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(-10px); }
+            75% { transform: translateY(-30px) translateX(5px); }
+        }
+
+        .floating-particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.4), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .card-3d {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-3d:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.3);
+        }
+
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-red-600 selection:text-white">
+
+    <div class="global-bg"></div>
+
+    <!-- Navbar -->
+    <nav class="w-full py-4 px-6 md:px-12 flex justify-between items-center border-b border-white/5 bg-black/90 backdrop-blur sticky top-0 z-50">
+        <div class="text-2xl font-bold tracking-tighter flex items-center gap-3 w-1/3">
+            <img src="logo.png" alt="MetaMind Logo" class="w-10 h-10 rounded-lg shadow-[0_0_15px_rgba(220,38,38,0.5)] border-2 border-red-600 object-contain bg-black">
+            <div class="flex items-center">
+                <span class="text-white">Meta</span><span class="text-red-600">Mind</span>
+            </div>
+        </div>
+
+        <div class="hidden md:flex justify-center w-1/3 space-x-8 text-sm font-medium">
+            <a href="#features" class="nav-link text-gray-300 hover:text-white transition duration-300">Возможности</a>
+            <a href="#news" class="nav-link text-gray-300 hover:text-white transition duration-300">Новости</a>
+            <a href="#help" class="nav-link text-gray-300 hover:text-white transition duration-300">Помощь</a>
+            <a href="#download" class="nav-link text-gray-300 hover:text-white transition duration-300">Скачать</a>
+        </div>
+
+        <div class="flex justify-end w-1/3">
+            <a href="https://github.com/homixxxide/MetaMind/releases/download/v6.4/MetaMind_Setup_v6.4.exe" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-md text-sm font-bold transition duration-300 shadow-lg shadow-red-600/20 border border-red-500">
+                Скачать v6.4
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="download" class="relative pt-32 pb-40 px-6 md:px-12 flex flex-col items-center text-center overflow-hidden min-h-[85vh] justify-center">
+
+        <div class="floating-particle" style="width: 150px; height: 150px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="floating-particle" style="width: 100px; height: 100px; top: 60%; right: 15%; animation-delay: 2s;"></div>
+        <div class="floating-particle" style="width: 80px; height: 80px; bottom: 20%; left: 20%; animation-delay: 4s;"></div>
+
+        <div class="static-glow-bg w-[600px] h-[600px] bg-red-700/20 blur-[120px] -z-20"></div>
+        <div class="static-glow-bg w-[700px] h-[700px] bg-purple-900/10 blur-[100px] -z-30"></div>
+
+        <span class="relative z-10 inline-block py-1 px-4 rounded-full bg-red-900/10 border border-red-500/30 text-red-500 text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-md animate-fade-in-up">
+            Stable v6.4
+        </span>
+
+        <h1 class="relative z-10 text-5xl md:text-8xl font-black mb-8 leading-[0.95] tracking-tight text-white drop-shadow-2xl">
+            <span class="animate-fade-in-up delay-100 inline-block">METAMIND</span> <br>
+            <span class="text-red-500 animate-fade-in-up delay-200 inline-block">v6.4</span>
+        </h1>
+
+        <p class="relative z-10 text-lg md:text-xl text-gray-300 max-w-2xl mb-12 leading-relaxed animate-fade-in-up delay-300">
+            <span class="text-white font-semibold">MetaMind</span> — твой умный помощник для побед.<br>
+            Быстрый анализ пиков, рекомендации и стабильная работа в игре.
+        </p>
+
+        <div class="relative z-10 flex flex-col sm:flex-row gap-5 w-full sm:w-auto justify-center animate-fade-in-up delay-400">
+            <a href="https://github.com/homixxxide/MetaMind/releases/download/v6.4/MetaMind_Setup_v6.4.exe" class="bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-lg text-xl font-bold transition-all duration-300 shadow-[0_0_30px_rgba(220,38,38,0.4)] hover:shadow-[0_0_50px_rgba(220,38,38,0.6)] hover:-translate-y-1 flex items-center justify-center gap-3 border border-red-500 group w-full sm:w-auto cursor-pointer">
+                <span>СКАЧАТЬ METAMIND</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 transition-transform group-hover:animate-subtle-bounce">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+            </a>
+
+            <a href="#features" class="bg-black/50 hover:bg-white/10 text-white px-10 py-5 rounded-lg text-xl font-bold transition-all duration-300 border border-white/10 hover:border-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:-translate-y-1 flex items-center justify-center w-full sm:w-auto cursor-pointer group">
+                <span class="mr-2">Как это работает?</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="mt-8 text-sm text-gray-500 flex items-center gap-2 relative z-20 animate-fade-in-up delay-500">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Совместимо с Windows 10/11</span>
+        </div>
+
+        <div class="mt-16 w-full max-w-5xl mx-auto relative group z-10 animate-fade-in-up delay-600">
+            <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 animate-gradient"></div>
+            <div class="relative glass-card rounded-xl border border-white/10 overflow-hidden shadow-2xl">
+                <img src="app_screenshot.png" alt="MetaMind Interface" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 px-6 md:px-12 bg-transparent relative">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-900 to-transparent opacity-50"></div>
+
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 text-center text-white scroll-fade">Почему <span class="text-red-600">MetaMind</span>?</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-xl hover:border-red-600 transition duration-500 group relative overflow-hidden flex flex-col items-center text-center card-3d scroll-fade">
+                    <div class="absolute inset-0 bg-gradient-to-b from-red-900/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="w-16 h-16 bg-black border border-red-600 rounded-xl flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(220,38,38,0.3)] relative z-10 group-hover:scale-110 transition-transform duration-500 shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#dc2626" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.047 8.287 8.287 0 009 9.601a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.468 5.99 5.99 0 00-1.925 3.547 5.975 5.975 0 01-2.133-1.001A3.75 3.75 0 0012 18z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-red-500 relative z-10">Контрпики</h3>
+                    <p class="text-gray-400 relative z-10 leading-relaxed">Алгоритм подбирает героев, которые уничтожают вражеский драфт. Побеждай еще на стадии пиков.</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-xl hover:border-purple-600 transition duration-500 group relative overflow-hidden flex flex-col items-center text-center card-3d scroll-fade">
+                    <div class="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="w-16 h-16 bg-black border border-purple-600 rounded-xl flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(147,51,234,0.3)] relative z-10 group-hover:scale-110 transition-transform duration-500 shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#9333ea" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-purple-500 relative z-10">Анализ Меты</h3>
+                    <p class="text-gray-400 relative z-10 leading-relaxed">В новейшую версию добавлен ИИ. Будь в курсе трендов. Узнай, кто сейчас разрывает паблики и почему.</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-xl hover:border-blue-600 transition duration-500 group relative overflow-hidden flex flex-col items-center text-center card-3d scroll-fade">
+                    <div class="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="w-16 h-16 bg-black border border-blue-600 rounded-xl flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(37,99,235,0.3)] relative z-10 group-hover:scale-110 transition-transform duration-500 shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#2563eb" class="w-8 h-8">
+                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-500 relative z-10">Легкость</h3>
+                    <p class="text-gray-400 relative z-10 leading-relaxed">Минималистичный оверлей. Только полезная информация.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section id="help" class="py-24 px-6 md:px-12 bg-transparent relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-900 to-transparent opacity-50"></div>
+        <div class="max-w-6xl mx-auto relative z-10">
+            <h2 class="text-3xl font-bold mb-12 text-center text-white scroll-fade">Проблемы с <span class="text-red-600">запуском?</span></h2>
+
+            <div class="glass-card rounded-xl p-8 md:p-12 border border-white/10 shadow-2xl mb-12 bg-gradient-to-br from-black/80 to-red-900/10 scroll-fade">
+                <div class="flex flex-col md:flex-row items-start gap-6">
+                    <div class="p-4 bg-red-900/20 rounded-full shrink-0 border border-red-500/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ef4444" class="w-10 h-10">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Windows блокирует запуск установщика MetaMind</h3>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Windows SmartScreen может показать предупреждение при первом запуске. Это происходит потому, что приложение пока не имеет цифровой подписи от Microsoft.
+                        </p>
+                        <div class="flex items-center gap-3 text-green-400 font-medium bg-green-900/10 py-2 px-4 rounded-lg border border-green-500/20 inline-flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Это НЕ вирус. Код открыт на GitHub.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="py-24 px-6 md:px-12 bg-transparent relative overflow-hidden">
+        <div class="absolute top-1/2 left-0 w-64 h-64 bg-purple-900/20 rounded-full filter blur-[80px]"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 bg-blue-900/20 rounded-full filter blur-[80px]"></div>
+
+        <div class="max-w-3xl mx-auto relative z-10">
+            <h2 class="text-3xl font-bold mb-10 text-center flex items-center justify-center gap-3 text-white scroll-fade">
+                <span class="text-red-600">#</span>ПоследниеНовости
+            </h2>
+
+            <div class="relative overflow-hidden glass-card rounded-xl border border-white/10 shadow-2xl z-10 scroll-fade">
+                <div id="news-slider" class="flex transition-transform duration-500 ease-in-out" style="transform: translateX(0%);">
+                    <div class="w-full flex-shrink-0 p-8 box-border">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="logo.png" alt="M" class="w-12 h-12 rounded bg-black border border-red-600 shadow-[0_0_10px_rgba(220,38,38,0.4)] object-contain">
+                            <div>
+                                <div class="font-bold text-lg text-white">Команда MetaMind</div>
+                                <div class="text-red-500 text-sm font-medium">Релиз 6.4</div>
+                            </div>
+                        </div>
+                        <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-4 font-normal">
+                            <p>Вышла версия 6.4 с улучшениями стабильности и производительности.</p>
+                            <ul class="list-disc pl-5 space-y-2 marker:text-red-600">
+                                <li>Улучшено поведение окна поверх игры.</li>
+                                <li>Оптимизировано автосканирование и отзывчивость интерфейса.</li>
+                                <li>Обновлена обработка GSI и логика CV-сканирования.</li>
+                            </ul>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-white/10 flex gap-4">
+                            <a href="https://github.com/homixxxide/MetaMind/releases/download/v6.4/MetaMind_Setup_v6.4.exe" class="w-full bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 text-white py-4 rounded-lg font-bold transition text-center shadow-lg shadow-red-900/40">Скачать v6.4</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-auto py-12 bg-black/40 border-t border-white/5 text-center text-gray-500 text-sm">
+        <div class="flex justify-center space-x-8 mb-6">
+            <a href="https://t.me/MetamindDota" target="_blank" class="hover:text-red-500 transition duration-300">Telegram</a>
+            <a href="https://vk.com/metaminddota" target="_blank" class="hover:text-blue-500 transition duration-300">VK</a>
+            <a href="https://discord.gg/cKj3YgyhZR" target="_blank" class="hover:text-purple-500 transition duration-300">Discord</a>
+        </div>
+        <p>&copy; 2025 MetaMind Team. <span class="text-gray-700">With Love</span></p>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
