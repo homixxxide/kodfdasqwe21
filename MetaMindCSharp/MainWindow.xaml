@@ -12,53 +12,78 @@
         Background="Transparent">
 
     <Grid>
-        <Ellipse Width="920" Height="920" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-250,-260,0,0" Opacity="0.35">
+        <Rectangle Fill="#07080C"/>
+
+        <!-- Ambient glow layers -->
+        <Ellipse Width="980" Height="980" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-280,-310,0,0" Opacity="0.37">
             <Ellipse.Fill>
                 <RadialGradientBrush>
-                    <GradientStop Color="#80FF3B30" Offset="0"/>
+                    <GradientStop Color="#8AFF3B30" Offset="0"/>
                     <GradientStop Color="#00FF3B30" Offset="1"/>
                 </RadialGradientBrush>
             </Ellipse.Fill>
             <Ellipse.Effect>
-                <effects:BlurEffect Radius="90"/>
+                <effects:BlurEffect Radius="110"/>
             </Ellipse.Effect>
         </Ellipse>
 
-        <Ellipse Width="760" Height="760" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,-200,-220" Opacity="0.22">
+        <Ellipse Width="820" Height="820" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,-220,-260" Opacity="0.2">
             <Ellipse.Fill>
                 <RadialGradientBrush>
-                    <GradientStop Color="#7038D9FF" Offset="0"/>
-                    <GradientStop Color="#0038D9FF" Offset="1"/>
+                    <GradientStop Color="#AA50C6FF" Offset="0"/>
+                    <GradientStop Color="#0050C6FF" Offset="1"/>
                 </RadialGradientBrush>
             </Ellipse.Fill>
             <Ellipse.Effect>
-                <effects:BlurEffect Radius="100"/>
+                <effects:BlurEffect Radius="115"/>
             </Ellipse.Effect>
         </Ellipse>
 
-        <Border Margin="14" CornerRadius="26" BorderThickness="1" BorderBrush="#39FFFFFF" Padding="12">
+        <!-- Faint grid -->
+        <Rectangle Margin="14" Opacity="0.08" IsHitTestVisible="False">
+            <Rectangle.Fill>
+                <DrawingBrush TileMode="Tile" Viewport="0,0,34,34" ViewportUnits="Absolute" Viewbox="0,0,34,34" ViewboxUnits="Absolute">
+                    <DrawingBrush.Drawing>
+                        <GeometryDrawing Brush="Transparent">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF6A6A" Thickness="0.6"/>
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <GeometryGroup>
+                                    <LineGeometry StartPoint="0,0" EndPoint="34,0"/>
+                                    <LineGeometry StartPoint="0,0" EndPoint="0,34"/>
+                                </GeometryGroup>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Border Margin="14" CornerRadius="28" BorderThickness="1" BorderBrush="#3DFFFFFF" Padding="12">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#F20B0D10" Offset="0"/>
-                    <GradientStop Color="#F2121318" Offset="0.5"/>
-                    <GradientStop Color="#F2090A0D" Offset="1"/>
+                    <GradientStop Color="#F20A0C10" Offset="0"/>
+                    <GradientStop Color="#F213151C" Offset="0.5"/>
+                    <GradientStop Color="#F2080A0E" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
             <Border.Effect>
-                <effects:DropShadowEffect Color="#AA000000" BlurRadius="36" ShadowDepth="10" Opacity="0.8"/>
+                <effects:DropShadowEffect Color="#A9000000" BlurRadius="38" ShadowDepth="12" Opacity="0.85"/>
             </Border.Effect>
 
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="78"/>
+                    <RowDefinition Height="84"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" CornerRadius="18" BorderThickness="1" BorderBrush="#4DFF8C86" MouseLeftButtonDown="HeaderDrag">
+                <!-- Header -->
+                <Border Grid.Row="0" CornerRadius="20" BorderThickness="1" BorderBrush="#52FF8A84" MouseLeftButtonDown="HeaderDrag">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#C1181114" Offset="0"/>
-                            <GradientStop Color="#D01A1218" Offset="1"/>
+                            <GradientStop Color="#D1160F13" Offset="0"/>
+                            <GradientStop Color="#D01A121A" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
                     <Grid>
@@ -67,34 +92,37 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0">
-                            <TextBlock Text="METAMIND" FontFamily="Segoe UI Semibold" FontSize="34" FontWeight="Bold" Foreground="White"/>
-                            <TextBlock Text=" v6.5" FontSize="22" FontWeight="Bold" Foreground="#FF554D" VerticalAlignment="Bottom" Margin="6,0,0,6"/>
-                            <TextBlock Text="  •  Premium Edition" FontSize="14" Foreground="#C6D0DB" VerticalAlignment="Bottom" Margin="10,0,0,8"/>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="22,0">
+                            <TextBlock Text="METAMIND" FontFamily="Segoe UI Semibold" FontSize="36" FontWeight="Bold" Foreground="White"/>
+                            <TextBlock Text=" v6.5" FontSize="23" FontWeight="Bold" Foreground="#FF5D54" VerticalAlignment="Bottom" Margin="8,0,0,7"/>
+                            <Border Margin="14,0,0,0" Padding="10,5" CornerRadius="11" Background="#2AFF3B30" BorderBrush="#4DFFFFFF" BorderThickness="1" VerticalAlignment="Center">
+                                <TextBlock Text="PREMIUM UI" Foreground="#EAF2FF" FontSize="11" FontWeight="SemiBold"/>
+                            </Border>
                         </StackPanel>
 
-                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,12,0">
-                            <Button Width="44" Height="44" Content="—" Style="{StaticResource GlassButtonStyle}" Click="Minimize_Click"/>
-                            <Button Width="44" Height="44" Content="✕" Style="{StaticResource AccentButtonStyle}" Click="Close_Click"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,13,0">
+                            <Button Width="46" Height="46" Content="—" Style="{StaticResource GlassButtonStyle}" Click="Minimize_Click"/>
+                            <Button Width="46" Height="46" Content="✕" Style="{StaticResource AccentButtonStyle}" Click="Close_Click"/>
                         </StackPanel>
                     </Grid>
                 </Border>
 
-                <Grid Grid.Row="1" Margin="0,14,0,0">
+                <Grid Grid.Row="1" Margin="0,15,0,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="310"/>
+                        <ColumnDefinition Width="320"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Border Margin="0,0,14,0" CornerRadius="20" BorderThickness="1" BorderBrush="#35FFFFFF" Padding="14">
+                    <!-- Sidebar -->
+                    <Border Margin="0,0,15,0" CornerRadius="22" BorderThickness="1" BorderBrush="#37FFFFFF" Padding="15">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                <GradientStop Color="#D0181A21" Offset="0"/>
-                                <GradientStop Color="#C0101116" Offset="1"/>
+                                <GradientStop Color="#D0181B24" Offset="0"/>
+                                <GradientStop Color="#C00F1118" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <Border.Effect>
-                            <effects:DropShadowEffect Color="#55000000" BlurRadius="26" ShadowDepth="4" Opacity="0.7"/>
+                            <effects:DropShadowEffect Color="#60000000" BlurRadius="28" ShadowDepth="5" Opacity="0.7"/>
                         </Border.Effect>
 
                         <Grid>
@@ -104,7 +132,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Text="НАВИГАЦИЯ" FontSize="13" FontWeight="SemiBold" Foreground="#AAB5C4" Margin="6,4,6,10"/>
+                            <TextBlock Text="НАВИГАЦИЯ" FontSize="13" FontWeight="SemiBold" Foreground="#AAB5C4" Margin="7,5,7,12"/>
 
                             <StackPanel Grid.Row="1">
                                 <Button x:Name="CounterPageBtn" Content="Контрпики" Style="{StaticResource AccentButtonStyle}" Click="GoCounterPage"/>
@@ -113,23 +141,29 @@
                                 <Button x:Name="RefreshBtn" Content="Обновить мету" Style="{StaticResource GlassButtonStyle}" Click="RefreshMeta"/>
                             </StackPanel>
 
-                            <Border Grid.Row="2" Margin="4,12,4,4" CornerRadius="12" BorderThickness="1" BorderBrush="#2FFFFFFF" Background="#2614171D" Padding="10">
-                                <TextBlock Foreground="#AEB7C4" FontSize="12" TextWrapping="Wrap"
-                                           Text="Логика кнопок сохранена как раньше. Сейчас изменён только визуал и подача интерфейса."/>
-                            </Border>
+                            <StackPanel Grid.Row="2" Margin="4,12,4,4">
+                                <Border CornerRadius="12" BorderThickness="1" BorderBrush="#2FFFFFFF" Background="#2213171E" Padding="10">
+                                    <TextBlock Foreground="#AEB7C4" FontSize="12" TextWrapping="Wrap"
+                                               Text="Логика кнопок полностью сохранена: изменён только дизайн и визуальные эффекты."/>
+                                </Border>
+                                <Border Margin="0,8,0,0" CornerRadius="12" BorderThickness="1" BorderBrush="#3CFF8A84" Background="#1F1A1013" Padding="10">
+                                    <TextBlock Foreground="#FFD5CF" FontSize="12" Text="Status: UI redesign mode"/>
+                                </Border>
+                            </StackPanel>
                         </Grid>
                     </Border>
 
-                    <Border Grid.Column="1" CornerRadius="20" BorderThickness="1" BorderBrush="#35FFFFFF" Padding="22">
+                    <!-- Content -->
+                    <Border Grid.Column="1" CornerRadius="22" BorderThickness="1" BorderBrush="#37FFFFFF" Padding="24">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="#D015171D" Offset="0"/>
-                                <GradientStop Color="#CF101217" Offset="0.52"/>
-                                <GradientStop Color="#D0151114" Offset="1"/>
+                                <GradientStop Color="#D0141820" Offset="0"/>
+                                <GradientStop Color="#CC0F1218" Offset="0.52"/>
+                                <GradientStop Color="#D0140F13" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <Border.Effect>
-                            <effects:DropShadowEffect Color="#55000000" BlurRadius="30" ShadowDepth="5" Opacity="0.75"/>
+                            <effects:DropShadowEffect Color="#5C000000" BlurRadius="32" ShadowDepth="6" Opacity="0.75"/>
                         </Border.Effect>
 
                         <Grid>
@@ -140,56 +174,77 @@
                             </Grid.RowDefinitions>
 
                             <StackPanel>
-                                <TextBlock x:Name="PageTitle" Text="Главная панель" FontSize="40" FontWeight="Bold" Foreground="White"/>
-                                <TextBlock Margin="0,8,0,0" Foreground="#C7D1DD" FontSize="15"
-                                           Text="Современный визуальный слой в стиле premium desktop с плавными акцентами и glow-подсветкой."/>
+                                <TextBlock x:Name="PageTitle" Text="Главная панель" FontSize="42" FontWeight="Bold" Foreground="White"/>
+                                <TextBlock Margin="0,8,0,0" Foreground="#C8D2DE" FontSize="15"
+                                           Text="Максимально полированный red/black/white дизайн с неоновыми акцентами и плавной визуальной иерархией."/>
                             </StackPanel>
 
-                            <Grid Grid.Row="1" Margin="0,20,0,0">
+                            <Grid Grid.Row="1" Margin="0,22,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Border Grid.Column="0" Margin="0,0,8,0" CornerRadius="16" BorderThickness="1" BorderBrush="#44FF746C" Background="#25121419" Padding="16">
+                                <Border Grid.Row="0" Grid.Column="0" Margin="0,0,9,9" CornerRadius="16" BorderThickness="1" BorderBrush="#44FF746C" Background="#2812141B" Padding="16">
                                     <StackPanel>
                                         <TextBlock Text="Сканирование" Foreground="White" FontSize="20" FontWeight="SemiBold"/>
                                         <TextBlock Margin="0,6,0,0" Text="Визуальный индикатор процесса" Foreground="#B9C3CF"/>
                                         <ProgressBar x:Name="ScanProgress" Margin="0,18,0,0" Height="22" Maximum="100" Value="0"/>
-                                        <TextBlock x:Name="StatusText" Margin="0,14,0,0" Foreground="#E1E8F0" Text="Система готова"/>
+                                        <TextBlock x:Name="StatusText" Margin="0,14,0,0" Foreground="#E3EBF5" Text="Система готова"/>
                                     </StackPanel>
                                 </Border>
 
-                                <Border Grid.Column="1" Margin="8,0,0,0" CornerRadius="16" BorderThickness="1" BorderBrush="#2FFFFFFF" Background="#1F11161C" Padding="16">
+                                <Border Grid.Row="0" Grid.Column="1" Margin="9,0,0,9" CornerRadius="16" BorderThickness="1" BorderBrush="#2FFFFFFF" Background="#1F12171F" Padding="16">
                                     <StackPanel>
                                         <TextBlock Text="Рекомендации" Foreground="White" FontSize="20" FontWeight="SemiBold"/>
                                         <TextBlock Margin="0,8,0,0" TextWrapping="Wrap" Foreground="#BCC6D2"
-                                                   Text="• Контрпики\n• Мета-обновления\n• Готовые точки интеграции backend\n• Smooth UX и аккуратная навигация"/>
+                                                   Text="• Контрпики\n• Мета-обновления\n• Готовые backend hooks\n• Плавная UI-навигация"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Grid.Row="1" Grid.Column="0" Margin="0,9,9,0" CornerRadius="16" BorderThickness="1" BorderBrush="#2FFFFFFF" Background="#1C121820" Padding="16">
+                                    <StackPanel>
+                                        <TextBlock Text="Стабильность" Foreground="White" FontSize="19" FontWeight="SemiBold"/>
+                                        <TextBlock Margin="0,8,0,0" Foreground="#BCC6D2" TextWrapping="Wrap"
+                                                   Text="UI и структура кнопок сохранены в прежнем порядке, чтобы интеграция не ломалась."/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Grid.Row="1" Grid.Column="1" Margin="9,9,0,0" CornerRadius="16" BorderThickness="1" BorderBrush="#2FFFFFFF" Background="#1B14151A" Padding="16">
+                                    <StackPanel>
+                                        <TextBlock Text="Визуальные эффекты" Foreground="White" FontSize="19" FontWeight="SemiBold"/>
+                                        <TextBlock Margin="0,8,0,0" Foreground="#BCC6D2" TextWrapping="Wrap"
+                                                   Text="Glow, glass cards, акцентные градиенты и мягкие тени для премиального вида."/>
                                     </StackPanel>
                                 </Border>
                             </Grid>
 
-                            <Border Grid.Row="2" Margin="0,12,0,0" CornerRadius="12" BorderThickness="1" BorderBrush="#33FFFFFF" Background="#1A101317" Padding="10">
+                            <Border Grid.Row="2" Margin="0,13,0,0" CornerRadius="12" BorderThickness="1" BorderBrush="#33FFFFFF" Background="#1A101317" Padding="10">
                                 <TextBlock Foreground="#8FA1B4" FontSize="12"
-                                           Text="MetaMind UI • Red/Black/White palette • Design-only update"/>
+                                           Text="MetaMind UI • Premium Desktop • Design-only update"/>
                             </Border>
                         </Grid>
                     </Border>
                 </Grid>
 
+                <!-- Dynamic toast -->
                 <Border x:Name="Toast"
-                        Width="460"
-                        Height="58"
-                        CornerRadius="29"
-                        Background="#EC141820"
-                        BorderBrush="#66FFFFFF"
+                        Width="480"
+                        Height="60"
+                        CornerRadius="30"
+                        Background="#EC151921"
+                        BorderBrush="#72FFFFFF"
                         BorderThickness="1"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
                         Margin="0,12,0,0"
                         Opacity="0">
                     <Border.Effect>
-                        <effects:DropShadowEffect Color="#88FF3B30" BlurRadius="22" ShadowDepth="0"/>
+                        <effects:DropShadowEffect Color="#9AFF3B30" BlurRadius="24" ShadowDepth="0"/>
                     </Border.Effect>
                     <TextBlock x:Name="ToastText"
                                VerticalAlignment="Center"
