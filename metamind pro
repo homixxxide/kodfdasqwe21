@@ -27,6 +27,7 @@ import requests
 import certifi
 from io import BytesIO
 import ctypes
+import random
 
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -55,6 +56,8 @@ from PIL import Image
 import string
 from flask import Flask, request, jsonify
 
+from hero_roles import get_heroes_by_role, get_role_for_hero
+
 
 class GSIServer:
     """Встроенный GSI сервер для MetaMind"""
@@ -68,9 +71,26 @@ class GSIServer:
         self.player_team = None
         self.game_time = 0
         self.last_update = 0
+        self.current_game_id = None
+        self.player_hero = None
 
         self.setup_routes()
         self.auto_setup_gsi()
+
+    def detect_new_game(self, data):
+        """Определяет старт новой игры по matchid и сбрасывает кэш команды/героя."""
+        map_data = data.get("map", {}) if isinstance(data, dict) else {}
+        game_id = map_data.get("matchid")
+        if not game_id:
+            return False
+        if game_id != self.current_game_id:
+            self.current_game_id = game_id
+            self.player_team = None
+            self.player_hero = None
+            self.game_in_progress = False
+            print(f"[GSI] 🆕 NEW GAME DETECTED! ID: {game_id}")
+            return True
+        return False
 
     def setup_routes(self):
         """Настройка Flask endpoints"""
@@ -84,9 +104,19 @@ class GSIServer:
 
                 self.last_update = time.time()
 
+                self.detect_new_game(data)
+
                 # Команда игрока
                 player_data = data.get("player", {})
                 team = player_data.get("team_name", "").lower()
+
+                hero_data = data.get("hero", {})
+                hero_name = hero_data.get("name", "")
+                if hero_name:
+                    hero_internal = hero_name.replace("npc_dota_hero_", "")
+                    if hero_internal != self.player_hero:
+                        self.player_hero = hero_internal
+                        print(f"[GSI] 🦸 Твой герой: {self.player_hero}")
 
                 if team and not self.player_team:
                     if 'radiant' in team:
@@ -127,6 +157,7 @@ class GSIServer:
                     if self.game_in_progress:
                         self.game_in_progress = False
                         self.player_team = None
+                        self.player_hero = None
                         print(f"[GSI] ⏹️ Игра завершена")
 
                 return "OK", 200
@@ -144,13 +175,22 @@ class GSIServer:
                 return jsonify({"team": None})
             return jsonify({"team": self.player_team or None})
 
+        @self.app.route('/player', methods=['GET'])
+        def get_player():
+            time_since_update = time.time() - self.last_update if self.last_update > 0 else 999
+            if time_since_update > 30.0:
+                return jsonify({"team": None, "hero": None, "matchid": self.current_game_id})
+            return jsonify({"team": self.player_team or None, "hero": self.player_hero or None, "matchid": self.current_game_id})
+
         @self.app.route('/status', methods=['GET'])
         def get_status():
             return jsonify({
                 "connected": self.last_update > 0,
                 "team": self.player_team,
                 "in_progress": self.game_in_progress,
-                "game_time": self.game_time
+                "game_time": self.game_time,
+                "hero": self.player_hero,
+                "matchid": self.current_game_id
             })
 
     def auto_setup_gsi(self):
@@ -261,6 +301,8 @@ WHATS_NEW_IMAGE_FILE = "largo_news.png"
 
 DATA_FILE = "hero_data.json"
 AM_COUNTERS_FILE = "antimage_counters.json"
+SYNERGIES_FILE = "hero_synergies.json"
+COUNTERPICK_ITEMS_FILE = "hero_counterpick_items.json"
 OPENDOTA_CACHE_FILE = "opendota_cache.json"
 OPENDOTA_CACHE_META_FILE = "opendota_cache_meta.json"
 VERSION_FILE = "last_version.txt"
@@ -2250,6 +2292,176 @@ class CVScanner:
         threading.Thread(target=worker, daemon=True).start()
 
 
+class SynergiesPage(QWidget):
+    """Страница подбора синергий."""
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.selected_user_heroes = []
+        self.synergies = []
+        self.hero_teammates = {}
+        self._init_ui()
+        self.load_synergies()
+
+    def _init_ui(self):
+        self.main_layout = QVBoxLayout(self)
+        self.main_layout.setContentsMargins(30, 30, 30, 30)
+        self.main_layout.setSpacing(14)
+
+        title = QLabel("🤝 Лучшие Синергии")
+        title.setStyleSheet(f"color: {COLOR_TEXT_WHITE}; font-size: 28px; font-weight: bold;")
+        self.main_layout.addWidget(title)
+
+        subtitle = QLabel("Найди идеальную команду из 5 героев")
+        subtitle.setStyleSheet(f"color: {COLOR_TEXT_GRAY}; font-size: 14px;")
+        self.main_layout.addWidget(subtitle)
+
+        user_heroes_frame = QFrame()
+        user_heroes_frame.setProperty("class", "Card")
+        user_heroes_layout = QVBoxLayout(user_heroes_frame)
+        user_heroes_layout.setContentsMargins(16, 16, 16, 16)
+        user_heroes_layout.setSpacing(8)
+
+        label = QLabel("🎯 Герои которых ты хочешь пикнуть (опционально)")
+        label.setStyleSheet(f"color: {COLOR_TEXT_WHITE}; font-size: 16px; font-weight: bold;")
+        user_heroes_layout.addWidget(label)
+
+        search_layout = QHBoxLayout()
+        self.hero_search = QLineEdit()
+        self.hero_search.setPlaceholderText("Введи имя героя...")
+        search_layout.addWidget(self.hero_search)
+
+        add_btn = QPushButton("Добавить")
+        add_btn.clicked.connect(self.add_user_hero)
+        search_layout.addWidget(add_btn)
+        user_heroes_layout.addLayout(search_layout)
+
+        self.selected_heroes_display = QLabel("Пока никто не выбран")
+        self.selected_heroes_display.setStyleSheet(f"color: {COLOR_TEXT_GRAY}; font-size: 12px;")
+        self.selected_heroes_display.setWordWrap(True)
+        user_heroes_layout.addWidget(self.selected_heroes_display)
+
+        self.main_layout.addWidget(user_heroes_frame)
+
+        generate_btn = QPushButton("🔮 СГЕНЕРИРОВАТЬ ЛУЧШУЮ СИНЕРГИЮ")
+        generate_btn.clicked.connect(self.generate_best_synergy)
+        self.main_layout.addWidget(generate_btn)
+
+        self.result_info = QLabel("Здесь появится синергия")
+        self.result_info.setWordWrap(True)
+        self.result_info.setStyleSheet(f"color: {COLOR_TEXT_WHITE}; font-size: 13px;")
+        self.main_layout.addWidget(self.result_info)
+
+        self.result_heroes = QLabel("")
+        self.result_heroes.setWordWrap(True)
+        self.result_heroes.setStyleSheet(f"color: {COLOR_TEXT_GRAY}; font-size: 12px;")
+        self.main_layout.addWidget(self.result_heroes)
+
+        self.main_layout.addStretch(1)
+
+    def load_synergies(self):
+        data = load_json_file(SYNERGIES_FILE) or {}
+        self.synergies = data.get("synergies", []) if isinstance(data, dict) else []
+        self.hero_teammates = data.get("hero_best_teammates", {}) if isinstance(data, dict) else {}
+
+    def add_user_hero(self):
+        hero_name = normalize_hero_name(self.hero_search.text().strip())
+        if not hero_name:
+            return
+        if hero_name not in self.selected_user_heroes:
+            self.selected_user_heroes.append(hero_name)
+            self.selected_user_heroes = self.selected_user_heroes[:5]
+        self.hero_search.clear()
+        self._update_selected_heroes_text()
+
+    def _update_selected_heroes_text(self):
+        if not self.selected_user_heroes:
+            self.selected_heroes_display.setText("Пока никто не выбран")
+            return
+        txt = ", ".join(h.replace("_", " ").title() for h in self.selected_user_heroes)
+        self.selected_heroes_display.setText(txt)
+
+    def generate_best_synergy(self):
+        synergy = self.find_best_synergy_with_heroes(self.selected_user_heroes)
+        if not synergy:
+            self.result_info.setText("Не удалось найти синергию")
+            self.result_heroes.setText("")
+            return
+
+        name = synergy.get("name", "Custom Synergy")
+        desc = synergy.get("description", "")
+        wr = float(synergy.get("win_rate", 0.0) or 0.0)
+        strategy = synergy.get("strategy", "")
+        heroes = synergy.get("heroes", [])
+
+        self.result_info.setText(f"🏆 {name}\n{desc}\n📊 Win Rate: {wr:.1f}%\n💡 {strategy}")
+        self.result_heroes.setText(" | ".join(h.replace("_", " ").title() for h in heroes))
+
+    def find_best_synergy_with_heroes(self, user_heroes):
+        if not self.synergies:
+            return None
+        if not user_heroes:
+            return max(self.synergies, key=lambda x: float(x.get("win_rate", 0)))
+
+        matched = []
+        for syn in self.synergies:
+            syn_heroes = syn.get("heroes", [])
+            if all(hero in syn_heroes for hero in user_heroes):
+                matched.append(syn)
+
+        if matched:
+            return max(matched, key=lambda x: float(x.get("win_rate", 0)))
+
+        return self.build_custom_synergy(user_heroes)
+
+    def build_custom_synergy(self, user_heroes):
+        final_team = list(user_heroes)
+        needed = max(0, 5 - len(final_team))
+        candidate_scores = {}
+        for user_hero in user_heroes:
+            for tm in self.hero_teammates.get(user_hero, []):
+                hero = tm.get("hero")
+                if not hero or hero in final_team:
+                    continue
+                candidate_scores[hero] = candidate_scores.get(hero, 0) + int(tm.get("synergy", 0) or 0)
+
+        for hero, _ in sorted(candidate_scores.items(), key=lambda x: x[1], reverse=True)[:needed]:
+            final_team.append(hero)
+
+        if len(final_team) < 5:
+            pool = []
+            for syn in self.synergies:
+                for h in syn.get("heroes", []):
+                    if h not in final_team:
+                        pool.append(h)
+            random.shuffle(pool)
+            for h in pool:
+                if len(final_team) >= 5:
+                    break
+                if h not in final_team:
+                    final_team.append(h)
+
+        return {
+            "name": "Custom Synergy",
+            "heroes": final_team[:5],
+            "description": "Команда подобрана под выбранных героев",
+            "win_rate": self.estimate_winrate(final_team[:5]),
+            "strategy": self.generate_strategy(final_team[:5]),
+        }
+
+    def estimate_winrate(self, heroes):
+        if not heroes:
+            return 50.0
+        base = 50.0 + min(8.0, len(heroes) * 1.2)
+        return round(base, 1)
+
+    def generate_strategy(self, heroes):
+        if not heroes:
+            return "Сбалансируйте роли и инициацию"
+        readable = ", ".join(h.replace("_", " ").title() for h in heroes)
+        return f"Играйте вокруг таймингов: {readable}."
+
+
 class TeamSelectionDialog(QDialog):
     """Диалог выбора команды"""
 
@@ -2342,7 +2554,7 @@ class MainWindow(QMainWindow):
         """ИДЕАЛЬНОЕ определение команды через GSI с ретраями"""
         for attempt in range(3):  # 3 попытки
             try:
-                response = requests.get('http://localhost:3000/player', timeout=0.5)
+                response = requests.get('http://localhost:3000/player', timeout=0.6)
                 if response.status_code == 200:
                     data = response.json()
                     team = data.get('team', '').lower()
@@ -2409,6 +2621,8 @@ class MainWindow(QMainWindow):
         self._window_interaction_until = 0.0
         self._pending_drag_scan_request = False
         self.selected_role = None
+        self.selected_counter_role = None
+        self.current_counter_results = []
 
         self.opendota_cache = None
 
@@ -2524,6 +2738,14 @@ class MainWindow(QMainWindow):
         btn2.setCursor(Qt.PointingHandCursor)
         btn2.clicked.connect(lambda: self.set_page(1))
         sidebar_layout.addWidget(btn2)
+
+        btn3 = QPushButton("Синергии")
+        btn3.setObjectName("SidebarButton")
+        btn3.setMinimumHeight(60)
+        btn3.setMinimumWidth(200)
+        btn3.setCursor(Qt.PointingHandCursor)
+        btn3.clicked.connect(lambda: self.set_page(2))
+        sidebar_layout.addWidget(btn3)
 
         sidebar_layout.addStretch(1)
 
@@ -2676,6 +2898,29 @@ class MainWindow(QMainWindow):
         results_title.setObjectName("TitleLabel")
         results_main_layout.addWidget(results_title)
 
+        self.counter_role_frame = QFrame()
+        self.counter_role_frame.setObjectName("RoleFilterFrame")
+        role_filter_layout = QHBoxLayout(self.counter_role_frame)
+        role_filter_layout.setContentsMargins(0, 0, 0, 0)
+        role_filter_layout.setSpacing(8)
+        role_filter_layout.addWidget(QLabel("Фильтр по роли:"))
+
+        self.counter_role_buttons = {}
+        for role_name in ["All", "Carry", "Mider", "Offlaner", "Support", "Hard Support"]:
+            role_btn = QPushButton(role_name)
+            role_btn.setObjectName("RoleFilterButton")
+            role_btn.setCheckable(True)
+            role_btn.setCursor(Qt.PointingHandCursor)
+            role_btn.clicked.connect(lambda checked, r=role_name: self.on_counter_role_selected(r))
+            self.counter_role_buttons[role_name] = role_btn
+            role_filter_layout.addWidget(role_btn)
+
+        if "All" in self.counter_role_buttons:
+            self.counter_role_buttons["All"].setChecked(True)
+
+        role_filter_layout.addStretch(1)
+        results_main_layout.addWidget(self.counter_role_frame)
+
         self.results_scroll_area = QScrollArea()
         self.results_scroll_area.setWidgetResizable(True)
         self.results_scroll_area.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -2688,6 +2933,15 @@ class MainWindow(QMainWindow):
 
         self.results_scroll_area.setWidget(self.results_scroll_content)
         results_main_layout.addWidget(self.results_scroll_area)
+
+        self.items_recommendations_frame = QFrame()
+        self.items_recommendations_frame.setObjectName("ItemsRecommendationsCard")
+        self.items_recommendations_frame.setProperty("class", "Card")
+        self.items_recommendations_frame.setVisible(False)
+        self.items_recommendations_layout = QVBoxLayout(self.items_recommendations_frame)
+        self.items_recommendations_layout.setContentsMargins(16, 14, 16, 14)
+        self.items_recommendations_layout.setSpacing(8)
+        results_main_layout.addWidget(self.items_recommendations_frame)
 
         content_splitter = QSplitter(Qt.Vertical)
         content_splitter.setObjectName("ContentSplitter")
@@ -2826,6 +3080,9 @@ class MainWindow(QMainWindow):
 
         self.stack.addWidget(picker_frame)
 
+        self.synergies_page = SynergiesPage(self)
+        self.stack.addWidget(self.synergies_page)
+
         self.render_enemies()
         self.calculate_counters()
 
@@ -2921,6 +3178,155 @@ class MainWindow(QMainWindow):
         if should_show_whats_new():
             dialog = WhatsNewDialog(self)
             dialog.exec()
+
+    def on_counter_role_selected(self, role_name: str):
+        if not hasattr(self, 'counter_role_buttons'):
+            return
+        for btn in self.counter_role_buttons.values():
+            btn.setChecked(False)
+        self.counter_role_buttons[role_name].setChecked(True)
+        self.selected_counter_role = None if role_name == "All" else role_name
+        if self.current_counter_results:
+            self._render_counter_results(self.current_counter_results)
+
+    def get_player_hero_from_gsi(self):
+        for _ in range(2):
+            try:
+                response = requests.get('http://localhost:3000/player', timeout=0.6)
+                if response.status_code == 200:
+                    hero = (response.json() or {}).get('hero')
+                    if hero:
+                        return hero
+            except Exception:
+                pass
+        return None
+
+    def _load_counterpick_items_data(self):
+        data = load_json_file(COUNTERPICK_ITEMS_FILE)
+        if isinstance(data, dict):
+            return data
+        return {}
+
+    def _clear_items_recommendations(self):
+        if not hasattr(self, 'items_recommendations_layout'):
+            return
+        while self.items_recommendations_layout.count() > 0:
+            item = self.items_recommendations_layout.takeAt(0)
+            if item.widget():
+                item.widget().deleteLater()
+            del item
+
+    def _show_counterpick_items(self, enemy_heroes):
+        if not hasattr(self, 'items_recommendations_frame'):
+            return
+        self._clear_items_recommendations()
+        self.items_recommendations_frame.setVisible(False)
+
+        player_hero = self.get_player_hero_from_gsi()
+        if not player_hero:
+            return
+
+        player_role = get_role_for_hero(player_hero)
+        is_support = player_role in ["Support", "Hard Support"]
+        items_data = self._load_counterpick_items_data()
+        if not items_data:
+            return
+
+        all_items = []
+        for enemy in enemy_heroes:
+            enemy_internal = normalize_hero_name(enemy)
+            enemy_items = items_data.get(enemy_internal)
+            if not enemy_items:
+                continue
+            pool = enemy_items.get('support_items' if is_support else 'core_items', [])
+            for entry in pool:
+                item = dict(entry)
+                item['against_hero'] = enemy
+                all_items.append(item)
+
+        if not all_items:
+            return
+
+        all_items.sort(key=lambda x: x.get('priority', 0), reverse=True)
+        uniq = []
+        seen = set()
+        for item in all_items:
+            item_key = item.get('item')
+            if not item_key or item_key in seen:
+                continue
+            seen.add(item_key)
+            uniq.append(item)
+        top_items = uniq[:5]
+        if not top_items:
+            return
+
+        title = QLabel("🛡️ Рекомендуемые предметы")
+        title.setObjectName("TitleLabel")
+        self.items_recommendations_layout.addWidget(title)
+        hint = QLabel(f"Для роли: {player_role or 'Unknown'}")
+        hint.setStyleSheet(f"color: {COLOR_TEXT_GRAY}; font-size: 12px;")
+        self.items_recommendations_layout.addWidget(hint)
+
+        row = QHBoxLayout()
+        row.setSpacing(8)
+        for item in top_items:
+            row.addWidget(self._create_item_card_widget(item))
+        self.items_recommendations_layout.addLayout(row)
+        self.items_recommendations_frame.setVisible(True)
+
+    def _create_item_card_widget(self, item):
+        card = QFrame()
+        card.setProperty('class', 'Card')
+        layout = QVBoxLayout(card)
+        layout.setContentsMargins(10, 10, 10, 10)
+        layout.setSpacing(4)
+
+        name_lbl = QLabel(item.get('name', item.get('item', 'item')))
+        name_lbl.setStyleSheet(f"color: {COLOR_TEXT_WHITE}; font-size: 13px; font-weight: bold;")
+        layout.addWidget(name_lbl)
+
+        against = item.get('against_hero')
+        if against:
+            vs_lbl = QLabel(f"vs {against.replace('-', ' ').title()}")
+            vs_lbl.setStyleSheet(f"color: {COLOR_ACCENT}; font-size: 11px;")
+            layout.addWidget(vs_lbl)
+
+        reason = QLabel(item.get('reason', ''))
+        reason.setWordWrap(True)
+        reason.setStyleSheet(f"color: {COLOR_TEXT_GRAY}; font-size: 11px;")
+        layout.addWidget(reason)
+
+        price = item.get('price')
+        if price:
+            price_lbl = QLabel(f"💰 {price}g")
+            price_lbl.setStyleSheet("color: #FFD700; font-size: 11px; font-weight: bold;")
+            layout.addWidget(price_lbl)
+        return card
+
+    def _render_counter_results(self, best_heroes):
+        self.animation_timer.stop()
+        self.animated_results = []
+        while self.results_list_layout.count() > 0:
+            item = self.results_list_layout.takeAt(0)
+            if item.widget():
+                item.widget().deleteLater()
+            del item
+
+        if not best_heroes:
+            placeholder_lbl = QLabel(">>> НЕТ РЕКОМЕНДАЦИЙ <<<")
+            placeholder_lbl.setStyleSheet(f"color: {COLOR_ACCENT}; padding: 50px 0; font-size: 16px;")
+            placeholder_lbl.setAlignment(Qt.AlignCenter)
+            self.results_list_layout.addWidget(placeholder_lbl)
+            self.results_list_layout.addStretch(1)
+            return
+
+        for rank, (hero, score) in enumerate(best_heroes, 1):
+            row = self._create_result_row_widget(rank, hero, score)
+            self.results_list_layout.addWidget(row)
+            self.animated_results.append(row)
+
+        self.animation_timer.start(50)
+        self.results_list_layout.addStretch(1)
 
     def toggle_sidebar(self):
         target = 260 if not self.sidebar_expanded else 0
@@ -3944,15 +4350,11 @@ class MainWindow(QMainWindow):
             self.enemies_list_layout.addStretch(1)
 
     def calculate_counters(self):
-        self.animation_timer.stop()
-        self.animated_results = []
-        while self.results_list_layout.count() > 0:
-            item = self.results_list_layout.takeAt(0)
-            if item.widget():
-                item.widget().deleteLater()
-            del item
+        self.current_counter_results = []
+        self._show_counterpick_items([])
 
         if not self.selected_enemies:
+            self._render_counter_results([])
             placeholder_lbl = QLabel(">>> ДОБАВЬТЕ ГЕРОЕВ ДЛЯ АНАЛИЗА <<<")
             placeholder_lbl.setStyleSheet(f"color: {COLOR_TEXT_GRAY}; padding: 50px 0; font-size: 16px;")
             placeholder_lbl.setAlignment(Qt.AlignCenter)
@@ -3964,8 +4366,14 @@ class MainWindow(QMainWindow):
         is_anti_mage_enemy = AM_SLUG in self.selected_enemies
         enemies_for_general_calc = [e for e in self.selected_enemies if e != AM_SLUG]
 
+        role_allowed = None
+        if self.selected_counter_role:
+            role_allowed = set(get_heroes_by_role(self.selected_counter_role))
+
         for candidate_slug in self.all_heroes:
             if candidate_slug in self.selected_enemies:
+                continue
+            if role_allowed is not None and candidate_slug not in role_allowed:
                 continue
 
             total_advantage = 0
@@ -3980,24 +4388,21 @@ class MainWindow(QMainWindow):
             scores[candidate_slug] = round(total_advantage, 2)
 
         non_zero_scores = {hero: score for hero, score in scores.items() if score != 0.0}
+        best_heroes = sorted(non_zero_scores.items(), key=lambda x: x[1], reverse=True)[:20]
+        self.current_counter_results = best_heroes
 
-        if not non_zero_scores:
-            placeholder_lbl = QLabel(">>> НЕТ РЕКОМЕНДАЦИЙ <<<")
+        if not best_heroes:
+            self._render_counter_results([])
+            no_data = "Нет героев для выбранной роли" if self.selected_counter_role else ">>> НЕТ РЕКОМЕНДАЦИЙ <<<"
+            placeholder_lbl = QLabel(no_data)
             placeholder_lbl.setStyleSheet(f"color: {COLOR_ACCENT}; padding: 50px 0; font-size: 16px;")
             placeholder_lbl.setAlignment(Qt.AlignCenter)
             self.results_list_layout.addWidget(placeholder_lbl)
             self.results_list_layout.addStretch(1)
             return
 
-        best_heroes = sorted(non_zero_scores.items(), key=lambda x: x[1], reverse=True)[:20]
-
-        for rank, (hero, score) in enumerate(best_heroes, 1):
-            row = self._create_result_row_widget(rank, hero, score)
-            self.results_list_layout.addWidget(row)
-            self.animated_results.append(row)
-
-        self.animation_timer.start(50)
-        self.results_list_layout.addStretch(1)
+        self._render_counter_results(best_heroes)
+        self._show_counterpick_items(self.selected_enemies)
 
     def _animate_next_result_row(self):
         if self.animated_results:
