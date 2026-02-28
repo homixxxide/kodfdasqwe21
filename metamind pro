@@ -1069,18 +1069,27 @@ def fetch_opendota_hero_stats(status_cb=None, timeout=(4, 14), total_retries: in
                     status_cb("SSL проблема. Пробую альтернативный режим...")
                 resp = session.get(url, timeout=timeout, headers=headers, verify=False)
 
-            if resp.status_code == 200:
+            if resp.status_code != 200:
+                last_err = RuntimeError(f"HTTP {resp.status_code}")
+                continue
+
+            try:
                 data = resp.json()
-                if data and len(data) > 50:
-                    print(f"OpenDota API: получено {len(data)} героев")
-                    return data
-            last_err = RuntimeError(f"HTTP {resp.status_code}")
+            except json.JSONDecodeError:
+                last_err = RuntimeError("Invalid JSON response")
+                continue
+
+            if data and len(data) > 50:
+                print(f"OpenDota API: получено {len(data)} героев")
+                return data
+
+            last_err = RuntimeError("Empty OpenDota payload")
         except Exception as e:
             last_err = e
             continue
 
     # Все API не работают - используем статику
-    print(f"OpenDota API недоступен (последняя ошибка: {last_err})")
+    print("OpenDota API недоступен, использую локальные данные")
     print(f"Переход на статические данные")
 
     if status_cb:
@@ -2309,11 +2318,22 @@ class SynergiesPage(QWidget):
         self.main_layout.setSpacing(14)
 
         title = QLabel("🤝 Лучшие Синергии")
-        title.setStyleSheet(f"color: {COLOR_TEXT_WHITE}; font-size: 28px; font-weight: bold;")
+        title.setStyleSheet("""
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Arial;
+        """)
+        title.setAlignment(Qt.AlignCenter)
         self.main_layout.addWidget(title)
 
         subtitle = QLabel("Найди идеальную команду из 5 героев")
-        subtitle.setStyleSheet(f"color: {COLOR_TEXT_GRAY}; font-size: 14px;")
+        subtitle.setStyleSheet("""
+            color: #AAAAAA;
+            font-size: 14px;
+            font-family: 'Segoe UI', Arial;
+        """)
+        subtitle.setAlignment(Qt.AlignCenter)
         self.main_layout.addWidget(subtitle)
 
         user_heroes_frame = QFrame()
@@ -2323,7 +2343,12 @@ class SynergiesPage(QWidget):
         user_heroes_layout.setSpacing(8)
 
         label = QLabel("🎯 Герои которых ты хочешь пикнуть (опционально)")
-        label.setStyleSheet(f"color: {COLOR_TEXT_WHITE}; font-size: 16px; font-weight: bold;")
+        label.setStyleSheet("""
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Arial;
+        """)
         user_heroes_layout.addWidget(label)
 
         search_layout = QHBoxLayout()
@@ -2337,27 +2362,68 @@ class SynergiesPage(QWidget):
         user_heroes_layout.addLayout(search_layout)
 
         self.selected_heroes_display = QLabel("Пока никто не выбран")
-        self.selected_heroes_display.setStyleSheet(f"color: {COLOR_TEXT_GRAY}; font-size: 12px;")
+        self.selected_heroes_display.setStyleSheet("""
+            color: #AAAAAA;
+            font-size: 12px;
+            font-family: 'Segoe UI', Arial;
+        """)
         self.selected_heroes_display.setWordWrap(True)
         user_heroes_layout.addWidget(self.selected_heroes_display)
 
         self.main_layout.addWidget(user_heroes_frame)
 
         generate_btn = QPushButton("🔮 СГЕНЕРИРОВАТЬ ЛУЧШУЮ СИНЕРГИЮ")
+        generate_btn.setCursor(Qt.PointingHandCursor)
+        generate_btn.setStyleSheet("""
+            QPushButton {
+                background-color: rgba(255, 0, 0, 0.8);
+                color: white;
+                border: none;
+                border-radius: 12px;
+                padding: 20px;
+                font-size: 18px;
+                font-weight: bold;
+                font-family: 'Segoe UI', Arial;
+            }
+            QPushButton:hover {
+                background-color: rgba(255, 51, 51, 0.9);
+            }
+            QPushButton:pressed {
+                background-color: rgba(200, 0, 0, 1.0);
+                padding-top: 22px;
+                padding-bottom: 18px;
+            }
+        """)
         generate_btn.clicked.connect(self.generate_best_synergy)
         self.main_layout.addWidget(generate_btn)
 
-        self.result_info = QLabel("Здесь появится синергия")
-        self.result_info.setWordWrap(True)
-        self.result_info.setStyleSheet(f"color: {COLOR_TEXT_WHITE}; font-size: 13px;")
-        self.main_layout.addWidget(self.result_info)
+        self.results_widget = QWidget()
+        self.results_layout = QVBoxLayout(self.results_widget)
+        self.results_layout.setContentsMargins(0, 10, 0, 0)
+        self.results_layout.setSpacing(20)
+        self.results_layout.setAlignment(Qt.AlignTop | Qt.AlignHCenter)
+        self.main_layout.addWidget(self.results_widget, stretch=1)
 
-        self.result_heroes = QLabel("")
-        self.result_heroes.setWordWrap(True)
-        self.result_heroes.setStyleSheet(f"color: {COLOR_TEXT_GRAY}; font-size: 12px;")
-        self.main_layout.addWidget(self.result_heroes)
+        self._show_synergy_placeholder()
 
         self.main_layout.addStretch(1)
+
+    def _show_synergy_placeholder(self):
+        while self.results_layout.count():
+            item = self.results_layout.takeAt(0)
+            if item.widget():
+                item.widget().deleteLater()
+
+        placeholder = QLabel("Здесь появится синергия")
+        placeholder.setAlignment(Qt.AlignCenter)
+        placeholder.setStyleSheet("""
+            color: #666666;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Arial;
+            padding: 40px;
+        """)
+        self.results_layout.addWidget(placeholder, alignment=Qt.AlignCenter)
 
     def load_synergies(self):
         data = load_json_file(SYNERGIES_FILE) or {}
@@ -2384,18 +2450,173 @@ class SynergiesPage(QWidget):
     def generate_best_synergy(self):
         synergy = self.find_best_synergy_with_heroes(self.selected_user_heroes)
         if not synergy:
-            self.result_info.setText("Не удалось найти синергию")
-            self.result_heroes.setText("")
+            self._show_synergy_placeholder()
             return
 
-        name = synergy.get("name", "Custom Synergy")
-        desc = synergy.get("description", "")
-        wr = float(synergy.get("win_rate", 0.0) or 0.0)
-        strategy = synergy.get("strategy", "")
-        heroes = synergy.get("heroes", [])
+        try:
+            winsound.MessageBeep(winsound.MB_OK)
+        except Exception:
+            pass
 
-        self.result_info.setText(f"🏆 {name}\n{desc}\n📊 Win Rate: {wr:.1f}%\n💡 {strategy}")
-        self.result_heroes.setText(" | ".join(h.replace("_", " ").title() for h in heroes))
+        self.display_synergy_result(synergy)
+
+    def display_synergy_result(self, synergy):
+        while self.results_layout.count():
+            item = self.results_layout.takeAt(0)
+            if item.widget():
+                item.widget().deleteLater()
+
+        center_widget = QWidget()
+        center_layout = QVBoxLayout(center_widget)
+        center_layout.setAlignment(Qt.AlignCenter)
+        center_layout.setSpacing(30)
+
+        info_card = QFrame()
+        info_card.setStyleSheet("""
+            QFrame {
+                background-color: rgba(28, 28, 28, 0.7);
+                border: 2px solid #FF0000;
+                border-radius: 15px;
+                padding: 30px;
+            }
+        """)
+        info_layout = QVBoxLayout(info_card)
+        info_layout.setSpacing(15)
+
+        name_label = QLabel(f"🏆 {synergy.get('name', 'Custom Synergy')}")
+        name_label.setAlignment(Qt.AlignCenter)
+        name_label.setStyleSheet("""
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Arial;
+        """)
+        info_layout.addWidget(name_label)
+
+        wr = float(synergy.get("win_rate", 0.0) or 0.0)
+        wr_label = QLabel(f"📊 Win Rate: {wr:.1f}%")
+        wr_label.setAlignment(Qt.AlignCenter)
+        wr_label.setStyleSheet("""
+            color: #00FF00;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Arial;
+        """)
+        info_layout.addWidget(wr_label)
+
+        desc_label = QLabel(synergy.get("description", ""))
+        desc_label.setAlignment(Qt.AlignCenter)
+        desc_label.setWordWrap(True)
+        desc_label.setStyleSheet("""
+            color: #CCCCCC;
+            font-size: 16px;
+            font-family: 'Segoe UI', Arial;
+        """)
+        info_layout.addWidget(desc_label)
+
+        strategy = synergy.get("strategy", "")
+        if strategy:
+            strat_label = QLabel(f"💡 {strategy}")
+            strat_label.setAlignment(Qt.AlignCenter)
+            strat_label.setWordWrap(True)
+            strat_label.setStyleSheet("""
+                color: #FFD700;
+                font-size: 14px;
+                font-style: italic;
+                font-family: 'Segoe UI', Arial;
+            """)
+            info_layout.addWidget(strat_label)
+
+        center_layout.addWidget(info_card)
+
+        heroes_label = QLabel("Состав команды:")
+        heroes_label.setAlignment(Qt.AlignCenter)
+        heroes_label.setStyleSheet("""
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Arial;
+        """)
+        center_layout.addWidget(heroes_label)
+
+        heroes_container = QHBoxLayout()
+        heroes_container.setAlignment(Qt.AlignCenter)
+        heroes_container.setSpacing(20)
+
+        roles_dict = synergy.get("roles", {}) if isinstance(synergy.get("roles", {}), dict) else {}
+        for hero_internal in synergy.get("heroes", []):
+            heroes_container.addWidget(self.create_synergy_hero_card(hero_internal, roles_dict))
+
+        center_layout.addLayout(heroes_container)
+        self.results_layout.addWidget(center_widget, alignment=Qt.AlignCenter)
+
+    def create_synergy_hero_card(self, hero_internal_name, roles_dict):
+        card = QFrame()
+        card.setFixedSize(160, 220)
+        card.setStyleSheet("""
+            QFrame {
+                background-color: rgba(28, 28, 28, 0.8);
+                border: 2px solid #FF0000;
+                border-radius: 12px;
+                padding: 0px;
+            }
+            QFrame:hover {
+                border-color: #FF3333;
+                background-color: rgba(40, 0, 0, 0.9);
+            }
+        """)
+
+        layout = QVBoxLayout(card)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
+
+        icon_label = QLabel()
+        icon_label.setFixedSize(160, 120)
+
+        pixmap = get_hero_icon_from_local(hero_internal_name, 160, 120)
+        if pixmap:
+            icon_label.setPixmap(pixmap)
+        else:
+            icon_label.setStyleSheet("background-color: #2C0000; color: white; font-size: 48px;")
+            icon_label.setText("⚔️")
+            icon_label.setAlignment(Qt.AlignCenter)
+
+        layout.addWidget(icon_label)
+
+        info_container = QWidget()
+        info_container.setStyleSheet("background-color: rgba(0, 0, 0, 0.6);")
+        info_layout = QVBoxLayout(info_container)
+        info_layout.setContentsMargins(10, 10, 10, 10)
+        info_layout.setSpacing(5)
+
+        hero_name = self.get_hero_display_name(hero_internal_name)
+        name_label = QLabel(hero_name)
+        name_label.setAlignment(Qt.AlignCenter)
+        name_label.setWordWrap(True)
+        name_label.setStyleSheet("""
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Arial;
+        """)
+        info_layout.addWidget(name_label)
+
+        role_name = roles_dict.get(hero_internal_name, "")
+        if role_name:
+            role_label = QLabel(role_name)
+            role_label.setAlignment(Qt.AlignCenter)
+            role_label.setStyleSheet("""
+                color: #FF6B6B;
+                font-size: 12px;
+                font-family: 'Segoe UI', Arial;
+            """)
+            info_layout.addWidget(role_label)
+
+        layout.addWidget(info_container)
+        return card
+
+    def get_hero_display_name(self, hero_internal_name):
+        return hero_internal_name.replace("_", " ").title()
 
     def find_best_synergy_with_heroes(self, user_heroes):
         if not self.synergies:
@@ -2903,14 +3124,49 @@ class MainWindow(QMainWindow):
         role_filter_layout = QHBoxLayout(self.counter_role_frame)
         role_filter_layout.setContentsMargins(0, 0, 0, 0)
         role_filter_layout.setSpacing(8)
-        role_filter_layout.addWidget(QLabel("Фильтр по роли:"))
+
+        role_label = QLabel("Фильтр по роли:")
+        role_label.setStyleSheet("""
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Arial;
+            margin-bottom: 10px;
+        """)
+        role_filter_layout.addWidget(role_label)
 
         self.counter_role_buttons = {}
         for role_name in ["All", "Carry", "Mider", "Offlaner", "Support", "Hard Support"]:
             role_btn = QPushButton(role_name)
             role_btn.setObjectName("RoleFilterButton")
             role_btn.setCheckable(True)
+            role_btn.setFixedHeight(40)
+            role_btn.setMinimumWidth(100)
             role_btn.setCursor(Qt.PointingHandCursor)
+            role_btn.setStyleSheet("""
+                QPushButton {
+                    background-color: rgba(28, 28, 28, 0.6);
+                    color: #AAAAAA;
+                    border: 2px solid #333333;
+                    border-radius: 10px;
+                    padding: 10px 15px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    font-family: 'Segoe UI', Arial;
+                }
+                QPushButton:checked {
+                    background-color: rgba(255, 0, 0, 0.8);
+                    color: white;
+                    border-color: #FF0000;
+                }
+                QPushButton:hover {
+                    background-color: rgba(255, 0, 0, 0.3);
+                    border-color: #FF0000;
+                }
+                QPushButton:pressed {
+                    background-color: rgba(200, 0, 0, 0.9);
+                }
+            """)
             role_btn.clicked.connect(lambda checked, r=role_name: self.on_counter_role_selected(r))
             self.counter_role_buttons[role_name] = role_btn
             role_filter_layout.addWidget(role_btn)
@@ -3084,7 +3340,7 @@ class MainWindow(QMainWindow):
         self.stack.addWidget(self.synergies_page)
 
         self.render_enemies()
-        self.calculate_counters()
+        self.request_counter_analysis()
 
         # GSI кеш (оптимизация - нет лагов!)
         self._gsi_team_cache = None
@@ -3186,8 +3442,7 @@ class MainWindow(QMainWindow):
             btn.setChecked(False)
         self.counter_role_buttons[role_name].setChecked(True)
         self.selected_counter_role = None if role_name == "All" else role_name
-        if self.current_counter_results:
-            self._render_counter_results(self.current_counter_results)
+        self.request_counter_analysis()
 
     def get_player_hero_from_gsi(self):
         for _ in range(2):
@@ -3313,8 +3568,8 @@ class MainWindow(QMainWindow):
             del item
 
         if not best_heroes:
-            placeholder_lbl = QLabel(">>> НЕТ РЕКОМЕНДАЦИЙ <<<")
-            placeholder_lbl.setStyleSheet(f"color: {COLOR_ACCENT}; padding: 50px 0; font-size: 16px;")
+            placeholder_lbl = QLabel(">>> ДОБАВЬТЕ ГЕРОЕВ ДЛЯ АНАЛИЗА <<<")
+            placeholder_lbl.setStyleSheet("color: #666666; padding: 50px 0; font-size: 16px; font-weight: bold; font-family: 'Segoe UI', Arial;")
             placeholder_lbl.setAlignment(Qt.AlignCenter)
             self.results_list_layout.addWidget(placeholder_lbl)
             self.results_list_layout.addStretch(1)
@@ -4276,18 +4531,18 @@ class MainWindow(QMainWindow):
                 self.selected_enemies) < MAX_ENEMIES and hero_slug not in self.selected_enemies:
             self.selected_enemies.append(hero_slug)
             self.render_enemies()
-            self.calculate_counters()
+            self.request_counter_analysis()
 
     def remove_enemy(self, hero_slug):
         if hero_slug in self.selected_enemies:
             self.selected_enemies.remove(hero_slug)
             self.render_enemies()
-            self.calculate_counters()
+            self.request_counter_analysis()
 
     def clear_enemies(self):
         self.selected_enemies = []
         self.render_enemies()
-        self.calculate_counters()
+        self.request_counter_analysis()
 
     def create_placeholder_icon_label(self, hero_slug, width, height):
         initial = hero_slug[0].upper() if hero_slug else "?"
@@ -4349,6 +4604,31 @@ class MainWindow(QMainWindow):
         if self.enemies_list_layout.itemAt(self.enemies_list_layout.count() - 1) is None:
             self.enemies_list_layout.addStretch(1)
 
+    def request_counter_analysis(self):
+        self._show_counter_loading_state()
+        QTimer.singleShot(0, self.calculate_counters)
+
+    def _show_counter_loading_state(self):
+        self.animation_timer.stop()
+        self.animated_results = []
+        while self.results_list_layout.count() > 0:
+            item = self.results_list_layout.takeAt(0)
+            if item.widget():
+                item.widget().deleteLater()
+            del item
+
+        loading = QLabel("⚡ АНАЛИЗ...")
+        loading.setStyleSheet("""
+            color: #FF0000;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Arial;
+            padding: 50px 0;
+        """)
+        loading.setAlignment(Qt.AlignCenter)
+        self.results_list_layout.addWidget(loading)
+        self.results_list_layout.addStretch(1)
+
     def calculate_counters(self):
         self.current_counter_results = []
         self._show_counterpick_items([])
@@ -4356,7 +4636,7 @@ class MainWindow(QMainWindow):
         if not self.selected_enemies:
             self._render_counter_results([])
             placeholder_lbl = QLabel(">>> ДОБАВЬТЕ ГЕРОЕВ ДЛЯ АНАЛИЗА <<<")
-            placeholder_lbl.setStyleSheet(f"color: {COLOR_TEXT_GRAY}; padding: 50px 0; font-size: 16px;")
+            placeholder_lbl.setStyleSheet(f"color: {COLOR_TEXT_GRAY}; padding: 50px 0; font-size: 16px; font-family: 'Segoe UI', Arial;")
             placeholder_lbl.setAlignment(Qt.AlignCenter)
             self.results_list_layout.addWidget(placeholder_lbl)
             self.results_list_layout.addStretch(1)
@@ -4393,9 +4673,8 @@ class MainWindow(QMainWindow):
 
         if not best_heroes:
             self._render_counter_results([])
-            no_data = "Нет героев для выбранной роли" if self.selected_counter_role else ">>> НЕТ РЕКОМЕНДАЦИЙ <<<"
-            placeholder_lbl = QLabel(no_data)
-            placeholder_lbl.setStyleSheet(f"color: {COLOR_ACCENT}; padding: 50px 0; font-size: 16px;")
+            placeholder_lbl = QLabel(">>> ДОБАВЬТЕ ГЕРОЕВ ДЛЯ АНАЛИЗА <<<")
+            placeholder_lbl.setStyleSheet(f"color: {COLOR_TEXT_GRAY}; padding: 50px 0; font-size: 16px; font-family: 'Segoe UI', Arial;")
             placeholder_lbl.setAlignment(Qt.AlignCenter)
             self.results_list_layout.addWidget(placeholder_lbl)
             self.results_list_layout.addStretch(1)
