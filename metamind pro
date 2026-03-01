@@ -292,7 +292,7 @@ def start_gsi_server():
 
 # ================= КОНФИГУРАЦИЯ ПРИЛОЖЕНИЯ =================
 
-APP_VERSION = "6.4"
+APP_VERSION = "6.4.1"
 CACHE_UPDATE_HOURS = 24
 APP_DATA_FOLDER = "MetaMind"
 
@@ -2810,7 +2810,7 @@ class MainWindow(QMainWindow):
         self._signals.done.connect(self._on_cache_refresh_done)
         self._refresh_in_progress = False
 
-        self.setWindowTitle("MetaMind")
+        self.setWindowTitle(f"MetaMind v{APP_VERSION}")
         self.setGeometry(100, 100, 1200, 850)
         self.setMinimumSize(800, 600)
         # Главное окно снова поверх всех приложений (как раньше)
