@@ -32,7 +32,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #  НАСТРОЙКИ
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-BOT_TOKEN = "8750744135:AAHVYJLZHsDnYCznHKFDy_aQ4z4q1Q-tTMg"
+BOT_TOKEN = "8750744135:AAHVYJLZHsDnYCznHKFDy_aQ"
 ADMIN_IDS  = {6611491689}   # Telegram ID администраторов
 REPORT_CHAT_ID = -1003970043019  # ID закрытого чата для итогов матчей
 
