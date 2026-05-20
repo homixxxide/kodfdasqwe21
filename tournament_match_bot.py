@@ -16,6 +16,7 @@ from typing import Optional
 from zoneinfo import ZoneInfo
 
 from aiogram import Bot, Dispatcher, F, Router
+from aiogram.exceptions import TelegramMigrateToChat
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode, ChatAction
 from aiogram.filters import Command, CommandStart, StateFilter
@@ -31,9 +32,9 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #  НАСТРОЙКИ
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-BOT_TOKEN = "8696797037:AAFKaTA_tszKCJJWrtE4VruPZktLXqKXUJ4"
+BOT_TOKEN = "8750744135:AAHVYJLZHsDnYCznHKFDy_aQ4z4q1Q-tTMg"
 ADMIN_IDS  = {6611491689}   # Telegram ID администраторов
-REPORT_CHAT_ID = None  # ID закрытого чата для итогов матчей (например: -1001234567890)
+REPORT_CHAT_ID = -1003970043019  # ID закрытого чата для итогов матчей
 
 MSK = ZoneInfo("Europe/Moscow")
 NOTIFY_BEFORE_MINUTES = 20   # за сколько минут уведомлять
@@ -285,6 +286,7 @@ async def notify_both_teams(match_row, text: str, reply_markup=None):
 
 
 async def post_match_result_summary(match_row):
+    global REPORT_CHAT_ID
     if not REPORT_CHAT_ID:
         return
     score = "1:0" if match_row["winner_id"] == match_row["team1_id"] else "0:1"
@@ -297,6 +299,13 @@ async def post_match_result_summary(match_row):
     )
     try:
         await bot_instance.send_message(REPORT_CHAT_ID, text)
+    except TelegramMigrateToChat as e:
+        REPORT_CHAT_ID = e.migrate_to_chat_id
+        log.warning("Чат отчётов мигрирован, обновляю REPORT_CHAT_ID на %s", REPORT_CHAT_ID)
+        try:
+            await bot_instance.send_message(REPORT_CHAT_ID, text)
+        except Exception as ex:
+            log.warning("Не удалось отправить итог в REPORT_CHAT_ID после миграции: %s", ex)
     except Exception as e:
         log.warning("Не удалось отправить итог в REPORT_CHAT_ID: %s", e)
 
@@ -1310,7 +1319,7 @@ async def receive_any_photo(msg: Message, state: FSMContext):
 
     # Остальные фото игнорируем
     cur_state = await state.get_state()
-    if not cur_state:
+    if not cur_state and msg.chat.type == "private":
         await msg.answer(
             "Чтобы отправить скрин, сначала нажми нужную кнопку в сообщении от бота.",
             reply_markup=kb_home()
@@ -1382,6 +1391,10 @@ async def cb_complaint(cb: CallbackQuery, callback_data: ComplaintCB):
 
 @router.message()
 async def fallback(msg: Message, state: FSMContext):
+    # В группах/каналах бот не ведёт диалог игроков
+    if msg.chat.type != "private":
+        return
+
     if await state.get_state() is None:
         uid      = msg.from_user.id
         cap_team = db_get_captain_team(uid)
