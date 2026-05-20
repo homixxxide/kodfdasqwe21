@@ -1,0 +1,6329 @@
+{
+  "synergies": [
+    {
+      "id": 1,
+      "name": "Meta Synergy #63",
+      "heroes": [
+        "ember_spirit",
+        "sniper",
+        "spirit_breaker",
+        "earthshaker",
+        "ancient_apparition"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 59.9,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов sniper и инициации spirit_breaker.",
+      "source": "fallback-generator",
+      "roles": {
+        "ember_spirit": "Carry",
+        "sniper": "Mider",
+        "spirit_breaker": "Offlaner",
+        "earthshaker": "Support",
+        "ancient_apparition": "Hard Support"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Meta Synergy #6",
+      "heroes": [
+        "wraith_king",
+        "invoker",
+        "elder_titan",
+        "furion",
+        "warlock"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 59.8,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов invoker и инициации elder_titan.",
+      "source": "fallback-generator",
+      "roles": {
+        "wraith_king": "Carry",
+        "invoker": "Mider",
+        "elder_titan": "Offlaner",
+        "furion": "Support",
+        "warlock": "Hard Support"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Meta Synergy #56",
+      "heroes": [
+        "void_spirit",
+        "leshrac",
+        "night_stalker",
+        "largo",
+        "oracle"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 59.8,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов leshrac и инициации night_stalker.",
+      "source": "fallback-generator",
+      "roles": {
+        "void_spirit": "Carry",
+        "leshrac": "Mider",
+        "night_stalker": "Offlaner",
+        "largo": "Support",
+        "oracle": "Hard Support"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Meta Synergy #24",
+      "heroes": [
+        "faceless_void",
+        "tinker",
+        "slardar",
+        "techies",
+        "keeper_of_the_light"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 59.6,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов tinker и инициации slardar.",
+      "source": "fallback-generator",
+      "roles": {
+        "faceless_void": "Carry",
+        "tinker": "Mider",
+        "slardar": "Offlaner",
+        "techies": "Support",
+        "keeper_of_the_light": "Hard Support"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Meta Synergy #22",
+      "heroes": [
+        "anti_mage",
+        "alchemist",
+        "kez",
+        "lion",
+        "warlock"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 59.4,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов alchemist и инициации kez.",
+      "source": "fallback-generator",
+      "roles": {
+        "anti_mage": "Carry",
+        "alchemist": "Mider",
+        "kez": "Offlaner",
+        "lion": "Support",
+        "warlock": "Hard Support"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Meta Synergy #38",
+      "heroes": [
+        "phantom_lancer",
+        "batrider",
+        "axe",
+        "clockwerk",
+        "undying"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 59.4,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов batrider и инициации axe.",
+      "source": "fallback-generator",
+      "roles": {
+        "phantom_lancer": "Carry",
+        "batrider": "Mider",
+        "axe": "Offlaner",
+        "clockwerk": "Support",
+        "undying": "Hard Support"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Meta Synergy #65",
+      "heroes": [
+        "gyrocopter",
+        "windranger",
+        "enchantress",
+        "earth_spirit",
+        "omniknight"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 59.4,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов windranger и инициации enchantress.",
+      "source": "fallback-generator",
+      "roles": {
+        "gyrocopter": "Carry",
+        "windranger": "Mider",
+        "enchantress": "Offlaner",
+        "earth_spirit": "Support",
+        "omniknight": "Hard Support"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Meta Synergy #13",
+      "heroes": [
+        "weaver",
+        "kunkka",
+        "kez",
+        "clockwerk",
+        "silencer"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 59.3,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов kunkka и инициации kez.",
+      "source": "fallback-generator",
+      "roles": {
+        "weaver": "Carry",
+        "kunkka": "Mider",
+        "kez": "Offlaner",
+        "clockwerk": "Support",
+        "silencer": "Hard Support"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Meta Synergy #77",
+      "heroes": [
+        "weaver",
+        "tiny",
+        "largo",
+        "earthshaker",
+        "snapfire"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 59.3,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов tiny и инициации largo.",
+      "source": "fallback-generator",
+      "roles": {
+        "weaver": "Carry",
+        "tiny": "Mider",
+        "largo": "Offlaner",
+        "earthshaker": "Support",
+        "snapfire": "Hard Support"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Meta Synergy #30",
+      "heroes": [
+        "kez",
+        "kunkka",
+        "slardar",
+        "dark_willow",
+        "ringmaster"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 59.1,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов kunkka и инициации slardar.",
+      "source": "fallback-generator",
+      "roles": {
+        "kez": "Carry",
+        "kunkka": "Mider",
+        "slardar": "Offlaner",
+        "dark_willow": "Support",
+        "ringmaster": "Hard Support"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Meta Synergy #19",
+      "heroes": [
+        "ember_spirit",
+        "lina",
+        "elder_titan",
+        "lion",
+        "dark_willow"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 59.0,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов lina и инициации elder_titan.",
+      "source": "fallback-generator",
+      "roles": {
+        "ember_spirit": "Carry",
+        "lina": "Mider",
+        "elder_titan": "Offlaner",
+        "lion": "Support",
+        "dark_willow": "Hard Support"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Meta Synergy #59",
+      "heroes": [
+        "templar_assassin",
+        "sniper",
+        "magnus",
+        "ringmaster",
+        "marci"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 59.0,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов sniper и инициации magnus.",
+      "source": "fallback-generator",
+      "roles": {
+        "templar_assassin": "Carry",
+        "sniper": "Mider",
+        "magnus": "Offlaner",
+        "ringmaster": "Support",
+        "marci": "Hard Support"
+      }
+    },
+    {
+      "id": 13,
+      "name": "Meta Synergy #8",
+      "heroes": [
+        "ursa",
+        "broodmother",
+        "underlord",
+        "largo",
+        "io"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 58.9,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов broodmother и инициации underlord.",
+      "source": "fallback-generator",
+      "roles": {
+        "ursa": "Carry",
+        "broodmother": "Mider",
+        "underlord": "Offlaner",
+        "largo": "Support",
+        "io": "Hard Support"
+      }
+    },
+    {
+      "id": 14,
+      "name": "Meta Synergy #32",
+      "heroes": [
+        "ember_spirit",
+        "sniper",
+        "enchantress",
+        "earthshaker",
+        "disruptor"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 58.9,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов sniper и инициации enchantress.",
+      "source": "fallback-generator",
+      "roles": {
+        "ember_spirit": "Carry",
+        "sniper": "Mider",
+        "enchantress": "Offlaner",
+        "earthshaker": "Support",
+        "disruptor": "Hard Support"
+      }
+    },
+    {
+      "id": 15,
+      "name": "Meta Synergy #37",
+      "heroes": [
+        "phantom_lancer",
+        "dragon_knight",
+        "kez",
+        "elder_titan",
+        "chen"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 58.9,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов dragon_knight и инициации kez.",
+      "source": "fallback-generator",
+      "roles": {
+        "phantom_lancer": "Carry",
+        "dragon_knight": "Mider",
+        "kez": "Offlaner",
+        "elder_titan": "Support",
+        "chen": "Hard Support"
+      }
+    },
+    {
+      "id": 16,
+      "name": "Meta Synergy #60",
+      "heroes": [
+        "phantom_assassin",
+        "void_spirit",
+        "viper",
+        "venomancer",
+        "undying"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 58.9,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов void_spirit и инициации viper.",
+      "source": "fallback-generator",
+      "roles": {
+        "phantom_assassin": "Carry",
+        "void_spirit": "Mider",
+        "viper": "Offlaner",
+        "venomancer": "Support",
+        "undying": "Hard Support"
+      }
+    },
+    {
+      "id": 17,
+      "name": "Meta Synergy #5",
+      "heroes": [
+        "terrorblade",
+        "templar_assassin",
+        "razor",
+        "mirana",
+        "vengeful_spirit"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 58.8,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов templar_assassin и инициации razor.",
+      "source": "fallback-generator",
+      "roles": {
+        "terrorblade": "Carry",
+        "templar_assassin": "Mider",
+        "razor": "Offlaner",
+        "mirana": "Support",
+        "vengeful_spirit": "Hard Support"
+      }
+    },
+    {
+      "id": 18,
+      "name": "Meta Synergy #11",
+      "heroes": [
+        "monkey_king",
+        "huskar",
+        "dragon_knight",
+        "techies",
+        "winter_wyvern"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 58.7,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов huskar и инициации dragon_knight.",
+      "source": "fallback-generator",
+      "roles": {
+        "monkey_king": "Carry",
+        "huskar": "Mider",
+        "dragon_knight": "Offlaner",
+        "techies": "Support",
+        "winter_wyvern": "Hard Support"
+      }
+    },
+    {
+      "id": 19,
+      "name": "Meta Synergy #33",
+      "heroes": [
+        "terrorblade",
+        "queen_of_pain",
+        "viper",
+        "dark_willow",
+        "winter_wyvern"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 58.4,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов queen_of_pain и инициации viper.",
+      "source": "fallback-generator",
+      "roles": {
+        "terrorblade": "Carry",
+        "queen_of_pain": "Mider",
+        "viper": "Offlaner",
+        "dark_willow": "Support",
+        "winter_wyvern": "Hard Support"
+      }
+    },
+    {
+      "id": 20,
+      "name": "Meta Synergy #16",
+      "heroes": [
+        "slark",
+        "outworld_destroyer",
+        "sand_king",
+        "bounty_hunter",
+        "oracle"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 58.3,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов outworld_destroyer и инициации sand_king.",
+      "source": "fallback-generator",
+      "roles": {
+        "slark": "Carry",
+        "outworld_destroyer": "Mider",
+        "sand_king": "Offlaner",
+        "bounty_hunter": "Support",
+        "oracle": "Hard Support"
+      }
+    },
+    {
+      "id": 21,
+      "name": "Meta Synergy #74",
+      "heroes": [
+        "troll_warlord",
+        "leshrac",
+        "axe",
+        "snapfire",
+        "hoodwink"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 58.2,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов leshrac и инициации axe.",
+      "source": "fallback-generator",
+      "roles": {
+        "troll_warlord": "Carry",
+        "leshrac": "Mider",
+        "axe": "Offlaner",
+        "snapfire": "Support",
+        "hoodwink": "Hard Support"
+      }
+    },
+    {
+      "id": 22,
+      "name": "Meta Synergy #36",
+      "heroes": [
+        "terrorblade",
+        "queen_of_pain",
+        "axe",
+        "earth_spirit",
+        "ringmaster"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 58.0,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов queen_of_pain и инициации axe.",
+      "source": "fallback-generator",
+      "roles": {
+        "terrorblade": "Carry",
+        "queen_of_pain": "Mider",
+        "axe": "Offlaner",
+        "earth_spirit": "Support",
+        "ringmaster": "Hard Support"
+      }
+    },
+    {
+      "id": 23,
+      "name": "Meta Synergy #50",
+      "heroes": [
+        "medusa",
+        "huskar",
+        "pangolier",
+        "pudge",
+        "chen"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 57.7,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов huskar и инициации pangolier.",
+      "source": "fallback-generator",
+      "roles": {
+        "medusa": "Carry",
+        "huskar": "Mider",
+        "pangolier": "Offlaner",
+        "pudge": "Support",
+        "chen": "Hard Support"
+      }
+    },
+    {
+      "id": 24,
+      "name": "Meta Synergy #7",
+      "heroes": [
+        "spectre",
+        "broodmother",
+        "death_prophet",
+        "sand_king",
+        "chen"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 57.6,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов broodmother и инициации death_prophet.",
+      "source": "fallback-generator",
+      "roles": {
+        "spectre": "Carry",
+        "broodmother": "Mider",
+        "death_prophet": "Offlaner",
+        "sand_king": "Support",
+        "chen": "Hard Support"
+      }
+    },
+    {
+      "id": 25,
+      "name": "Meta Synergy #66",
+      "heroes": [
+        "weaver",
+        "outworld_destroyer",
+        "magnus",
+        "enigma",
+        "abaddon"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 57.3,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов outworld_destroyer и инициации magnus.",
+      "source": "fallback-generator",
+      "roles": {
+        "weaver": "Carry",
+        "outworld_destroyer": "Mider",
+        "magnus": "Offlaner",
+        "enigma": "Support",
+        "abaddon": "Hard Support"
+      }
+    },
+    {
+      "id": 26,
+      "name": "Meta Synergy #67",
+      "heroes": [
+        "muerta",
+        "broodmother",
+        "slardar",
+        "pugna",
+        "jakiro"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 57.3,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов broodmother и инициации slardar.",
+      "source": "fallback-generator",
+      "roles": {
+        "muerta": "Carry",
+        "broodmother": "Mider",
+        "slardar": "Offlaner",
+        "pugna": "Support",
+        "jakiro": "Hard Support"
+      }
+    },
+    {
+      "id": 27,
+      "name": "Meta Synergy #70",
+      "heroes": [
+        "razor",
+        "lina",
+        "underlord",
+        "tusk",
+        "shadow_demon"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 57.3,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов lina и инициации underlord.",
+      "source": "fallback-generator",
+      "roles": {
+        "razor": "Carry",
+        "lina": "Mider",
+        "underlord": "Offlaner",
+        "tusk": "Support",
+        "shadow_demon": "Hard Support"
+      }
+    },
+    {
+      "id": 28,
+      "name": "Meta Synergy #28",
+      "heroes": [
+        "ursa",
+        "death_prophet",
+        "axe",
+        "earth_spirit",
+        "treant_protector"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 57.0,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов death_prophet и инициации axe.",
+      "source": "fallback-generator",
+      "roles": {
+        "ursa": "Carry",
+        "death_prophet": "Mider",
+        "axe": "Offlaner",
+        "earth_spirit": "Support",
+        "treant_protector": "Hard Support"
+      }
+    },
+    {
+      "id": 29,
+      "name": "Meta Synergy #72",
+      "heroes": [
+        "medusa",
+        "storm_spirit",
+        "tidehunter",
+        "skywrath_mage",
+        "keeper_of_the_light"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.9,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов storm_spirit и инициации tidehunter.",
+      "source": "fallback-generator",
+      "roles": {
+        "medusa": "Carry",
+        "storm_spirit": "Mider",
+        "tidehunter": "Offlaner",
+        "skywrath_mage": "Support",
+        "keeper_of_the_light": "Hard Support"
+      }
+    },
+    {
+      "id": 30,
+      "name": "Meta Synergy #3",
+      "heroes": [
+        "phantom_assassin",
+        "void_spirit",
+        "enigma",
+        "skywrath_mage",
+        "disruptor"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.7,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов void_spirit и инициации enigma.",
+      "source": "fallback-generator",
+      "roles": {
+        "phantom_assassin": "Carry",
+        "void_spirit": "Mider",
+        "enigma": "Offlaner",
+        "skywrath_mage": "Support",
+        "disruptor": "Hard Support"
+      }
+    },
+    {
+      "id": 31,
+      "name": "Meta Synergy #42",
+      "heroes": [
+        "faceless_void",
+        "necrophos",
+        "viper",
+        "mirana",
+        "silencer"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.6,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов necrophos и инициации viper.",
+      "source": "fallback-generator",
+      "roles": {
+        "faceless_void": "Carry",
+        "necrophos": "Mider",
+        "viper": "Offlaner",
+        "mirana": "Support",
+        "silencer": "Hard Support"
+      }
+    },
+    {
+      "id": 32,
+      "name": "Meta Synergy #14",
+      "heroes": [
+        "medusa",
+        "viper",
+        "slardar",
+        "skywrath_mage",
+        "dark_willow"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.5,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов viper и инициации slardar.",
+      "source": "fallback-generator",
+      "roles": {
+        "medusa": "Carry",
+        "viper": "Mider",
+        "slardar": "Offlaner",
+        "skywrath_mage": "Support",
+        "dark_willow": "Hard Support"
+      }
+    },
+    {
+      "id": 33,
+      "name": "Meta Synergy #43",
+      "heroes": [
+        "juggernaut",
+        "templar_assassin",
+        "enigma",
+        "techies",
+        "lich"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.5,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов templar_assassin и инициации enigma.",
+      "source": "fallback-generator",
+      "roles": {
+        "juggernaut": "Carry",
+        "templar_assassin": "Mider",
+        "enigma": "Offlaner",
+        "techies": "Support",
+        "lich": "Hard Support"
+      }
+    },
+    {
+      "id": 34,
+      "name": "Meta Synergy #48",
+      "heroes": [
+        "drow_ranger",
+        "largo",
+        "axe",
+        "techies",
+        "snapfire"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.4,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов largo и инициации axe.",
+      "source": "fallback-generator",
+      "roles": {
+        "drow_ranger": "Carry",
+        "largo": "Mider",
+        "axe": "Offlaner",
+        "techies": "Support",
+        "snapfire": "Hard Support"
+      }
+    },
+    {
+      "id": 35,
+      "name": "Meta Synergy #52",
+      "heroes": [
+        "naga_siren",
+        "viper",
+        "dark_seer",
+        "dark_willow",
+        "disruptor"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.4,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов viper и инициации dark_seer.",
+      "source": "fallback-generator",
+      "roles": {
+        "naga_siren": "Carry",
+        "viper": "Mider",
+        "dark_seer": "Offlaner",
+        "dark_willow": "Support",
+        "disruptor": "Hard Support"
+      }
+    },
+    {
+      "id": 36,
+      "name": "Meta Synergy #21",
+      "heroes": [
+        "gyrocopter",
+        "leshrac",
+        "death_prophet",
+        "snapfire",
+        "oracle"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.3,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов leshrac и инициации death_prophet.",
+      "source": "fallback-generator",
+      "roles": {
+        "gyrocopter": "Carry",
+        "leshrac": "Mider",
+        "death_prophet": "Offlaner",
+        "snapfire": "Support",
+        "oracle": "Hard Support"
+      }
+    },
+    {
+      "id": 37,
+      "name": "Meta Synergy #25",
+      "heroes": [
+        "wraith_king",
+        "largo",
+        "enchantress",
+        "pugna",
+        "ringmaster"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.3,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов largo и инициации enchantress.",
+      "source": "fallback-generator",
+      "roles": {
+        "wraith_king": "Carry",
+        "largo": "Mider",
+        "enchantress": "Offlaner",
+        "pugna": "Support",
+        "ringmaster": "Hard Support"
+      }
+    },
+    {
+      "id": 38,
+      "name": "Meta Synergy #61",
+      "heroes": [
+        "bloodseeker",
+        "kez",
+        "viper",
+        "techies",
+        "snapfire"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.3,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов kez и инициации viper.",
+      "source": "fallback-generator",
+      "roles": {
+        "bloodseeker": "Carry",
+        "kez": "Mider",
+        "viper": "Offlaner",
+        "techies": "Support",
+        "snapfire": "Hard Support"
+      }
+    },
+    {
+      "id": 39,
+      "name": "Meta Synergy #17",
+      "heroes": [
+        "faceless_void",
+        "batrider",
+        "razor",
+        "pudge",
+        "disruptor"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.2,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов batrider и инициации razor.",
+      "source": "fallback-generator",
+      "roles": {
+        "faceless_void": "Carry",
+        "batrider": "Mider",
+        "razor": "Offlaner",
+        "pudge": "Support",
+        "disruptor": "Hard Support"
+      }
+    },
+    {
+      "id": 40,
+      "name": "Meta Synergy #15",
+      "heroes": [
+        "ember_spirit",
+        "pangolier",
+        "death_prophet",
+        "skywrath_mage",
+        "dazzle"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.1,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов pangolier и инициации death_prophet.",
+      "source": "fallback-generator",
+      "roles": {
+        "ember_spirit": "Carry",
+        "pangolier": "Mider",
+        "death_prophet": "Offlaner",
+        "skywrath_mage": "Support",
+        "dazzle": "Hard Support"
+      }
+    },
+    {
+      "id": 41,
+      "name": "Meta Synergy #75",
+      "heroes": [
+        "ember_spirit",
+        "death_prophet",
+        "batrider",
+        "hoodwink",
+        "treant_protector"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 56.1,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов death_prophet и инициации batrider.",
+      "source": "fallback-generator",
+      "roles": {
+        "ember_spirit": "Carry",
+        "death_prophet": "Mider",
+        "batrider": "Offlaner",
+        "hoodwink": "Support",
+        "treant_protector": "Hard Support"
+      }
+    },
+    {
+      "id": 42,
+      "name": "Meta Synergy #40",
+      "heroes": [
+        "slark",
+        "alchemist",
+        "centaur_warrunner",
+        "rubick",
+        "lich"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 55.8,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов alchemist и инициации centaur_warrunner.",
+      "source": "fallback-generator",
+      "roles": {
+        "slark": "Carry",
+        "alchemist": "Mider",
+        "centaur_warrunner": "Offlaner",
+        "rubick": "Support",
+        "lich": "Hard Support"
+      }
+    },
+    {
+      "id": 43,
+      "name": "Meta Synergy #76",
+      "heroes": [
+        "troll_warlord",
+        "outworld_destroyer",
+        "elder_titan",
+        "nyx_assassin",
+        "marci"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 55.7,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов outworld_destroyer и инициации elder_titan.",
+      "source": "fallback-generator",
+      "roles": {
+        "troll_warlord": "Carry",
+        "outworld_destroyer": "Mider",
+        "elder_titan": "Offlaner",
+        "nyx_assassin": "Support",
+        "marci": "Hard Support"
+      }
+    },
+    {
+      "id": 44,
+      "name": "Meta Synergy #47",
+      "heroes": [
+        "faceless_void",
+        "necrophos",
+        "death_prophet",
+        "tusk",
+        "oracle"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 55.5,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов necrophos и инициации death_prophet.",
+      "source": "fallback-generator",
+      "roles": {
+        "faceless_void": "Carry",
+        "necrophos": "Mider",
+        "death_prophet": "Offlaner",
+        "tusk": "Support",
+        "oracle": "Hard Support"
+      }
+    },
+    {
+      "id": 45,
+      "name": "Meta Synergy #64",
+      "heroes": [
+        "monkey_king",
+        "void_spirit",
+        "primal_beast",
+        "rubick",
+        "treant_protector"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 55.5,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов void_spirit и инициации primal_beast.",
+      "source": "fallback-generator",
+      "roles": {
+        "monkey_king": "Carry",
+        "void_spirit": "Mider",
+        "primal_beast": "Offlaner",
+        "rubick": "Support",
+        "treant_protector": "Hard Support"
+      }
+    },
+    {
+      "id": 46,
+      "name": "Meta Synergy #69",
+      "heroes": [
+        "lifestealer",
+        "keeper_of_the_light",
+        "spirit_breaker",
+        "tiny",
+        "disruptor"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 55.5,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов keeper_of_the_light и инициации spirit_breaker.",
+      "source": "fallback-generator",
+      "roles": {
+        "lifestealer": "Carry",
+        "keeper_of_the_light": "Mider",
+        "spirit_breaker": "Offlaner",
+        "tiny": "Support",
+        "disruptor": "Hard Support"
+      }
+    },
+    {
+      "id": 47,
+      "name": "Meta Synergy #44",
+      "heroes": [
+        "wraith_king",
+        "kunkka",
+        "spirit_breaker",
+        "skywrath_mage",
+        "undying"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 55.2,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов kunkka и инициации spirit_breaker.",
+      "source": "fallback-generator",
+      "roles": {
+        "wraith_king": "Carry",
+        "kunkka": "Mider",
+        "spirit_breaker": "Offlaner",
+        "skywrath_mage": "Support",
+        "undying": "Hard Support"
+      }
+    },
+    {
+      "id": 48,
+      "name": "Meta Synergy #73",
+      "heroes": [
+        "templar_assassin",
+        "dragon_knight",
+        "beastmaster",
+        "grimstroke",
+        "treant_protector"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 55.1,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов dragon_knight и инициации beastmaster.",
+      "source": "fallback-generator",
+      "roles": {
+        "templar_assassin": "Carry",
+        "dragon_knight": "Mider",
+        "beastmaster": "Offlaner",
+        "grimstroke": "Support",
+        "treant_protector": "Hard Support"
+      }
+    },
+    {
+      "id": 49,
+      "name": "Meta Synergy #26",
+      "heroes": [
+        "gyrocopter",
+        "arc_warden",
+        "viper",
+        "techies",
+        "enchantress"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 55.0,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов arc_warden и инициации viper.",
+      "source": "fallback-generator",
+      "roles": {
+        "gyrocopter": "Carry",
+        "arc_warden": "Mider",
+        "viper": "Offlaner",
+        "techies": "Support",
+        "enchantress": "Hard Support"
+      }
+    },
+    {
+      "id": 50,
+      "name": "Meta Synergy #9",
+      "heroes": [
+        "sven",
+        "meepo",
+        "death_prophet",
+        "phoenix",
+        "vengeful_spirit"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 54.8,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов meepo и инициации death_prophet.",
+      "source": "fallback-generator",
+      "roles": {
+        "sven": "Carry",
+        "meepo": "Mider",
+        "death_prophet": "Offlaner",
+        "phoenix": "Support",
+        "vengeful_spirit": "Hard Support"
+      }
+    },
+    {
+      "id": 51,
+      "name": "Meta Synergy #55",
+      "heroes": [
+        "bloodseeker",
+        "kunkka",
+        "night_stalker",
+        "techies",
+        "warlock"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 54.8,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов kunkka и инициации night_stalker.",
+      "source": "fallback-generator",
+      "roles": {
+        "bloodseeker": "Carry",
+        "kunkka": "Mider",
+        "night_stalker": "Offlaner",
+        "techies": "Support",
+        "warlock": "Hard Support"
+      }
+    },
+    {
+      "id": 52,
+      "name": "Meta Synergy #18",
+      "heroes": [
+        "anti_mage",
+        "outworld_destroyer",
+        "timbersaw",
+        "snapfire",
+        "enchantress"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 54.7,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов outworld_destroyer и инициации timbersaw.",
+      "source": "fallback-generator",
+      "roles": {
+        "anti_mage": "Carry",
+        "outworld_destroyer": "Mider",
+        "timbersaw": "Offlaner",
+        "snapfire": "Support",
+        "enchantress": "Hard Support"
+      }
+    },
+    {
+      "id": 53,
+      "name": "Meta Synergy #27",
+      "heroes": [
+        "alchemist",
+        "outworld_destroyer",
+        "night_stalker",
+        "skywrath_mage",
+        "witch_doctor"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 54.7,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов outworld_destroyer и инициации night_stalker.",
+      "source": "fallback-generator",
+      "roles": {
+        "alchemist": "Carry",
+        "outworld_destroyer": "Mider",
+        "night_stalker": "Offlaner",
+        "skywrath_mage": "Support",
+        "witch_doctor": "Hard Support"
+      }
+    },
+    {
+      "id": 54,
+      "name": "Meta Synergy #57",
+      "heroes": [
+        "void_spirit",
+        "storm_spirit",
+        "batrider",
+        "dark_willow",
+        "ringmaster"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 54.7,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов storm_spirit и инициации batrider.",
+      "source": "fallback-generator",
+      "roles": {
+        "void_spirit": "Carry",
+        "storm_spirit": "Mider",
+        "batrider": "Offlaner",
+        "dark_willow": "Support",
+        "ringmaster": "Hard Support"
+      }
+    },
+    {
+      "id": 55,
+      "name": "Meta Synergy #54",
+      "heroes": [
+        "clinkz",
+        "leshrac",
+        "enchantress",
+        "nyx_assassin",
+        "shadow_shaman"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 54.5,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов leshrac и инициации enchantress.",
+      "source": "fallback-generator",
+      "roles": {
+        "clinkz": "Carry",
+        "leshrac": "Mider",
+        "enchantress": "Offlaner",
+        "nyx_assassin": "Support",
+        "shadow_shaman": "Hard Support"
+      }
+    },
+    {
+      "id": 56,
+      "name": "Meta Synergy #20",
+      "heroes": [
+        "luna",
+        "kez",
+        "doom",
+        "largo",
+        "enchantress"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 54.4,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов kez и инициации doom.",
+      "source": "fallback-generator",
+      "roles": {
+        "luna": "Carry",
+        "kez": "Mider",
+        "doom": "Offlaner",
+        "largo": "Support",
+        "enchantress": "Hard Support"
+      }
+    },
+    {
+      "id": 57,
+      "name": "Meta Synergy #39",
+      "heroes": [
+        "chaos_knight",
+        "keeper_of_the_light",
+        "kez",
+        "nyx_assassin",
+        "chen"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 54.4,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов keeper_of_the_light и инициации kez.",
+      "source": "fallback-generator",
+      "roles": {
+        "chaos_knight": "Carry",
+        "keeper_of_the_light": "Mider",
+        "kez": "Offlaner",
+        "nyx_assassin": "Support",
+        "chen": "Hard Support"
+      }
+    },
+    {
+      "id": 58,
+      "name": "Meta Synergy #10",
+      "heroes": [
+        "sven",
+        "puck",
+        "dark_seer",
+        "furion",
+        "dark_willow"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 54.0,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов puck и инициации dark_seer.",
+      "source": "fallback-generator",
+      "roles": {
+        "sven": "Carry",
+        "puck": "Mider",
+        "dark_seer": "Offlaner",
+        "furion": "Support",
+        "dark_willow": "Hard Support"
+      }
+    },
+    {
+      "id": 59,
+      "name": "Meta Synergy #78",
+      "heroes": [
+        "phantom_lancer",
+        "visage",
+        "phoenix",
+        "spirit_breaker",
+        "grimstroke"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 54.0,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов visage и инициации phoenix.",
+      "source": "fallback-generator",
+      "roles": {
+        "phantom_lancer": "Carry",
+        "visage": "Mider",
+        "phoenix": "Offlaner",
+        "spirit_breaker": "Support",
+        "grimstroke": "Hard Support"
+      }
+    },
+    {
+      "id": 60,
+      "name": "Meta Synergy #29",
+      "heroes": [
+        "faceless_void",
+        "invoker",
+        "clockwerk",
+        "earth_spirit",
+        "shadow_demon"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 53.9,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов invoker и инициации clockwerk.",
+      "source": "fallback-generator",
+      "roles": {
+        "faceless_void": "Carry",
+        "invoker": "Mider",
+        "clockwerk": "Offlaner",
+        "earth_spirit": "Support",
+        "shadow_demon": "Hard Support"
+      }
+    },
+    {
+      "id": 61,
+      "name": "Meta Synergy #71",
+      "heroes": [
+        "riki",
+        "templar_assassin",
+        "night_stalker",
+        "techies",
+        "abaddon"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 53.8,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов templar_assassin и инициации night_stalker.",
+      "source": "fallback-generator",
+      "roles": {
+        "riki": "Carry",
+        "templar_assassin": "Mider",
+        "night_stalker": "Offlaner",
+        "techies": "Support",
+        "abaddon": "Hard Support"
+      }
+    },
+    {
+      "id": 62,
+      "name": "Meta Synergy #2",
+      "heroes": [
+        "spectre",
+        "keeper_of_the_light",
+        "tidehunter",
+        "lion",
+        "witch_doctor"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 53.7,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов keeper_of_the_light и инициации tidehunter.",
+      "source": "fallback-generator",
+      "roles": {
+        "spectre": "Carry",
+        "keeper_of_the_light": "Mider",
+        "tidehunter": "Offlaner",
+        "lion": "Support",
+        "witch_doctor": "Hard Support"
+      }
+    },
+    {
+      "id": 63,
+      "name": "Meta Synergy #4",
+      "heroes": [
+        "phantom_lancer",
+        "keeper_of_the_light",
+        "clockwerk",
+        "spirit_breaker",
+        "dazzle"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 53.7,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов keeper_of_the_light и инициации clockwerk.",
+      "source": "fallback-generator",
+      "roles": {
+        "phantom_lancer": "Carry",
+        "keeper_of_the_light": "Mider",
+        "clockwerk": "Offlaner",
+        "spirit_breaker": "Support",
+        "dazzle": "Hard Support"
+      }
+    },
+    {
+      "id": 64,
+      "name": "Meta Synergy #31",
+      "heroes": [
+        "razor",
+        "necrophos",
+        "earthshaker",
+        "hoodwink",
+        "jakiro"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 53.5,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов necrophos и инициации earthshaker.",
+      "source": "fallback-generator",
+      "roles": {
+        "razor": "Carry",
+        "necrophos": "Mider",
+        "earthshaker": "Offlaner",
+        "hoodwink": "Support",
+        "jakiro": "Hard Support"
+      }
+    },
+    {
+      "id": 65,
+      "name": "Meta Synergy #41",
+      "heroes": [
+        "phantom_lancer",
+        "queen_of_pain",
+        "largo",
+        "earth_spirit",
+        "hoodwink"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 53.5,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов queen_of_pain и инициации largo.",
+      "source": "fallback-generator",
+      "roles": {
+        "phantom_lancer": "Carry",
+        "queen_of_pain": "Mider",
+        "largo": "Offlaner",
+        "earth_spirit": "Support",
+        "hoodwink": "Hard Support"
+      }
+    },
+    {
+      "id": 66,
+      "name": "Meta Synergy #53",
+      "heroes": [
+        "anti_mage",
+        "outworld_destroyer",
+        "bristleback",
+        "grimstroke",
+        "silencer"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 53.2,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов outworld_destroyer и инициации bristleback.",
+      "source": "fallback-generator",
+      "roles": {
+        "anti_mage": "Carry",
+        "outworld_destroyer": "Mider",
+        "bristleback": "Offlaner",
+        "grimstroke": "Support",
+        "silencer": "Hard Support"
+      }
+    },
+    {
+      "id": 67,
+      "name": "Meta Synergy #1",
+      "heroes": [
+        "morphling",
+        "storm_spirit",
+        "timbersaw",
+        "skywrath_mage",
+        "io"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 53.1,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов storm_spirit и инициации timbersaw.",
+      "source": "fallback-generator",
+      "roles": {
+        "morphling": "Carry",
+        "storm_spirit": "Mider",
+        "timbersaw": "Offlaner",
+        "skywrath_mage": "Support",
+        "io": "Hard Support"
+      }
+    },
+    {
+      "id": 68,
+      "name": "Meta Synergy #34",
+      "heroes": [
+        "troll_warlord",
+        "void_spirit",
+        "beastmaster",
+        "furion",
+        "disruptor"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 53.1,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов void_spirit и инициации beastmaster.",
+      "source": "fallback-generator",
+      "roles": {
+        "troll_warlord": "Carry",
+        "void_spirit": "Mider",
+        "beastmaster": "Offlaner",
+        "furion": "Support",
+        "disruptor": "Hard Support"
+      }
+    },
+    {
+      "id": 69,
+      "name": "Meta Synergy #46",
+      "heroes": [
+        "terrorblade",
+        "puck",
+        "brewmaster",
+        "enigma",
+        "undying"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 53.1,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов puck и инициации brewmaster.",
+      "source": "fallback-generator",
+      "roles": {
+        "terrorblade": "Carry",
+        "puck": "Mider",
+        "brewmaster": "Offlaner",
+        "enigma": "Support",
+        "undying": "Hard Support"
+      }
+    },
+    {
+      "id": 70,
+      "name": "Meta Synergy #49",
+      "heroes": [
+        "terrorblade",
+        "tinker",
+        "primal_beast",
+        "mirana",
+        "silencer"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 52.9,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов tinker и инициации primal_beast.",
+      "source": "fallback-generator",
+      "roles": {
+        "terrorblade": "Carry",
+        "tinker": "Mider",
+        "primal_beast": "Offlaner",
+        "mirana": "Support",
+        "silencer": "Hard Support"
+      }
+    },
+    {
+      "id": 71,
+      "name": "Meta Synergy #58",
+      "heroes": [
+        "troll_warlord",
+        "huskar",
+        "dark_seer",
+        "hoodwink",
+        "treant_protector"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 52.9,
+      "difficulty": "Easy",
+      "strategy": "Играть вокруг таймингов huskar и инициации dark_seer.",
+      "source": "fallback-generator",
+      "roles": {
+        "troll_warlord": "Carry",
+        "huskar": "Mider",
+        "dark_seer": "Offlaner",
+        "hoodwink": "Support",
+        "treant_protector": "Hard Support"
+      }
+    },
+    {
+      "id": 72,
+      "name": "Meta Synergy #23",
+      "heroes": [
+        "troll_warlord",
+        "queen_of_pain",
+        "night_stalker",
+        "sand_king",
+        "witch_doctor"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 52.7,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов queen_of_pain и инициации night_stalker.",
+      "source": "fallback-generator",
+      "roles": {
+        "troll_warlord": "Carry",
+        "queen_of_pain": "Mider",
+        "night_stalker": "Offlaner",
+        "sand_king": "Support",
+        "witch_doctor": "Hard Support"
+      }
+    },
+    {
+      "id": 73,
+      "name": "Meta Synergy #35",
+      "heroes": [
+        "sven",
+        "meepo",
+        "night_stalker",
+        "largo",
+        "ringmaster"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 52.6,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов meepo и инициации night_stalker.",
+      "source": "fallback-generator",
+      "roles": {
+        "sven": "Carry",
+        "meepo": "Mider",
+        "night_stalker": "Offlaner",
+        "largo": "Support",
+        "ringmaster": "Hard Support"
+      }
+    },
+    {
+      "id": 74,
+      "name": "Meta Synergy #45",
+      "heroes": [
+        "drow_ranger",
+        "meepo",
+        "spirit_breaker",
+        "snapfire",
+        "ringmaster"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 52.6,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов meepo и инициации spirit_breaker.",
+      "source": "fallback-generator",
+      "roles": {
+        "drow_ranger": "Carry",
+        "meepo": "Mider",
+        "spirit_breaker": "Offlaner",
+        "snapfire": "Support",
+        "ringmaster": "Hard Support"
+      }
+    },
+    {
+      "id": 75,
+      "name": "Meta Synergy #12",
+      "heroes": [
+        "ursa",
+        "invoker",
+        "spirit_breaker",
+        "clockwerk",
+        "undying"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 52.5,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов invoker и инициации spirit_breaker.",
+      "source": "fallback-generator",
+      "roles": {
+        "ursa": "Carry",
+        "invoker": "Mider",
+        "spirit_breaker": "Offlaner",
+        "clockwerk": "Support",
+        "undying": "Hard Support"
+      }
+    },
+    {
+      "id": 76,
+      "name": "Meta Synergy #51",
+      "heroes": [
+        "slark",
+        "templar_assassin",
+        "enchantress",
+        "ringmaster",
+        "undying"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 52.4,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов templar_assassin и инициации enchantress.",
+      "source": "fallback-generator",
+      "roles": {
+        "slark": "Carry",
+        "templar_assassin": "Mider",
+        "enchantress": "Offlaner",
+        "ringmaster": "Support",
+        "undying": "Hard Support"
+      }
+    },
+    {
+      "id": 77,
+      "name": "Meta Synergy #62",
+      "heroes": [
+        "morphling",
+        "viper",
+        "batrider",
+        "sand_king",
+        "undying"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 52.3,
+      "difficulty": "Hard",
+      "strategy": "Играть вокруг таймингов viper и инициации batrider.",
+      "source": "fallback-generator",
+      "roles": {
+        "morphling": "Carry",
+        "viper": "Mider",
+        "batrider": "Offlaner",
+        "sand_king": "Support",
+        "undying": "Hard Support"
+      }
+    },
+    {
+      "id": 78,
+      "name": "Meta Synergy #68",
+      "heroes": [
+        "luna",
+        "arc_warden",
+        "viper",
+        "furion",
+        "snapfire"
+      ],
+      "description": "Сбалансированная связка для драфта с хорошей инициацией и сейвом.",
+      "win_rate": 52.0,
+      "difficulty": "Medium",
+      "strategy": "Играть вокруг таймингов arc_warden и инициации viper.",
+      "source": "fallback-generator",
+      "roles": {
+        "luna": "Carry",
+        "arc_warden": "Mider",
+        "viper": "Offlaner",
+        "furion": "Support",
+        "snapfire": "Hard Support"
+      }
+    }
+  ],
+  "hero_best_teammates": {
+    "abaddon": [
+      {
+        "hero": "weaver",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "magnus",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enigma",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "riki",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "templar_assassin",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "night_stalker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "alchemist": [
+      {
+        "hero": "anti_mage",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lion",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "warlock",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slark",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "centaur_warrunner",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "rubick",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lich",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "ancient_apparition": [
+      {
+        "hero": "ember_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sniper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earthshaker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "anti_mage": [
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "alchemist",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lion",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "warlock",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "timbersaw",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "arc_warden": [
+      {
+        "hero": "viper",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "gyrocopter",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "luna",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "furion",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "axe": [
+      {
+        "hero": "earth_spirit",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_lancer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "batrider",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "clockwerk",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "undying",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "troll_warlord",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "leshrac",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "batrider": [
+      {
+        "hero": "undying",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_lancer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "axe",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "clockwerk",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "faceless_void",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "razor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pudge",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "disruptor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "beastmaster": [
+      {
+        "hero": "templar_assassin",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dragon_knight",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "grimstroke",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "treant_protector",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "troll_warlord",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "furion",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "disruptor",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "bloodseeker": [
+      {
+        "hero": "techies",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kunkka",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "night_stalker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "warlock",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "bounty_hunter": [
+      {
+        "hero": "slark",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sand_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "oracle",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "brewmaster": [
+      {
+        "hero": "terrorblade",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "puck",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enigma",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "undying",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "bristleback": [
+      {
+        "hero": "anti_mage",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "grimstroke",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "silencer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "broodmother": [
+      {
+        "hero": "ursa",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "underlord",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "io",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spectre",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sand_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "chen",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "centaur_warrunner": [
+      {
+        "hero": "slark",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "alchemist",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "rubick",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lich",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "chaos_knight": [
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "nyx_assassin",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "chen",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "chen": [
+      {
+        "hero": "kez",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_lancer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dragon_knight",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "medusa",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "huskar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pangolier",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pudge",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "clinkz": [
+      {
+        "hero": "leshrac",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "nyx_assassin",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "shadow_shaman",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "clockwerk": [
+      {
+        "hero": "phantom_lancer",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "undying",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "invoker",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "batrider",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "axe",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "weaver",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kunkka",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "dark_seer": [
+      {
+        "hero": "dark_willow",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "naga_siren",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "disruptor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sven",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "puck",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "furion",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "troll_warlord",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "dark_willow": [
+      {
+        "hero": "viper",
+        "synergy": 81,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slardar",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_seer",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kunkka",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ember_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lina",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "dazzle": [
+      {
+        "hero": "ember_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pangolier",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "skywrath_mage",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_lancer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "clockwerk",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "death_prophet": [
+      {
+        "hero": "treant_protector",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ember_spirit",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "oracle",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spectre",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "broodmother",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sand_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "chen",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ursa",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "disruptor": [
+      {
+        "hero": "void_spirit",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ember_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sniper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earthshaker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enigma",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "skywrath_mage",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "doom": [
+      {
+        "hero": "luna",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "dragon_knight": [
+      {
+        "hero": "phantom_lancer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "chen",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "monkey_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "huskar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "winter_wyvern",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "drow_ranger": [
+      {
+        "hero": "snapfire",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "axe",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "meepo",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "earth_spirit": [
+      {
+        "hero": "axe",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "queen_of_pain",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "gyrocopter",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "windranger",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "omniknight",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "terrorblade",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "earthshaker": [
+      {
+        "hero": "ember_spirit",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sniper",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ancient_apparition",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "weaver",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tiny",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "elder_titan": [
+      {
+        "hero": "wraith_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "invoker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "furion",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "warlock",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ember_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lina",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lion",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_willow",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "ember_spirit": [
+      {
+        "hero": "sniper",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earthshaker",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ancient_apparition",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lina",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lion",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "enchantress": [
+      {
+        "hero": "gyrocopter",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "windranger",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earth_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "omniknight",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ember_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sniper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "enigma": [
+      {
+        "hero": "weaver",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "magnus",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "abaddon",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "skywrath_mage",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "disruptor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "faceless_void": [
+      {
+        "hero": "necrophos",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tinker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slardar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "mirana",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "silencer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "furion": [
+      {
+        "hero": "wraith_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "invoker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "warlock",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sven",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "puck",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_seer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_willow",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "grimstroke": [
+      {
+        "hero": "templar_assassin",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dragon_knight",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "beastmaster",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "treant_protector",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_lancer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "visage",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phoenix",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "gyrocopter": [
+      {
+        "hero": "enchantress",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "windranger",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earth_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "omniknight",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "leshrac",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "oracle",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "hoodwink": [
+      {
+        "hero": "troll_warlord",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "treant_protector",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "leshrac",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "axe",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ember_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "batrider",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "huskar": [
+      {
+        "hero": "monkey_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dragon_knight",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "winter_wyvern",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "medusa",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pangolier",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pudge",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "chen",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "invoker": [
+      {
+        "hero": "clockwerk",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "wraith_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "furion",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "warlock",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "faceless_void",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earth_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "shadow_demon",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "io": [
+      {
+        "hero": "ursa",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "broodmother",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "underlord",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "morphling",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "storm_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "timbersaw",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "skywrath_mage",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "jakiro": [
+      {
+        "hero": "muerta",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "broodmother",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slardar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pugna",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "razor",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "necrophos",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earthshaker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "hoodwink",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "juggernaut": [
+      {
+        "hero": "templar_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enigma",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lich",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "keeper_of_the_light": [
+      {
+        "hero": "tidehunter",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "faceless_void",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tinker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slardar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "medusa",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "storm_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "kez": [
+      {
+        "hero": "kunkka",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "chen",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "anti_mage",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "alchemist",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lion",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "warlock",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "weaver",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "clockwerk",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "kunkka": [
+      {
+        "hero": "kez",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "weaver",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "clockwerk",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "silencer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slardar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_willow",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "wraith_king",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "largo": [
+      {
+        "hero": "snapfire",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "night_stalker",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "leshrac",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "oracle",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "weaver",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "leshrac": [
+      {
+        "hero": "oracle",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "night_stalker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "troll_warlord",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "axe",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "hoodwink",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "lich": [
+      {
+        "hero": "juggernaut",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "templar_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enigma",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slark",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "alchemist",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "centaur_warrunner",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "rubick",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "lifestealer": [
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tiny",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "disruptor",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "lina": [
+      {
+        "hero": "ember_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lion",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_willow",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "razor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "underlord",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tusk",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "shadow_demon",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "lion": [
+      {
+        "hero": "anti_mage",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "alchemist",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "warlock",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ember_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lina",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_willow",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "luna": [
+      {
+        "hero": "kez",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "doom",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "arc_warden",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "furion",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "magnus": [
+      {
+        "hero": "templar_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sniper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "marci",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "weaver",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enigma",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "abaddon",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "marci": [
+      {
+        "hero": "templar_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sniper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "magnus",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "troll_warlord",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "nyx_assassin",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "medusa": [
+      {
+        "hero": "skywrath_mage",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "huskar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pangolier",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pudge",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "chen",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "storm_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tidehunter",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "meepo": [
+      {
+        "hero": "sven",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phoenix",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "vengeful_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "night_stalker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "drow_ranger",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "mirana": [
+      {
+        "hero": "terrorblade",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "silencer",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "templar_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "razor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "vengeful_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "faceless_void",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "necrophos",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "monkey_king": [
+      {
+        "hero": "huskar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dragon_knight",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "winter_wyvern",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "primal_beast",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "rubick",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "treant_protector",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "morphling": [
+      {
+        "hero": "storm_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "timbersaw",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "skywrath_mage",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "io",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "batrider",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sand_king",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "undying",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "muerta": [
+      {
+        "hero": "broodmother",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slardar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pugna",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "jakiro",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "naga_siren": [
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_seer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_willow",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "disruptor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "necrophos": [
+      {
+        "hero": "faceless_void",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "mirana",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "silencer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tusk",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "oracle",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "razor",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "night_stalker": [
+      {
+        "hero": "largo",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "witch_doctor",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "leshrac",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "oracle",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "bloodseeker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kunkka",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "nyx_assassin": [
+      {
+        "hero": "troll_warlord",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "marci",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "clinkz",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "leshrac",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "shadow_shaman",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "omniknight": [
+      {
+        "hero": "gyrocopter",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "windranger",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earth_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "oracle": [
+      {
+        "hero": "leshrac",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "night_stalker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slark",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sand_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "outworld_destroyer": [
+      {
+        "hero": "anti_mage",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slark",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sand_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "bounty_hunter",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "oracle",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "weaver",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "magnus",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enigma",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "pangolier": [
+      {
+        "hero": "medusa",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "huskar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pudge",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "chen",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ember_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "skywrath_mage",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dazzle",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "phantom_assassin": [
+      {
+        "hero": "void_spirit",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "venomancer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "undying",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enigma",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "skywrath_mage",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "disruptor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "phantom_lancer": [
+      {
+        "hero": "clockwerk",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "batrider",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "axe",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "undying",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dragon_knight",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "phoenix": [
+      {
+        "hero": "sven",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "meepo",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "vengeful_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_lancer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "visage",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "grimstroke",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "primal_beast": [
+      {
+        "hero": "monkey_king",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "rubick",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "treant_protector",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "terrorblade",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tinker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "mirana",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "silencer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "puck": [
+      {
+        "hero": "sven",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_seer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "furion",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_willow",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "terrorblade",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "brewmaster",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enigma",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "undying",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "pudge": [
+      {
+        "hero": "medusa",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "huskar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pangolier",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "chen",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "faceless_void",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "batrider",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "razor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "disruptor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "pugna": [
+      {
+        "hero": "muerta",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "broodmother",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slardar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "jakiro",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "wraith_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "queen_of_pain": [
+      {
+        "hero": "terrorblade",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earth_spirit",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_willow",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "winter_wyvern",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "axe",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_lancer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "razor": [
+      {
+        "hero": "terrorblade",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "templar_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "mirana",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "vengeful_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lina",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "underlord",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tusk",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "shadow_demon",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "riki": [
+      {
+        "hero": "templar_assassin",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "night_stalker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "abaddon",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "ringmaster": [
+      {
+        "hero": "dark_willow",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "templar_assassin",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "meepo",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kunkka",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slardar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "rubick": [
+      {
+        "hero": "slark",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "alchemist",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "centaur_warrunner",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lich",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "monkey_king",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "primal_beast",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "treant_protector",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "sand_king": [
+      {
+        "hero": "slark",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "bounty_hunter",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "oracle",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spectre",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "broodmother",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "chen",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "shadow_demon": [
+      {
+        "hero": "razor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lina",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "underlord",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tusk",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "faceless_void",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "invoker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "clockwerk",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earth_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "shadow_shaman": [
+      {
+        "hero": "clinkz",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "leshrac",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "nyx_assassin",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "silencer": [
+      {
+        "hero": "mirana",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "weaver",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kunkka",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "clockwerk",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "faceless_void",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "necrophos",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "skywrath_mage": [
+      {
+        "hero": "medusa",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "storm_spirit",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tidehunter",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enigma",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "disruptor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "slardar": [
+      {
+        "hero": "dark_willow",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "faceless_void",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tinker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kunkka",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "slark": [
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sand_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "bounty_hunter",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "oracle",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "alchemist",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "centaur_warrunner",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "rubick",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lich",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "snapfire": [
+      {
+        "hero": "largo",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "axe",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "leshrac",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "drow_ranger",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "weaver",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tiny",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "sniper": [
+      {
+        "hero": "ember_spirit",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earthshaker",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ancient_apparition",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "templar_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "magnus",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "marci",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "spectre": [
+      {
+        "hero": "broodmother",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sand_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "chen",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tidehunter",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lion",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "witch_doctor",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "spirit_breaker": [
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "undying",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_lancer",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "clockwerk",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ember_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sniper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earthshaker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ancient_apparition",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "storm_spirit": [
+      {
+        "hero": "skywrath_mage",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "medusa",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tidehunter",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "batrider",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_willow",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "sven": [
+      {
+        "hero": "meepo",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phoenix",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "vengeful_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "puck",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_seer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "furion",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_willow",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "techies": [
+      {
+        "hero": "snapfire",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "bloodseeker",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "templar_assassin",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "night_stalker",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "faceless_void",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tinker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slardar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "templar_assassin": [
+      {
+        "hero": "ringmaster",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sniper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "magnus",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "marci",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "terrorblade",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "razor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "mirana",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "terrorblade": [
+      {
+        "hero": "queen_of_pain",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "mirana",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "templar_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "razor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "vengeful_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_willow",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "winter_wyvern",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "tidehunter": [
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "medusa",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "storm_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "skywrath_mage",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spectre",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lion",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "witch_doctor",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "timbersaw": [
+      {
+        "hero": "anti_mage",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "morphling",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "storm_spirit",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "skywrath_mage",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "io",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "tinker": [
+      {
+        "hero": "faceless_void",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "slardar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "terrorblade",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "primal_beast",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "mirana",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "silencer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "tiny": [
+      {
+        "hero": "weaver",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earthshaker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lifestealer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "disruptor",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "treant_protector": [
+      {
+        "hero": "death_prophet",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "hoodwink",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ursa",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "axe",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earth_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ember_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "batrider",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "monkey_king",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "troll_warlord": [
+      {
+        "hero": "hoodwink",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "leshrac",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "axe",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "nyx_assassin",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "marci",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "tusk": [
+      {
+        "hero": "razor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lina",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "underlord",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "shadow_demon",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "faceless_void",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "necrophos",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "oracle",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "underlord": [
+      {
+        "hero": "ursa",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "broodmother",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "io",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "razor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lina",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tusk",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "shadow_demon",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "undying": [
+      {
+        "hero": "clockwerk",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "batrider",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_lancer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "axe",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "ursa": [
+      {
+        "hero": "broodmother",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "underlord",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "io",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "axe",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earth_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "treant_protector",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "vengeful_spirit": [
+      {
+        "hero": "terrorblade",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "templar_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "razor",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "mirana",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "sven",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "meepo",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "death_prophet",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phoenix",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "venomancer": [
+      {
+        "hero": "phantom_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "undying",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "viper": [
+      {
+        "hero": "dark_willow",
+        "synergy": 81,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "undying",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "arc_warden",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phantom_assassin",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "void_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "venomancer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "visage": [
+      {
+        "hero": "phantom_lancer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "phoenix",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spirit_breaker",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "grimstroke",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "void_spirit": [
+      {
+        "hero": "phantom_assassin",
+        "synergy": 74,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "disruptor",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "leshrac",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "night_stalker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "oracle",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "venomancer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "warlock": [
+      {
+        "hero": "wraith_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "invoker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "furion",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "anti_mage",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "alchemist",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lion",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "weaver": [
+      {
+        "hero": "kunkka",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "kez",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "clockwerk",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "silencer",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tiny",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earthshaker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "snapfire",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "windranger": [
+      {
+        "hero": "gyrocopter",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "earth_spirit",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "omniknight",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "winter_wyvern": [
+      {
+        "hero": "monkey_king",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "huskar",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dragon_knight",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "techies",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "terrorblade",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "queen_of_pain",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "viper",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "dark_willow",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "witch_doctor": [
+      {
+        "hero": "night_stalker",
+        "synergy": 73,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "alchemist",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "outworld_destroyer",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "skywrath_mage",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "spectre",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "keeper_of_the_light",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "tidehunter",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "lion",
+        "synergy": 66,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ],
+    "wraith_king": [
+      {
+        "hero": "invoker",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "elder_titan",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "furion",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "warlock",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "largo",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "enchantress",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "pugna",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      },
+      {
+        "hero": "ringmaster",
+        "synergy": 67,
+        "reason": "Сильное сочетание по ролям и темпу"
+      }
+    ]
+  }
+}

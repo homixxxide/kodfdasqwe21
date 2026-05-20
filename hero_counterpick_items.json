@@ -1,0 +1,6029 @@
+{
+  "abaddon": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "alchemist": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "ancient_apparition": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "anti_mage": {
+    "core_items": [
+      {
+        "item": "orchid",
+        "name": "Orchid Malevolence",
+        "reason": "Сайленс запрещает Blink",
+        "priority": 10,
+        "price": 3975
+      },
+      {
+        "item": "abyssal_blade",
+        "name": "Abyssal Blade",
+        "reason": "БКБ-пробивающий стан",
+        "priority": 9,
+        "price": 6250
+      }
+    ],
+    "support_items": [
+      {
+        "item": "rod_of_atos",
+        "name": "Rod of Atos",
+        "reason": "Рут останавливает Blink",
+        "priority": 9,
+        "price": 2750
+      }
+    ]
+  },
+  "arc_warden": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "axe": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "bane": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "batrider": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "beastmaster": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "bloodseeker": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "bounty_hunter": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "brewmaster": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "bristleback": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "broodmother": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "centaur_warrunner": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "chaos_knight": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "chen": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "clinkz": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "clockwerk": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "crystal_maiden": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "dark_seer": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "dark_willow": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "dazzle": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "death_prophet": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "disruptor": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "doom": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "dragon_knight": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "drow_ranger": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "earth_spirit": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "earthshaker": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "elder_titan": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "ember_spirit": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "enchantress": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "enigma": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "faceless_void": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "furion": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "grimstroke": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "gyrocopter": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "hoodwink": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "huskar": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "invoker": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "io": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "jakiro": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "juggernaut": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "keeper_of_the_light": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "kez": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "kunkka": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "largo": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "legion_commander": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "leshrac": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "lich": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "lifestealer": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "lina": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "lion": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "lone_druid": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "luna": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "magnus": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "marci": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "mars": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "medusa": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "meepo": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "mirana": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "monkey_king": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "morphling": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "muerta": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "naga_siren": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "necrophos": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "night_stalker": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "nyx_assassin": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "ogre_magi": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "omniknight": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "oracle": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "outworld_destroyer": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "pangolier": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "phantom_assassin": {
+    "core_items": [
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против Blur",
+        "priority": 10,
+        "price": 5400
+      },
+      {
+        "item": "silver_edge",
+        "name": "Silver Edge",
+        "reason": "Break отключает Blur",
+        "priority": 9,
+        "price": 5450
+      },
+      {
+        "item": "bloodthorn",
+        "name": "Bloodthorn",
+        "reason": "True Strike + сайленс",
+        "priority": 8,
+        "price": 6800
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 10,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Спастись от Blink Strike",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для себя/тиммейта",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "phantom_lancer": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "phoenix": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "primal_beast": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "puck": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "pudge": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "pugna": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "queen_of_pain": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "razor": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "riki": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "ringmaster": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "rubick": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "sand_king": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "shadow_demon": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "shadow_fiend": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "shadow_shaman": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "shredder": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "silencer": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "skywrath_mage": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "slardar": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "slark": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "snapfire": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "sniper": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "spectre": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "spirit_breaker": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "storm_spirit": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "sven": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "techies": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "templar_assassin": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "terrorblade": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "tidehunter": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "timbersaw": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "tinker": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "tiny": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "treant_protector": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "troll_warlord": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "tusk": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "underlord": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "undying": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "ursa": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "vengeful_spirit": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "venomancer": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "viper": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "visage": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "void_spirit": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "warlock": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "weaver": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "windranger": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "winter_wyvern": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "witch_doctor": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "wraith_king": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  },
+  "zeus": {
+    "core_items": [
+      {
+        "item": "black_king_bar",
+        "name": "Black King Bar",
+        "reason": "Иммунитет к контролю",
+        "priority": 9,
+        "price": 4050
+      },
+      {
+        "item": "monkey_king_bar",
+        "name": "Monkey King Bar",
+        "reason": "True Strike против уклонения",
+        "priority": 9,
+        "price": 5400
+      },
+      {
+        "item": "nullifier",
+        "name": "Nullifier",
+        "reason": "Сбивает сейв-предметы",
+        "priority": 8,
+        "price": 4725
+      }
+    ],
+    "support_items": [
+      {
+        "item": "ghost_scepter",
+        "name": "Ghost Scepter",
+        "reason": "Неуязвимость к физ. урону",
+        "priority": 9,
+        "price": 1500
+      },
+      {
+        "item": "force_staff",
+        "name": "Force Staff",
+        "reason": "Сброс позиции и сейв",
+        "priority": 8,
+        "price": 2200
+      },
+      {
+        "item": "glimmer_cape",
+        "name": "Glimmer Cape",
+        "reason": "Инвиз для сейва",
+        "priority": 7,
+        "price": 1950
+      }
+    ]
+  }
+}
