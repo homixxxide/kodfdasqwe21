@@ -995,6 +995,7 @@ async def cb_send_lobby_scr(cb: CallbackQuery,
     await ack(cb)
     await state.update_data(match_id=callback_data.match_id,
                              scr_type="lobby")
+    _pending_lobby_screenshots[cb.from_user.id] = callback_data.match_id
     await state.set_state(ScreenshotWait.lobby)
     await cb.message.answer(
         txt_section("📸 Скрин лобби",
@@ -1016,6 +1017,9 @@ async def receive_lobby_screenshot(msg: Message, state: FSMContext):
     scr_id  = db_save_screenshot(match_id, "lobby", file_id,
                                   msg.from_user.id, team["id"])
     await state.clear()
+
+    # Сохраняем возможность отправить скрин повторно, если админ отклонит
+    _pending_lobby_screenshots[msg.from_user.id] = match_id
 
     # Шлём админам
     m = db_get_match(match_id)
@@ -1225,6 +1229,9 @@ async def cb_winner(cb: CallbackQuery, callback_data: WinnerCB):
     }
 
 
+# Временное хранилище ожидания скринов лобби
+_pending_lobby_screenshots: dict = {}
+
 # Временное хранилище ожидания скринов результата
 _pending_result_screenshots: dict = {}
 
@@ -1266,6 +1273,39 @@ async def receive_any_photo(msg: Message, state: FSMContext):
 
         # Уведомляем всех о победителе после подтверждения (в confirm handler)
         db_update_match(info["match_id"], status="result_pending")
+        return
+
+    # Повторная отправка скрина лобби после отклонения
+    if uid in _pending_lobby_screenshots:
+        match_id = _pending_lobby_screenshots[uid]
+        team = db_get_captain_team(uid)
+        if not team:
+            await msg.answer(txt_err("Ты не авторизован как капитан."))
+            return
+
+        file_id = msg.photo[-1].file_id
+        scr_id = db_save_screenshot(match_id, "lobby", file_id, uid, team["id"])
+
+        m = db_get_match(match_id)
+        caption = (
+            f"📸 <b>Скрин лобби (повтор)</b>\n\n"
+            f"Матч: <b>{html.escape(team_name(m['team1_id']))} vs "
+            f"{html.escape(team_name(m['team2_id']))}</b>\n"
+            f"Команда: <b>{html.escape(team['name'])}</b>\n"
+            f"ID скрина: <code>{scr_id}</code>"
+        )
+        for aid in ADMIN_IDS:
+            try:
+                await bot_instance.send_photo(
+                    aid,
+                    photo=file_id,
+                    caption=caption,
+                    reply_markup=kb_confirm(scr_id)
+                )
+            except Exception as e:
+                log.warning(e)
+
+        await msg.answer(txt_ok("Новый скрин лобби отправлен администратору.\nОжидай подтверждения."))
         return
 
     # Остальные фото игнорируем
