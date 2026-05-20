@@ -16,6 +16,7 @@ from typing import Optional
 from zoneinfo import ZoneInfo
 
 from aiogram import Bot, Dispatcher, F, Router
+from aiogram.exceptions import TelegramMigrateToChat
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode, ChatAction
 from aiogram.filters import Command, CommandStart, StateFilter
@@ -31,8 +32,9 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #  НАСТРОЙКИ
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-BOT_TOKEN = "8696797037:AAFKaTA_tszKCJJWrtE4VruPZktLXqKXUJ4"
+BOT_TOKEN = "8750744135:AAHVYJLZHsDnYCznHKFDy_aQ"
 ADMIN_IDS  = {6611491689}   # Telegram ID администраторов
+REPORT_CHAT_ID = -1003970043019  # ID закрытого чата для итогов матчей
 
 MSK = ZoneInfo("Europe/Moscow")
 NOTIFY_BEFORE_MINUTES = 20   # за сколько минут уведомлять
@@ -261,6 +263,51 @@ def team_name(tid: Optional[int]) -> str:
         return "BYE"
     t = db_get_team(tid)
     return t["name"] if t else f"#{tid}"
+
+
+def other_team_id(match_row, team_id: int) -> Optional[int]:
+    if match_row["team1_id"] == team_id:
+        return match_row["team2_id"]
+    if match_row["team2_id"] == team_id:
+        return match_row["team1_id"]
+    return None
+
+
+async def notify_both_teams(match_row, text: str, reply_markup=None):
+    for tid in [match_row["team1_id"], match_row["team2_id"]]:
+        t = db_get_team(tid) if tid else None
+        cap = t["captain_id"] if t else None
+        if not cap:
+            continue
+        try:
+            await bot_instance.send_message(cap, text, reply_markup=reply_markup)
+        except Exception as e:
+            log.warning("Не удалось уведомить капитана %s: %s", cap, e)
+
+
+async def post_match_result_summary(match_row):
+    global REPORT_CHAT_ID
+    if not REPORT_CHAT_ID:
+        return
+    score = "1:0" if match_row["winner_id"] == match_row["team1_id"] else "0:1"
+    text = (
+        f"🏆 <b>Итог матча</b>\n\n"
+        f"{html.escape(team_name(match_row['team1_id']))} [{score}] "
+        f"{html.escape(team_name(match_row['team2_id']))}\n"
+        f"Формат: bo3\n"
+        f"Победитель: <b>{html.escape(team_name(match_row['winner_id']))}</b>"
+    )
+    try:
+        await bot_instance.send_message(REPORT_CHAT_ID, text)
+    except TelegramMigrateToChat as e:
+        REPORT_CHAT_ID = e.migrate_to_chat_id
+        log.warning("Чат отчётов мигрирован, обновляю REPORT_CHAT_ID на %s", REPORT_CHAT_ID)
+        try:
+            await bot_instance.send_message(REPORT_CHAT_ID, text)
+        except Exception as ex:
+            log.warning("Не удалось отправить итог в REPORT_CHAT_ID после миграции: %s", ex)
+    except Exception as e:
+        log.warning("Не удалось отправить итог в REPORT_CHAT_ID: %s", e)
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -957,6 +1004,7 @@ async def cb_send_lobby_scr(cb: CallbackQuery,
     await ack(cb)
     await state.update_data(match_id=callback_data.match_id,
                              scr_type="lobby")
+    _pending_lobby_screenshots[cb.from_user.id] = callback_data.match_id
     await state.set_state(ScreenshotWait.lobby)
     await cb.message.answer(
         txt_section("📸 Скрин лобби",
@@ -978,6 +1026,9 @@ async def receive_lobby_screenshot(msg: Message, state: FSMContext):
     scr_id  = db_save_screenshot(match_id, "lobby", file_id,
                                   msg.from_user.id, team["id"])
     await state.clear()
+
+    # Сохраняем возможность отправить скрин повторно, если админ отклонит
+    _pending_lobby_screenshots[msg.from_user.id] = match_id
 
     # Шлём админам
     m = db_get_match(match_id)
@@ -1041,8 +1092,18 @@ async def cb_confirm(cb: CallbackQuery, callback_data: ConfirmCB):
                     log.warning(e)
 
         elif scr["type"] == "result":
-            # Определяем победителя
-            pass  # победитель уже записан через kb_winner
+            db_update_match(scr["match_id"], status="done")
+            m2 = db_get_match(scr["match_id"])
+            winner = html.escape(team_name(m2["winner_id"]))
+            await notify_both_teams(
+                m2,
+                txt_ok(
+                    f"Администратор подтвердил результат матча.\n"
+                    f"Победитель: <b>{winner}</b>.\n"
+                    f"Спасибо за игру!"
+                )
+            )
+            await post_match_result_summary(m2)
 
         await cb.message.edit_caption(
             caption=(cb.message.caption or "") + "\n\n✅ <b>Подтверждено</b>"
@@ -1121,13 +1182,21 @@ async def cb_game_finish(cb: CallbackQuery, callback_data: MatchAction):
 
     db_update_match(mid, status="result_pending")
 
-    # Просим выбрать победителя
+    # Запрашиваем подтверждение исхода у соперника
     await cb.message.edit_reply_markup(reply_markup=None)
-    await cb.message.answer(
-        txt_section("🏁 Игра завершена",
-                    "Кто победил в этом матче?"),
-        reply_markup=kb_winner(mid, m["team1_id"], m["team2_id"])
-    )
+    opp_id = other_team_id(m, team["id"])
+    opp = db_get_team(opp_id) if opp_id else None
+    opp_cap = opp["captain_id"] if opp else None
+
+    if opp_cap:
+        await bot_instance.send_message(
+            opp_cap,
+            txt_section("🏁 Игра завершена",
+                        f"Соперник отметил завершение матча.\n"
+                        f"Подтверди исход: кто победил?"),
+            reply_markup=kb_winner(mid, m["team1_id"], m["team2_id"])
+        )
+    await cb.message.answer(txt_ok("Запрос подтверждения отправлен сопернику."))
 
 
 # ── Выбор победителя ─────────────────────
@@ -1153,6 +1222,13 @@ async def cb_winner(cb: CallbackQuery, callback_data: WinnerCB):
                     f"Отправь скриншот таблицы результатов для подтверждения администратором.")
     )
 
+    await notify_both_teams(
+        m,
+        txt_section("🏁 Исход заявлен",
+                    f"Заявленный победитель: <b>{html.escape(team_name(win_tid))}</b>.\n"
+                    f"Ожидаем подтверждение администратора.")
+    )
+
     # Сохраняем ожидание скрина через state
     # Используем глобальный FSM через отдельный хендлер
     # Отмечаем что ждём скрин от этого пользователя
@@ -1161,6 +1237,9 @@ async def cb_winner(cb: CallbackQuery, callback_data: WinnerCB):
         "team_id":  team["id"]
     }
 
+
+# Временное хранилище ожидания скринов лобби
+_pending_lobby_screenshots: dict = {}
 
 # Временное хранилище ожидания скринов результата
 _pending_result_screenshots: dict = {}
@@ -1205,9 +1284,42 @@ async def receive_any_photo(msg: Message, state: FSMContext):
         db_update_match(info["match_id"], status="result_pending")
         return
 
+    # Повторная отправка скрина лобби после отклонения
+    if uid in _pending_lobby_screenshots:
+        match_id = _pending_lobby_screenshots[uid]
+        team = db_get_captain_team(uid)
+        if not team:
+            await msg.answer(txt_err("Ты не авторизован как капитан."))
+            return
+
+        file_id = msg.photo[-1].file_id
+        scr_id = db_save_screenshot(match_id, "lobby", file_id, uid, team["id"])
+
+        m = db_get_match(match_id)
+        caption = (
+            f"📸 <b>Скрин лобби (повтор)</b>\n\n"
+            f"Матч: <b>{html.escape(team_name(m['team1_id']))} vs "
+            f"{html.escape(team_name(m['team2_id']))}</b>\n"
+            f"Команда: <b>{html.escape(team['name'])}</b>\n"
+            f"ID скрина: <code>{scr_id}</code>"
+        )
+        for aid in ADMIN_IDS:
+            try:
+                await bot_instance.send_photo(
+                    aid,
+                    photo=file_id,
+                    caption=caption,
+                    reply_markup=kb_confirm(scr_id)
+                )
+            except Exception as e:
+                log.warning(e)
+
+        await msg.answer(txt_ok("Новый скрин лобби отправлен администратору.\nОжидай подтверждения."))
+        return
+
     # Остальные фото игнорируем
     cur_state = await state.get_state()
-    if not cur_state:
+    if not cur_state and msg.chat.type == "private":
         await msg.answer(
             "Чтобы отправить скрин, сначала нажми нужную кнопку в сообщении от бота.",
             reply_markup=kb_home()
@@ -1279,6 +1391,10 @@ async def cb_complaint(cb: CallbackQuery, callback_data: ComplaintCB):
 
 @router.message()
 async def fallback(msg: Message, state: FSMContext):
+    # В группах/каналах бот не ведёт диалог игроков
+    if msg.chat.type != "private":
+        return
+
     if await state.get_state() is None:
         uid      = msg.from_user.id
         cap_team = db_get_captain_team(uid)
