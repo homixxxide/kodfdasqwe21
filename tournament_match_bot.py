@@ -36,7 +36,7 @@ BOT_TOKEN = "8750744135:AAHVYJLZHsDnYCznHKFDy_aQ4z4q1Q-tTMg"
 ADMIN_IDS  = {6611491689}   # Telegram ID администраторов
 REPORT_CHAT_ID = -1003970043019  # ID закрытого чата для итогов матчей
 
-TOURNAMENT_TZ = ZoneInfo("Europe/Samara")  # МСК+1 (UTC+4)
+TOURNAMENT_TZ = ZoneInfo("Europe/Moscow")  # турнирный часовой пояс (МСК)
 NOTIFY_BEFORE_MINUTES = 20   # за сколько минут уведомлять
 _notified_matches: set = set()  # чтобы не слать дважды
 
