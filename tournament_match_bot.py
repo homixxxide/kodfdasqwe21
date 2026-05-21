@@ -950,7 +950,7 @@ async def bulk_schedule_date(msg: Message, state: FSMContext):
 async def bulk_schedule_time(msg: Message, state: FSMContext):
     await state.update_data(time=msg.text.strip())
     await state.set_state(AdminBulkSchedule.step)
-    await msg.answer(txt_section("⚡ Быстрое расписание", "Шаг между матчами в минутах (например 30):"), reply_markup=kb_back("admin"))
+    await msg.answer(txt_section("⚡ Быстрое расписание", "Шаг между матчами в минутах (например 30).\nЕсли хочешь всем матчам одинаковое время — введи <b>0</b>."), reply_markup=kb_back("admin"))
 
 
 @router.message(StateFilter(AdminBulkSchedule.step), F.text)
@@ -962,11 +962,14 @@ async def bulk_schedule_step(msg: Message, state: FSMContext):
         await msg.answer(txt_err("Нужно число минут."))
         return
 
-    ms = [m for m in db_get_matches() if m["team1_id"] and m["team2_id"] and not m["match_date"]]
-    if not ms:
+    ms_all = [m for m in db_get_matches() if m["team1_id"] and m["team2_id"] and not m["match_date"]]
+    if not ms_all:
         await state.clear()
         await msg.answer(txt_err("Нет матчей без даты."), reply_markup=kb_admin())
         return
+
+    target_round = min(m["round"] for m in ms_all)
+    ms = [m for m in ms_all if m["round"] == target_round]
 
     base = datetime.strptime(f"{data['date']} {data['time']}", "%d.%m.%Y %H:%M")
     for i, m in enumerate(ms):
@@ -974,7 +977,20 @@ async def bulk_schedule_step(msg: Message, state: FSMContext):
         db_update_match(m["id"], match_date=dt.strftime("%d.%m.%Y"), match_time=dt.strftime("%H:%M"))
 
     await state.clear()
-    await msg.answer(txt_ok(f"Быстрое расписание применено: <b>{len(ms)}</b> матч(ей)."), reply_markup=kb_admin())
+    if step == 0:
+        mode = "Все матчи выбранного раунда поставлены на одно время"
+    else:
+        mode = f"Матчи раунда расставлены с шагом {step} мин"
+
+    await msg.answer(
+        txt_ok(
+            f"Быстрое расписание применено.\n"
+            f"Раунд: <b>{target_round}</b>\n"
+            f"Матчей: <b>{len(ms)}</b>\n"
+            f"Режим: {mode}"
+        ),
+        reply_markup=kb_admin()
+    )
 
 # ── Уведомить команды о матчах ───────────
 @router.callback_query(Nav.filter(F.to == "notify_matches"))
