@@ -1,5 +1,5 @@
 """
-ARMAGEDDON CHAMPIONSHIP — Tournament Match Bot
+ARMAGEDON CHAMPIONSHIP — Tournament Match Bot
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Установка: pip install aiogram aiohttp
 Запуск: python tournament_match_bot.py
@@ -36,7 +36,7 @@ BOT_TOKEN = "8750744135:AAHVYJLZHsDnYCznHKFDy_aQ4z4q1Q-tTMg"
 ADMIN_IDS  = {6611491689}   # Telegram ID администраторов
 REPORT_CHAT_ID = -1003970043019  # ID закрытого чата для итогов матчей
 
-MSK = ZoneInfo("Europe/Moscow")
+TOURNAMENT_TZ = ZoneInfo("Europe/Samara")  # МСК+1 (UTC+4)
 NOTIFY_BEFORE_MINUTES = 20   # за сколько минут уведомлять
 _notified_matches: set = set()  # чтобы не слать дважды
 
@@ -353,7 +353,7 @@ def fmt_bracket_full(matches: list) -> str:
 
     lines = [
         f"{LINE}\n"
-        f"⚔️  <b>ARMAGEDDON CHAMPIONSHIP</b>\n"
+        f"⚔️  <b>ARMAGEDON CHAMPIONSHIP</b>\n"
         f"<b>Турнирная сетка  •  {bsize} слотов</b>\n"
         f"{LINE}"
     ]
@@ -484,6 +484,12 @@ class ScreenshotWait(StatesGroup):
     result = State()
 
 
+class AdminBulkSchedule(StatesGroup):
+    date = State()
+    time = State()
+    step = State()
+
+
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #  КЛАВИАТУРЫ
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -507,6 +513,7 @@ def kb_admin():
     b.button(text="📋 Список команд",       callback_data=Nav(to="list_teams"))
     b.button(text="🎲 Сгенерировать сетку", callback_data=Nav(to="gen_bracket"))
     b.button(text="📅 Назначить дату матча",callback_data=Nav(to="set_date"))
+    b.button(text="⚡ Быстрое расписание",callback_data=Nav(to="bulk_schedule"))
     b.button(text="📢 Уведомить команды",   callback_data=Nav(to="notify_matches"))
     b.button(text="🗑 Сбросить всё",        callback_data=Nav(to="reset_all"))
     b.button(text="◀️ Главное меню",        callback_data=Nav(to="home"))
@@ -571,7 +578,7 @@ def kb_confirm_result(scr_id: int, t1_id: int, t2_id: int):
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 MAIN_TEXT = (
     f"{LINE}\n"
-    f"⚔️  <b>ARMAGEDDON CHAMPIONSHIP</b>\n"
+    f"⚔️  <b>ARMAGEDON CHAMPIONSHIP</b>\n"
     f"{LINE}\n\n"
     f"Бот для управления матчами турнира.\n\n"
     f"Если ты капитан — войди в систему.\n"
@@ -917,6 +924,58 @@ async def set_date_time(msg: Message, state: FSMContext):
     )
 
 
+
+
+@router.callback_query(Nav.filter(F.to == "bulk_schedule"))
+async def cb_bulk_schedule_start(cb: CallbackQuery, state: FSMContext):
+    await ack(cb)
+    if not is_admin(cb.from_user.id):
+        return
+    await state.set_state(AdminBulkSchedule.date)
+    await cb.message.answer(
+        txt_section("⚡ Быстрое расписание",
+                    "Введи дату для серии матчей в формате ДД.ММ.ГГГГ:"),
+        reply_markup=kb_back("admin")
+    )
+
+
+@router.message(StateFilter(AdminBulkSchedule.date), F.text)
+async def bulk_schedule_date(msg: Message, state: FSMContext):
+    await state.update_data(date=msg.text.strip())
+    await state.set_state(AdminBulkSchedule.time)
+    await msg.answer(txt_section("⚡ Быстрое расписание", "Введи время первого матча (ЧЧ:ММ):"), reply_markup=kb_back("admin"))
+
+
+@router.message(StateFilter(AdminBulkSchedule.time), F.text)
+async def bulk_schedule_time(msg: Message, state: FSMContext):
+    await state.update_data(time=msg.text.strip())
+    await state.set_state(AdminBulkSchedule.step)
+    await msg.answer(txt_section("⚡ Быстрое расписание", "Шаг между матчами в минутах (например 30):"), reply_markup=kb_back("admin"))
+
+
+@router.message(StateFilter(AdminBulkSchedule.step), F.text)
+async def bulk_schedule_step(msg: Message, state: FSMContext):
+    data = await state.get_data()
+    try:
+        step = int(msg.text.strip())
+    except ValueError:
+        await msg.answer(txt_err("Нужно число минут."))
+        return
+
+    ms = [m for m in db_get_matches() if m["team1_id"] and m["team2_id"] and not m["match_date"]]
+    if not ms:
+        await state.clear()
+        await msg.answer(txt_err("Нет матчей без даты."), reply_markup=kb_admin())
+        return
+
+    base = datetime.strptime(f"{data['date']} {data['time']}", "%d.%m.%Y %H:%M")
+    for i, m in enumerate(ms):
+        dt = base + timedelta(minutes=step * i)
+        db_update_match(m["id"], match_date=dt.strftime("%d.%m.%Y"), match_time=dt.strftime("%H:%M"))
+
+    await state.clear()
+    await msg.answer(txt_ok(f"Быстрое расписание применено: <b>{len(ms)}</b> матч(ей)."), reply_markup=kb_admin())
+
 # ── Уведомить команды о матчах ───────────
 @router.callback_query(Nav.filter(F.to == "notify_matches"))
 async def cb_notify_matches(cb: CallbackQuery):
@@ -952,7 +1011,7 @@ async def cb_notify_matches(cb: CallbackQuery):
                 await bot_instance.send_message(
                     cap,
                     f"{LINE}\n"
-                    f"⚔️  <b>ARMAGEDDON CHAMPIONSHIP</b>\n"
+                    f"⚔️  <b>ARMAGEDON CHAMPIONSHIP</b>\n"
                     f"{LINE}\n\n"
                     f"📅 <b>Твой матч назначен!</b>\n\n"
                     f"Соперник: <b>{html.escape(team_name(opp_id))}</b>\n"
@@ -1500,10 +1559,10 @@ async def fallback(msg: Message, state: FSMContext):
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 async def scheduler_loop():
     """Каждую минуту проверяет матчи и шлёт уведомление за 20 мин до начала."""
-    log.info("⏰ Планировщик уведомлений запущен (МСК, за 20 мин)")
+    log.info("⏰ Планировщик уведомлений запущен (турнирный TZ, за 20 мин)")
     while True:
         try:
-            now_msk = datetime.now(MSK)
+            now_tz = datetime.now(TOURNAMENT_TZ)
             ms = db_get_matches()
             for m in ms:
                 if not m["match_date"] or not m["match_time"]:
@@ -1518,13 +1577,13 @@ async def scheduler_loop():
                     match_dt = datetime.strptime(
                         f"{m['match_date']} {m['match_time']}",
                         "%d.%m.%Y %H:%M"
-                    ).replace(tzinfo=MSK)
+                    ).replace(tzinfo=TOURNAMENT_TZ)
                 except ValueError:
                     continue
 
-                delta = (match_dt - now_msk).total_seconds() / 60
+                delta = (match_dt - now_tz).total_seconds() / 60
                 # Уведомляем в окне от 20 до 19 минут до матча
-                if 19 <= delta <= 21:
+                if 0 <= delta <= NOTIFY_BEFORE_MINUTES and m["id"] not in _notified_matches:
                     log.info(f"⏰ Авто-уведомление матча {m['id']} ({delta:.1f} мин до начала)")
                     _notified_matches.add(m["id"])
                     await send_match_day_notification(m["id"])
@@ -1548,7 +1607,7 @@ async def main():
     dp = Dispatcher()
     dp.include_router(router)
 
-    log.info("⚔️  ARMAGEDDON CHAMPIONSHIP Match Bot запущен!")
+    log.info("⚔️  ARMAGEDON CHAMPIONSHIP Match Bot запущен!")
     # Запускаем планировщик уведомлений фоном
     asyncio.create_task(scheduler_loop())
     await dp.start_polling(bot_instance,
