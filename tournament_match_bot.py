@@ -287,9 +287,11 @@ async def notify_both_teams(match_row, text: str, reply_markup=None):
 
 
 
-def disqualify_team_in_bracket(team_id: int):
+def disqualify_team_in_bracket(team_id: int, skip_match_id: Optional[int] = None):
     matches = db_get_matches()
     for m in matches:
+        if skip_match_id and m["id"] == skip_match_id:
+            continue
         if m["team1_id"] != team_id and m["team2_id"] != team_id:
             continue
 
@@ -1286,7 +1288,6 @@ async def cb_game_start(cb: CallbackQuery, callback_data: MatchAction):
             log.warning(e)
 
     await cb.message.edit_reply_markup(reply_markup=None)
-    await cb.message.answer(txt_ok("Уведомление о старте игры отправлено обоим капитанам."))
 
 
 # ── Игра завершена ───────────────────────
