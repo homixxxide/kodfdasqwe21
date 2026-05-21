@@ -78,7 +78,8 @@ def init_db():
                 name       TEXT NOT NULL UNIQUE,
                 password   TEXT NOT NULL,
                 captain_id INTEGER,          -- telegram id капитана (после авторизации)
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                excluded   INTEGER NOT NULL DEFAULT 0
             );
 
             -- Матчи сетки
@@ -118,6 +119,10 @@ def init_db():
             );
         """)
         _con.commit()
+    # Миграция: флаг исключения команды
+    cols = [r[1] for r in _exec("PRAGMA table_info(teams)").fetchall()]
+    if "excluded" not in cols:
+        _exec("ALTER TABLE teams ADD COLUMN excluded INTEGER NOT NULL DEFAULT 0", commit=True)
     log.info("✅ БД инициализирована")
 
 
@@ -140,8 +145,10 @@ def db_get_team(team_id: int):
     return _exec("SELECT * FROM teams WHERE id=?", (team_id,)).fetchone()
 
 
-def db_get_all_teams():
-    return _exec("SELECT * FROM teams ORDER BY id").fetchall()
+def db_get_all_teams(include_excluded: bool = False):
+    if include_excluded:
+        return _exec("SELECT * FROM teams ORDER BY id").fetchall()
+    return _exec("SELECT * FROM teams WHERE excluded=0 ORDER BY id").fetchall()
 
 
 def db_set_captain(team_id: int, user_id: int):
@@ -288,6 +295,7 @@ async def notify_both_teams(match_row, text: str, reply_markup=None):
 
 
 def disqualify_team_in_bracket(team_id: int, skip_match_id: Optional[int] = None):
+    _exec("UPDATE teams SET excluded=1 WHERE id=?", (team_id,), commit=True)
     matches = db_get_matches()
     for m in matches:
         if skip_match_id and m["id"] == skip_match_id:
@@ -555,6 +563,15 @@ def kb_winner(match_id: int, t1_id: int, t2_id: int):
     return b.as_markup()
 
 
+
+
+def kb_result_screenshot(match_id: int):
+    b = InlineKeyboardBuilder()
+    b.button(text="📸 Отправить скрин результата",
+             callback_data=MatchAction(action="send_result_scr", match_id=match_id))
+    b.adjust(1)
+    return b.as_markup()
+
 def kb_confirm(scr_id: int):
     b = InlineKeyboardBuilder()
     b.button(text="✅ Подтвердить", callback_data=ConfirmCB(scr_id=scr_id, approved=1))
@@ -735,7 +752,7 @@ async def cb_admin(cb: CallbackQuery):
     if not is_admin(cb.from_user.id):
         await cb.message.answer(txt_err("Нет доступа."), reply_markup=kb_home())
         return
-    teams = db_get_all_teams()
+    teams = db_get_all_teams(include_excluded=True)
     ms    = db_get_matches()
     await cb.message.answer(
         txt_section("⚙️ Панель администратора",
@@ -1351,13 +1368,19 @@ async def cb_winner(cb: CallbackQuery, callback_data: WinnerCB):
                     f"Ожидаем подтверждение администратора.")
     )
 
-    # Сохраняем ожидание скрина через state
-    # Используем глобальный FSM через отдельный хендлер
-    # Отмечаем что ждём скрин от этого пользователя
-    _pending_result_screenshots[cb.from_user.id] = {
-        "match_id": mid,
-        "team_id":  team["id"]
-    }
+
+
+@router.callback_query(MatchAction.filter(F.action == "send_result_scr"))
+async def cb_send_result_scr(cb: CallbackQuery, callback_data: MatchAction):
+    await ack(cb)
+    team = db_get_captain_team(cb.from_user.id)
+    m = db_get_match(callback_data.match_id)
+    if not team or not m or (team["id"] not in (m["team1_id"], m["team2_id"])):
+        await cb.answer("Ты не участник этого матча.", show_alert=True)
+        return
+
+    _pending_result_screenshots[cb.from_user.id] = {"match_id": m["id"], "team_id": team["id"]}
+    await cb.message.answer(txt_section("📸 Скрин результата", "Отправь скриншот таблицы результатов этого матча."))
 
 
 # Временное хранилище ожидания скринов лобби
