@@ -525,6 +525,8 @@ def kb_admin():
     b.button(text="📅 Назначить дату матча",callback_data=Nav(to="set_date"))
     b.button(text="⚡ Быстрое расписание",callback_data=Nav(to="bulk_schedule"))
     b.button(text="📢 Уведомить команды",   callback_data=Nav(to="notify_matches"))
+    b.button(text="♻️ Вернуть все команды", callback_data=Nav(to="restore_all_teams"))
+    b.button(text="🧹 Очистить все команды", callback_data=Nav(to="clear_teams"))
     b.button(text="🗑 Сбросить всё",        callback_data=Nav(to="reset_all"))
     b.button(text="◀️ Главное меню",        callback_data=Nav(to="home"))
     b.adjust(1)
@@ -1064,6 +1066,37 @@ async def cb_notify_matches(cb: CallbackQuery):
 
 
 # ── Сброс ────────────────────────────────
+@router.callback_query(Nav.filter(F.to == "restore_all_teams"))
+async def cb_restore_all_teams(cb: CallbackQuery):
+    await ack(cb)
+    if not is_admin(cb.from_user.id):
+        return
+    _exec("UPDATE teams SET excluded=0", commit=True)
+    await cb.message.answer(
+        txt_ok("Все команды возвращены в активные.\nТеперь они снова участвуют в следующих сетках."),
+        reply_markup=kb_admin()
+    )
+
+
+@router.callback_query(Nav.filter(F.to == "clear_teams"))
+async def cb_clear_teams(cb: CallbackQuery):
+    await ack(cb)
+    if not is_admin(cb.from_user.id):
+        return
+    with _lk:
+        _con.executescript("""
+            DELETE FROM matches;
+            DELETE FROM screenshots;
+            DELETE FROM captain_sessions;
+            DELETE FROM teams;
+        """)
+        _con.commit()
+    await cb.message.answer(
+        txt_ok("Все команды очищены.\nМатчи, скрины и сессии тоже удалены."),
+        reply_markup=kb_admin()
+    )
+
+
 @router.callback_query(Nav.filter(F.to == "reset_all"))
 async def cb_reset_all(cb: CallbackQuery):
     await ack(cb)
