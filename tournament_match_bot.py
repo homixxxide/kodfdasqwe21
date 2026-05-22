@@ -1269,12 +1269,17 @@ async def cb_confirm(cb: CallbackQuery, callback_data: ConfirmCB):
         elif scr["type"] == "result":
             db_update_match(scr["match_id"], status="done")
             m2 = db_get_match(scr["match_id"])
+            loser_id = other_team_id(m2, m2["winner_id"]) if m2 and m2["winner_id"] else None
+            if loser_id:
+                disqualify_team_in_bracket(loser_id, skip_match_id=m2["id"])
+                m2 = db_get_match(scr["match_id"])
             winner = html.escape(team_name(m2["winner_id"]))
             await notify_both_teams(
                 m2,
                 txt_ok(
                     f"Администратор подтвердил результат матча.\n"
                     f"Победитель: <b>{winner}</b>.\n"
+                    f"Проигравшая команда исключена из следующих матчей.\n"
                     f"Спасибо за игру!"
                 )
             )
