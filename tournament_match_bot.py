@@ -545,13 +545,15 @@ def kb_home():
     return b.as_markup()
 
 
-def kb_match_actions(match_id: int, team_id: int = 0):
+def kb_match_actions(match_id: int, team_id: int = 0, started: bool = False):
     b = InlineKeyboardBuilder()
-    b.button(text="🎮 Игра началась",  callback_data=MatchAction(action="start",  match_id=match_id))
-    b.button(text="🏁 Игра завершена", callback_data=MatchAction(action="finish", match_id=match_id))
+    if started:
+        b.button(text="🏁 Игра завершена", callback_data=MatchAction(action="finish", match_id=match_id))
+    else:
+        b.button(text="🎮 Игра началась",  callback_data=MatchAction(action="start",  match_id=match_id))
     b.button(text="🚨 Вызвать администратора",
              callback_data=ComplaintCB(match_id=match_id, team_id=team_id))
-    b.adjust(2, 1)
+    b.adjust(1, 1)
     return b.as_markup()
 
 
@@ -1310,6 +1312,9 @@ async def cb_game_start(cb: CallbackQuery, callback_data: MatchAction):
     if not team or (team["id"] != m["team1_id"] and team["id"] != m["team2_id"]):
         await cb.answer("Ты не участник этого матча.", show_alert=True)
         return
+    if m["status"] == "playing":
+        await cb.answer("Игра уже отмечена как начавшаяся.", show_alert=True)
+        return
 
     db_update_match(mid, status="playing")
 
@@ -1326,13 +1331,7 @@ async def cb_game_start(cb: CallbackQuery, callback_data: MatchAction):
                 f"{html.escape(team_name(m['team1_id']))} vs "
                 f"{html.escape(team_name(m['team2_id']))}\n\n"
                 f"Когда игра завершится — нажми кнопку ниже.",
-                reply_markup=InlineKeyboardMarkup(inline_keyboard=[[
-                    InlineKeyboardButton(
-                        text="🏁 Игра завершена",
-                        callback_data=MatchAction(
-                            action="finish", match_id=mid).pack()
-                    )
-                ]])
+                reply_markup=kb_match_actions(mid, tid, started=True)
             )
         except Exception as e:
             log.warning(e)
@@ -1350,6 +1349,9 @@ async def cb_game_finish(cb: CallbackQuery, callback_data: MatchAction):
 
     if not team or (team["id"] != m["team1_id"] and team["id"] != m["team2_id"]):
         await cb.answer("Ты не участник этого матча.", show_alert=True)
+        return
+    if m["status"] != "playing":
+        await cb.answer("Сначала нажми «Игра началась».", show_alert=True)
         return
 
     db_update_match(mid, status="result_pending")
@@ -1391,7 +1393,8 @@ async def cb_winner(cb: CallbackQuery, callback_data: WinnerCB):
     await cb.message.answer(
         txt_section("📸 Подтверждение итогов",
                     f"Ты указал победителем: <b>{html.escape(team_name(win_tid))}</b>\n\n"
-                    f"Отправь скриншот таблицы результатов для подтверждения администратором.")
+                    f"Отправь скриншот таблицы результатов для подтверждения администратором."),
+        reply_markup=kb_result_screenshot(mid)
     )
 
     await notify_both_teams(
