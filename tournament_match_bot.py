@@ -1506,10 +1506,7 @@ async def receive_any_photo(msg: Message, state: FSMContext):
     # Остальные фото игнорируем
     cur_state = await state.get_state()
     if not cur_state and msg.chat.type == "private":
-        await msg.answer(
-            "Чтобы отправить скрин, сначала нажми нужную кнопку в сообщении от бота.",
-            reply_markup=kb_home()
-        )
+        await msg.answer("Чтобы отправить скрин, сначала нажми нужную кнопку в сообщении от бота.")
 
 
 @router.callback_query(ExcludeTeamCB.filter())
