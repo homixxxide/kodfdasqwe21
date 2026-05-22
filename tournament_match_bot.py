@@ -1,5 +1,5 @@
 """
-ARMAGEDDON CHAMPIONSHIP — Tournament Match Bot
+ARMAGEDON CHAMPIONSHIP — Tournament Match Bot
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Установка: pip install aiogram aiohttp
 Запуск: python tournament_match_bot.py
@@ -16,6 +16,7 @@ from typing import Optional
 from zoneinfo import ZoneInfo
 
 from aiogram import Bot, Dispatcher, F, Router
+from aiogram.exceptions import TelegramMigrateToChat
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode, ChatAction
 from aiogram.filters import Command, CommandStart, StateFilter
@@ -31,10 +32,11 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #  НАСТРОЙКИ
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-BOT_TOKEN = "8696797037:AAFKaTA_tszKCJJWrtE4VruPZktLXqKXUJ4"
+BOT_TOKEN = "8750744135:AAHVYJLZHsDnYCznHKFDy_aQ4z4q1Q-tTMg"
 ADMIN_IDS  = {6611491689}   # Telegram ID администраторов
+REPORT_CHAT_ID = -1003970043019  # ID закрытого чата для итогов матчей
 
-MSK = ZoneInfo("Europe/Moscow")
+TOURNAMENT_TZ = ZoneInfo("Europe/Moscow")  # турнирный часовой пояс (МСК)
 NOTIFY_BEFORE_MINUTES = 20   # за сколько минут уведомлять
 _notified_matches: set = set()  # чтобы не слать дважды
 
@@ -76,7 +78,8 @@ def init_db():
                 name       TEXT NOT NULL UNIQUE,
                 password   TEXT NOT NULL,
                 captain_id INTEGER,          -- telegram id капитана (после авторизации)
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                excluded   INTEGER NOT NULL DEFAULT 0
             );
 
             -- Матчи сетки
@@ -116,6 +119,10 @@ def init_db():
             );
         """)
         _con.commit()
+    # Миграция: флаг исключения команды
+    cols = [r[1] for r in _exec("PRAGMA table_info(teams)").fetchall()]
+    if "excluded" not in cols:
+        _exec("ALTER TABLE teams ADD COLUMN excluded INTEGER NOT NULL DEFAULT 0", commit=True)
     log.info("✅ БД инициализирована")
 
 
@@ -138,8 +145,10 @@ def db_get_team(team_id: int):
     return _exec("SELECT * FROM teams WHERE id=?", (team_id,)).fetchone()
 
 
-def db_get_all_teams():
-    return _exec("SELECT * FROM teams ORDER BY id").fetchall()
+def db_get_all_teams(include_excluded: bool = False):
+    if include_excluded:
+        return _exec("SELECT * FROM teams ORDER BY id").fetchall()
+    return _exec("SELECT * FROM teams WHERE excluded=0 ORDER BY id").fetchall()
 
 
 def db_set_captain(team_id: int, user_id: int):
@@ -263,6 +272,83 @@ def team_name(tid: Optional[int]) -> str:
     return t["name"] if t else f"#{tid}"
 
 
+def other_team_id(match_row, team_id: int) -> Optional[int]:
+    if match_row["team1_id"] == team_id:
+        return match_row["team2_id"]
+    if match_row["team2_id"] == team_id:
+        return match_row["team1_id"]
+    return None
+
+
+async def notify_both_teams(match_row, text: str, reply_markup=None):
+    for tid in [match_row["team1_id"], match_row["team2_id"]]:
+        t = db_get_team(tid) if tid else None
+        cap = t["captain_id"] if t else None
+        if not cap:
+            continue
+        try:
+            await bot_instance.send_message(cap, text, reply_markup=reply_markup)
+        except Exception as e:
+            log.warning("Не удалось уведомить капитана %s: %s", cap, e)
+
+
+
+
+def disqualify_team_in_bracket(team_id: int, skip_match_id: Optional[int] = None):
+    _exec("UPDATE teams SET excluded=1 WHERE id=?", (team_id,), commit=True)
+    matches = db_get_matches()
+    for m in matches:
+        if skip_match_id and m["id"] == skip_match_id:
+            continue
+        if m["team1_id"] != team_id and m["team2_id"] != team_id:
+            continue
+
+        new_t1 = m["team1_id"]
+        new_t2 = m["team2_id"]
+        if m["team1_id"] == team_id:
+            new_t1 = None
+        if m["team2_id"] == team_id:
+            new_t2 = None
+
+        updates = {"team1_id": new_t1, "team2_id": new_t2}
+
+        if new_t1 and not new_t2:
+            updates["winner_id"] = new_t1
+            updates["status"] = "done"
+        elif new_t2 and not new_t1:
+            updates["winner_id"] = new_t2
+            updates["status"] = "done"
+        elif not new_t1 and not new_t2:
+            updates["winner_id"] = None
+            updates["status"] = "pending"
+
+        db_update_match(m["id"], **updates)
+
+async def post_match_result_summary(match_row):
+    global REPORT_CHAT_ID
+    if not REPORT_CHAT_ID:
+        return
+    score = "1:0" if match_row["winner_id"] == match_row["team1_id"] else "0:1"
+    text = (
+        f"🏆 <b>Итог матча</b>\n\n"
+        f"{html.escape(team_name(match_row['team1_id']))} [{score}] "
+        f"{html.escape(team_name(match_row['team2_id']))}\n"
+        f"Формат: bo3\n"
+        f"Победитель: <b>{html.escape(team_name(match_row['winner_id']))}</b>"
+    )
+    try:
+        await bot_instance.send_message(REPORT_CHAT_ID, text)
+    except TelegramMigrateToChat as e:
+        REPORT_CHAT_ID = e.migrate_to_chat_id
+        log.warning("Чат отчётов мигрирован, обновляю REPORT_CHAT_ID на %s", REPORT_CHAT_ID)
+        try:
+            await bot_instance.send_message(REPORT_CHAT_ID, text)
+        except Exception as ex:
+            log.warning("Не удалось отправить итог в REPORT_CHAT_ID после миграции: %s", ex)
+    except Exception as e:
+        log.warning("Не удалось отправить итог в REPORT_CHAT_ID: %s", e)
+
+
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #  ФОРМАТИРОВАНИЕ
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -277,7 +363,7 @@ def fmt_bracket_full(matches: list) -> str:
 
     lines = [
         f"{LINE}\n"
-        f"⚔️  <b>ARMAGEDDON CHAMPIONSHIP</b>\n"
+        f"⚔️  <b>ARMAGEDON CHAMPIONSHIP</b>\n"
         f"<b>Турнирная сетка  •  {bsize} слотов</b>\n"
         f"{LINE}"
     ]
@@ -379,6 +465,11 @@ class ComplaintCB(CallbackData, prefix="cmp"):
     team_id:  int
 
 
+class ExcludeTeamCB(CallbackData, prefix="excl"):
+    scr_id: int
+    team_id: int
+
+
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #  FSM
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -401,6 +492,12 @@ class AdminSetDate(StatesGroup):
 class ScreenshotWait(StatesGroup):
     lobby  = State()
     result = State()
+
+
+class AdminBulkSchedule(StatesGroup):
+    date = State()
+    time = State()
+    step = State()
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -426,7 +523,10 @@ def kb_admin():
     b.button(text="📋 Список команд",       callback_data=Nav(to="list_teams"))
     b.button(text="🎲 Сгенерировать сетку", callback_data=Nav(to="gen_bracket"))
     b.button(text="📅 Назначить дату матча",callback_data=Nav(to="set_date"))
+    b.button(text="⚡ Быстрое расписание",callback_data=Nav(to="bulk_schedule"))
     b.button(text="📢 Уведомить команды",   callback_data=Nav(to="notify_matches"))
+    b.button(text="♻️ Вернуть все команды", callback_data=Nav(to="restore_all_teams"))
+    b.button(text="🧹 Очистить все команды", callback_data=Nav(to="clear_teams"))
     b.button(text="🗑 Сбросить всё",        callback_data=Nav(to="reset_all"))
     b.button(text="◀️ Главное меню",        callback_data=Nav(to="home"))
     b.adjust(1)
@@ -445,13 +545,15 @@ def kb_home():
     return b.as_markup()
 
 
-def kb_match_actions(match_id: int, team_id: int = 0):
+def kb_match_actions(match_id: int, team_id: int = 0, started: bool = False):
     b = InlineKeyboardBuilder()
-    b.button(text="🎮 Игра началась",  callback_data=MatchAction(action="start",  match_id=match_id))
-    b.button(text="🏁 Игра завершена", callback_data=MatchAction(action="finish", match_id=match_id))
+    if started:
+        b.button(text="🏁 Игра завершена", callback_data=MatchAction(action="finish", match_id=match_id))
+    else:
+        b.button(text="🎮 Игра началась",  callback_data=MatchAction(action="start",  match_id=match_id))
     b.button(text="🚨 Вызвать администратора",
              callback_data=ComplaintCB(match_id=match_id, team_id=team_id))
-    b.adjust(2, 1)
+    b.adjust(1, 1)
     return b.as_markup()
 
 
@@ -465,6 +567,15 @@ def kb_winner(match_id: int, t1_id: int, t2_id: int):
     return b.as_markup()
 
 
+
+
+def kb_result_screenshot(match_id: int):
+    b = InlineKeyboardBuilder()
+    b.button(text="📸 Отправить скрин результата",
+             callback_data=MatchAction(action="send_result_scr", match_id=match_id))
+    b.adjust(1)
+    return b.as_markup()
+
 def kb_confirm(scr_id: int):
     b = InlineKeyboardBuilder()
     b.button(text="✅ Подтвердить", callback_data=ConfirmCB(scr_id=scr_id, approved=1))
@@ -473,12 +584,24 @@ def kb_confirm(scr_id: int):
     return b.as_markup()
 
 
+def kb_confirm_result(scr_id: int, t1_id: int, t2_id: int):
+    b = InlineKeyboardBuilder()
+    b.button(text="✅ Подтвердить", callback_data=ConfirmCB(scr_id=scr_id, approved=1))
+    b.button(text="❌ Отклонить", callback_data=ConfirmCB(scr_id=scr_id, approved=0))
+    b.button(text=f"⛔ Исключить {team_name(t1_id)}",
+             callback_data=ExcludeTeamCB(scr_id=scr_id, team_id=t1_id))
+    b.button(text=f"⛔ Исключить {team_name(t2_id)}",
+             callback_data=ExcludeTeamCB(scr_id=scr_id, team_id=t2_id))
+    b.adjust(2, 1, 1)
+    return b.as_markup()
+
+
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #  ТЕКСТЫ
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 MAIN_TEXT = (
     f"{LINE}\n"
-    f"⚔️  <b>ARMAGEDDON CHAMPIONSHIP</b>\n"
+    f"⚔️  <b>ARMAGEDON CHAMPIONSHIP</b>\n"
     f"{LINE}\n\n"
     f"Бот для управления матчами турнира.\n\n"
     f"Если ты капитан — войди в систему.\n"
@@ -633,7 +756,7 @@ async def cb_admin(cb: CallbackQuery):
     if not is_admin(cb.from_user.id):
         await cb.message.answer(txt_err("Нет доступа."), reply_markup=kb_home())
         return
-    teams = db_get_all_teams()
+    teams = db_get_all_teams(include_excluded=True)
     ms    = db_get_matches()
     await cb.message.answer(
         txt_section("⚙️ Панель администратора",
@@ -824,6 +947,74 @@ async def set_date_time(msg: Message, state: FSMContext):
     )
 
 
+
+
+@router.callback_query(Nav.filter(F.to == "bulk_schedule"))
+async def cb_bulk_schedule_start(cb: CallbackQuery, state: FSMContext):
+    await ack(cb)
+    if not is_admin(cb.from_user.id):
+        return
+    await state.set_state(AdminBulkSchedule.date)
+    await cb.message.answer(
+        txt_section("⚡ Быстрое расписание",
+                    "Введи дату для серии матчей в формате ДД.ММ.ГГГГ:"),
+        reply_markup=kb_back("admin")
+    )
+
+
+@router.message(StateFilter(AdminBulkSchedule.date), F.text)
+async def bulk_schedule_date(msg: Message, state: FSMContext):
+    await state.update_data(date=msg.text.strip())
+    await state.set_state(AdminBulkSchedule.time)
+    await msg.answer(txt_section("⚡ Быстрое расписание", "Введи время первого матча (ЧЧ:ММ):"), reply_markup=kb_back("admin"))
+
+
+@router.message(StateFilter(AdminBulkSchedule.time), F.text)
+async def bulk_schedule_time(msg: Message, state: FSMContext):
+    await state.update_data(time=msg.text.strip())
+    await state.set_state(AdminBulkSchedule.step)
+    await msg.answer(txt_section("⚡ Быстрое расписание", "Шаг между матчами в минутах (например 30).\nЕсли хочешь всем матчам одинаковое время — введи <b>0</b>."), reply_markup=kb_back("admin"))
+
+
+@router.message(StateFilter(AdminBulkSchedule.step), F.text)
+async def bulk_schedule_step(msg: Message, state: FSMContext):
+    data = await state.get_data()
+    try:
+        step = int(msg.text.strip())
+    except ValueError:
+        await msg.answer(txt_err("Нужно число минут."))
+        return
+
+    ms_all = [m for m in db_get_matches() if m["team1_id"] and m["team2_id"] and not m["match_date"]]
+    if not ms_all:
+        await state.clear()
+        await msg.answer(txt_err("Нет матчей без даты."), reply_markup=kb_admin())
+        return
+
+    target_round = min(m["round"] for m in ms_all)
+    ms = [m for m in ms_all if m["round"] == target_round]
+
+    base = datetime.strptime(f"{data['date']} {data['time']}", "%d.%m.%Y %H:%M")
+    for i, m in enumerate(ms):
+        dt = base + timedelta(minutes=step * i)
+        db_update_match(m["id"], match_date=dt.strftime("%d.%m.%Y"), match_time=dt.strftime("%H:%M"))
+
+    await state.clear()
+    if step == 0:
+        mode = "Все матчи выбранного раунда поставлены на одно время"
+    else:
+        mode = f"Матчи раунда расставлены с шагом {step} мин"
+
+    await msg.answer(
+        txt_ok(
+            f"Быстрое расписание применено.\n"
+            f"Раунд: <b>{target_round}</b>\n"
+            f"Матчей: <b>{len(ms)}</b>\n"
+            f"Режим: {mode}"
+        ),
+        reply_markup=kb_admin()
+    )
+
 # ── Уведомить команды о матчах ───────────
 @router.callback_query(Nav.filter(F.to == "notify_matches"))
 async def cb_notify_matches(cb: CallbackQuery):
@@ -859,7 +1050,7 @@ async def cb_notify_matches(cb: CallbackQuery):
                 await bot_instance.send_message(
                     cap,
                     f"{LINE}\n"
-                    f"⚔️  <b>ARMAGEDDON CHAMPIONSHIP</b>\n"
+                    f"⚔️  <b>ARMAGEDON CHAMPIONSHIP</b>\n"
                     f"{LINE}\n\n"
                     f"📅 <b>Твой матч назначен!</b>\n\n"
                     f"Соперник: <b>{html.escape(team_name(opp_id))}</b>\n"
@@ -877,6 +1068,37 @@ async def cb_notify_matches(cb: CallbackQuery):
 
 
 # ── Сброс ────────────────────────────────
+@router.callback_query(Nav.filter(F.to == "restore_all_teams"))
+async def cb_restore_all_teams(cb: CallbackQuery):
+    await ack(cb)
+    if not is_admin(cb.from_user.id):
+        return
+    _exec("UPDATE teams SET excluded=0", commit=True)
+    await cb.message.answer(
+        txt_ok("Все команды возвращены в активные.\nТеперь они снова участвуют в следующих сетках."),
+        reply_markup=kb_admin()
+    )
+
+
+@router.callback_query(Nav.filter(F.to == "clear_teams"))
+async def cb_clear_teams(cb: CallbackQuery):
+    await ack(cb)
+    if not is_admin(cb.from_user.id):
+        return
+    with _lk:
+        _con.executescript("""
+            DELETE FROM matches;
+            DELETE FROM screenshots;
+            DELETE FROM captain_sessions;
+            DELETE FROM teams;
+        """)
+        _con.commit()
+    await cb.message.answer(
+        txt_ok("Все команды очищены.\nМатчи, скрины и сессии тоже удалены."),
+        reply_markup=kb_admin()
+    )
+
+
 @router.callback_query(Nav.filter(F.to == "reset_all"))
 async def cb_reset_all(cb: CallbackQuery):
     await ack(cb)
@@ -957,6 +1179,7 @@ async def cb_send_lobby_scr(cb: CallbackQuery,
     await ack(cb)
     await state.update_data(match_id=callback_data.match_id,
                              scr_type="lobby")
+    _pending_lobby_screenshots[cb.from_user.id] = callback_data.match_id
     await state.set_state(ScreenshotWait.lobby)
     await cb.message.answer(
         txt_section("📸 Скрин лобби",
@@ -979,6 +1202,9 @@ async def receive_lobby_screenshot(msg: Message, state: FSMContext):
                                   msg.from_user.id, team["id"])
     await state.clear()
 
+    # Сохраняем возможность отправить скрин повторно, если админ отклонит
+    _pending_lobby_screenshots[msg.from_user.id] = match_id
+
     # Шлём админам
     m = db_get_match(match_id)
     caption = (
@@ -994,7 +1220,7 @@ async def receive_lobby_screenshot(msg: Message, state: FSMContext):
                 aid,
                 photo=file_id,
                 caption=caption,
-                reply_markup=kb_confirm(scr_id)
+                reply_markup=kb_confirm_result(scr_id, m["team1_id"], m["team2_id"])
             )
         except Exception as e:
             log.warning(f"Не удалось отправить скрин админу {aid}: {e}")
@@ -1041,8 +1267,23 @@ async def cb_confirm(cb: CallbackQuery, callback_data: ConfirmCB):
                     log.warning(e)
 
         elif scr["type"] == "result":
-            # Определяем победителя
-            pass  # победитель уже записан через kb_winner
+            db_update_match(scr["match_id"], status="done")
+            m2 = db_get_match(scr["match_id"])
+            loser_id = other_team_id(m2, m2["winner_id"]) if m2 and m2["winner_id"] else None
+            if loser_id:
+                disqualify_team_in_bracket(loser_id, skip_match_id=m2["id"])
+                m2 = db_get_match(scr["match_id"])
+            winner = html.escape(team_name(m2["winner_id"]))
+            await notify_both_teams(
+                m2,
+                txt_ok(
+                    f"Администратор подтвердил результат матча.\n"
+                    f"Победитель: <b>{winner}</b>.\n"
+                    f"Проигравшая команда исключена из следующих матчей.\n"
+                    f"Спасибо за игру!"
+                )
+            )
+            await post_match_result_summary(m2)
 
         await cb.message.edit_caption(
             caption=(cb.message.caption or "") + "\n\n✅ <b>Подтверждено</b>"
@@ -1076,6 +1317,9 @@ async def cb_game_start(cb: CallbackQuery, callback_data: MatchAction):
     if not team or (team["id"] != m["team1_id"] and team["id"] != m["team2_id"]):
         await cb.answer("Ты не участник этого матча.", show_alert=True)
         return
+    if m["status"] == "playing":
+        await cb.answer("Игра уже отмечена как начавшаяся.", show_alert=True)
+        return
 
     db_update_match(mid, status="playing")
 
@@ -1092,19 +1336,12 @@ async def cb_game_start(cb: CallbackQuery, callback_data: MatchAction):
                 f"{html.escape(team_name(m['team1_id']))} vs "
                 f"{html.escape(team_name(m['team2_id']))}\n\n"
                 f"Когда игра завершится — нажми кнопку ниже.",
-                reply_markup=InlineKeyboardMarkup(inline_keyboard=[[
-                    InlineKeyboardButton(
-                        text="🏁 Игра завершена",
-                        callback_data=MatchAction(
-                            action="finish", match_id=mid).pack()
-                    )
-                ]])
+                reply_markup=kb_match_actions(mid, tid, started=True)
             )
         except Exception as e:
             log.warning(e)
 
     await cb.message.edit_reply_markup(reply_markup=None)
-    await cb.message.answer(txt_ok("Уведомление о старте игры отправлено обоим капитанам."))
 
 
 # ── Игра завершена ───────────────────────
@@ -1118,16 +1355,27 @@ async def cb_game_finish(cb: CallbackQuery, callback_data: MatchAction):
     if not team or (team["id"] != m["team1_id"] and team["id"] != m["team2_id"]):
         await cb.answer("Ты не участник этого матча.", show_alert=True)
         return
+    if m["status"] != "playing":
+        await cb.answer("Сначала нажми «Игра началась».", show_alert=True)
+        return
 
     db_update_match(mid, status="result_pending")
 
-    # Просим выбрать победителя
+    # Запрашиваем подтверждение исхода у соперника
     await cb.message.edit_reply_markup(reply_markup=None)
-    await cb.message.answer(
-        txt_section("🏁 Игра завершена",
-                    "Кто победил в этом матче?"),
-        reply_markup=kb_winner(mid, m["team1_id"], m["team2_id"])
-    )
+    opp_id = other_team_id(m, team["id"])
+    opp = db_get_team(opp_id) if opp_id else None
+    opp_cap = opp["captain_id"] if opp else None
+
+    if opp_cap:
+        await bot_instance.send_message(
+            opp_cap,
+            txt_section("🏁 Игра завершена",
+                        f"Соперник отметил завершение матча.\n"
+                        f"Подтверди исход: кто победил?"),
+            reply_markup=kb_winner(mid, m["team1_id"], m["team2_id"])
+        )
+    await cb.message.answer(txt_ok("Запрос подтверждения отправлен сопернику."))
 
 
 # ── Выбор победителя ─────────────────────
@@ -1150,17 +1398,34 @@ async def cb_winner(cb: CallbackQuery, callback_data: WinnerCB):
     await cb.message.answer(
         txt_section("📸 Подтверждение итогов",
                     f"Ты указал победителем: <b>{html.escape(team_name(win_tid))}</b>\n\n"
-                    f"Отправь скриншот таблицы результатов для подтверждения администратором.")
+                    f"Отправь скриншот таблицы результатов для подтверждения администратором."),
+        reply_markup=kb_result_screenshot(mid)
     )
 
-    # Сохраняем ожидание скрина через state
-    # Используем глобальный FSM через отдельный хендлер
-    # Отмечаем что ждём скрин от этого пользователя
-    _pending_result_screenshots[cb.from_user.id] = {
-        "match_id": mid,
-        "team_id":  team["id"]
-    }
+    await notify_both_teams(
+        m,
+        txt_section("🏁 Исход заявлен",
+                    f"Заявленный победитель: <b>{html.escape(team_name(win_tid))}</b>.\n"
+                    f"Ожидаем подтверждение администратора.")
+    )
 
+
+
+@router.callback_query(MatchAction.filter(F.action == "send_result_scr"))
+async def cb_send_result_scr(cb: CallbackQuery, callback_data: MatchAction):
+    await ack(cb)
+    team = db_get_captain_team(cb.from_user.id)
+    m = db_get_match(callback_data.match_id)
+    if not team or not m or (team["id"] not in (m["team1_id"], m["team2_id"])):
+        await cb.answer("Ты не участник этого матча.", show_alert=True)
+        return
+
+    _pending_result_screenshots[cb.from_user.id] = {"match_id": m["id"], "team_id": team["id"]}
+    await cb.message.answer(txt_section("📸 Скрин результата", "Отправь скриншот таблицы результатов этого матча."))
+
+
+# Временное хранилище ожидания скринов лобби
+_pending_lobby_screenshots: dict = {}
 
 # Временное хранилище ожидания скринов результата
 _pending_result_screenshots: dict = {}
@@ -1194,7 +1459,7 @@ async def receive_any_photo(msg: Message, state: FSMContext):
                     aid,
                     photo=file_id,
                     caption=caption,
-                    reply_markup=kb_confirm(scr_id)
+                    reply_markup=kb_confirm_result(scr_id, m["team1_id"], m["team2_id"])
                 )
             except Exception as e:
                 log.warning(e)
@@ -1205,13 +1470,88 @@ async def receive_any_photo(msg: Message, state: FSMContext):
         db_update_match(info["match_id"], status="result_pending")
         return
 
+    # Повторная отправка скрина лобби после отклонения
+    if uid in _pending_lobby_screenshots:
+        match_id = _pending_lobby_screenshots[uid]
+        team = db_get_captain_team(uid)
+        if not team:
+            await msg.answer(txt_err("Ты не авторизован как капитан."))
+            return
+
+        file_id = msg.photo[-1].file_id
+        scr_id = db_save_screenshot(match_id, "lobby", file_id, uid, team["id"])
+
+        m = db_get_match(match_id)
+        caption = (
+            f"📸 <b>Скрин лобби (повтор)</b>\n\n"
+            f"Матч: <b>{html.escape(team_name(m['team1_id']))} vs "
+            f"{html.escape(team_name(m['team2_id']))}</b>\n"
+            f"Команда: <b>{html.escape(team['name'])}</b>\n"
+            f"ID скрина: <code>{scr_id}</code>"
+        )
+        for aid in ADMIN_IDS:
+            try:
+                await bot_instance.send_photo(
+                    aid,
+                    photo=file_id,
+                    caption=caption,
+                    reply_markup=kb_confirm(scr_id)
+                )
+            except Exception as e:
+                log.warning(e)
+
+        await msg.answer(txt_ok("Новый скрин лобби отправлен администратору.\nОжидай подтверждения."))
+        return
+
     # Остальные фото игнорируем
     cur_state = await state.get_state()
-    if not cur_state:
-        await msg.answer(
-            "Чтобы отправить скрин, сначала нажми нужную кнопку в сообщении от бота.",
-            reply_markup=kb_home()
+    if not cur_state and msg.chat.type == "private":
+        await msg.answer("Чтобы отправить скрин, сначала нажми нужную кнопку в сообщении от бота.")
+
+
+@router.callback_query(ExcludeTeamCB.filter())
+async def cb_exclude_team(cb: CallbackQuery, callback_data: ExcludeTeamCB):
+    await ack(cb)
+    if not is_admin(cb.from_user.id):
+        return
+
+    scr = db_get_screenshot(callback_data.scr_id)
+    if not scr:
+        await cb.answer("Скрин не найден.", show_alert=True)
+        return
+
+    m = db_get_match(scr["match_id"])
+    if not m:
+        await cb.answer("Матч не найден.", show_alert=True)
+        return
+
+    excl_team_id = callback_data.team_id
+    db_update_match(m["id"], status="done")
+    disqualify_team_in_bracket(excl_team_id)
+
+    # Победителем текущего матча делаем противоположную команду (если есть)
+    winner_id = m["team2_id"] if excl_team_id == m["team1_id"] else m["team1_id"]
+    if winner_id:
+        db_update_match(m["id"], winner_id=winner_id, status="done")
+        m = db_get_match(m["id"])
+
+    excl_team = db_get_team(excl_team_id)
+    excl_name = html.escape(excl_team["name"]) if excl_team else team_name(excl_team_id)
+
+    await cb.message.edit_caption(
+        caption=(cb.message.caption or "") + f"\n\n⛔ <b>Исключена команда:</b> {excl_name}"
+    )
+
+    if winner_id:
+        await notify_both_teams(
+            m,
+            txt_section(
+                "⛔ Решение администратора",
+                f"Команда <b>{excl_name}</b> исключена из турнира.\n"
+                f"Победителем матча назначена команда <b>{html.escape(team_name(winner_id))}</b>."
+            )
         )
+        await post_match_result_summary(m)
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1279,6 +1619,10 @@ async def cb_complaint(cb: CallbackQuery, callback_data: ComplaintCB):
 
 @router.message()
 async def fallback(msg: Message, state: FSMContext):
+    # В группах/каналах бот не ведёт диалог игроков
+    if msg.chat.type != "private":
+        return
+
     if await state.get_state() is None:
         uid      = msg.from_user.id
         cap_team = db_get_captain_team(uid)
@@ -1293,10 +1637,10 @@ async def fallback(msg: Message, state: FSMContext):
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 async def scheduler_loop():
     """Каждую минуту проверяет матчи и шлёт уведомление за 20 мин до начала."""
-    log.info("⏰ Планировщик уведомлений запущен (МСК, за 20 мин)")
+    log.info("⏰ Планировщик уведомлений запущен (турнирный TZ, за 20 мин)")
     while True:
         try:
-            now_msk = datetime.now(MSK)
+            now_tz = datetime.now(TOURNAMENT_TZ)
             ms = db_get_matches()
             for m in ms:
                 if not m["match_date"] or not m["match_time"]:
@@ -1311,13 +1655,13 @@ async def scheduler_loop():
                     match_dt = datetime.strptime(
                         f"{m['match_date']} {m['match_time']}",
                         "%d.%m.%Y %H:%M"
-                    ).replace(tzinfo=MSK)
+                    ).replace(tzinfo=TOURNAMENT_TZ)
                 except ValueError:
                     continue
 
-                delta = (match_dt - now_msk).total_seconds() / 60
+                delta = (match_dt - now_tz).total_seconds() / 60
                 # Уведомляем в окне от 20 до 19 минут до матча
-                if 19 <= delta <= 21:
+                if 0 <= delta <= NOTIFY_BEFORE_MINUTES and m["id"] not in _notified_matches:
                     log.info(f"⏰ Авто-уведомление матча {m['id']} ({delta:.1f} мин до начала)")
                     _notified_matches.add(m["id"])
                     await send_match_day_notification(m["id"])
@@ -1341,7 +1685,7 @@ async def main():
     dp = Dispatcher()
     dp.include_router(router)
 
-    log.info("⚔️  ARMAGEDDON CHAMPIONSHIP Match Bot запущен!")
+    log.info("⚔️  ARMAGEDON CHAMPIONSHIP Match Bot запущен!")
     # Запускаем планировщик уведомлений фоном
     asyncio.create_task(scheduler_loop())
     await dp.start_polling(bot_instance,
